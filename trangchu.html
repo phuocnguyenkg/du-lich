@@ -1,0 +1,449 @@
+<html>
+
+<head>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Khách Sạn Hội An</title>
+  <meta content="Hệ thống khách sạn lớn nhất tại thành phố Hội An với 5 sao, " name="description" />
+  <style>
+    header {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      width: 100%;
+      transition: opacity 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+
+      /* Ẩn header khi menu mobile được mở */
+      header.hide {
+        opacity: 0;
+        pointer-events: none;
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100">
+  <!-- Header -->
+  <header>
+    <h1 class="text-2xl">Khám Phá Những Khách Sạn Hàng Đầu</h1>
+  </header>
+  <!-- Navbar -->
+  <!-- Cập nhật phần nav -->
+  <nav style="padding-right: 16.4px;" class="flex items-center px-6">
+    <div class="flex items-center space-x-3">
+      <img src="h.png" alt="Ravatel Logo" class="h-12 w-12" />
+      <div>
+        <h1 class="text-2xl font-bold">HOI AN</h1>
+        <p class="text-sm">LUXURY HOTEL</p>
+      </div>
+    </div>
+    <!-- Thêm nút menu cho mobile -->
+    <button id="menuBtn" class="md:hidden text-white">
+      <i class="fas fa-bars text-2xl"></i>
+    </button>
+    <!-- Thêm class mobile-menu để điều khiển hiển thị -->
+    <div id="mobileMenu" class="hidden md:flex md:items-center md:space-x-4">
+      <a href="trangchu.html" class="text-white block py-2">Trang chủ</a>
+      <div class="dropdown relative">
+        <a href="trang1.html" class="text-white block py-2">Khách sạn</a>
+
+      </div>
+      <a href="thongtin.html" class="text-white block py-2">Giới thiệu</a>
+      <a href="lienhe.html" class="text-white block py-2">Liên hệ</a>
+      <div class="search-container">
+        <input type="text" placeholder="Tìm kiếm...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </nav>
+  <!-- Carousel -->
+  <iframe width="100%" height="315"
+    src="https://www.youtube.com/embed/pk8M2zH-KEg?autoplay=1&mute=1&loop=1&playlist=pk8M2zH-KEg"
+    title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+  </iframe>
+
+  <!-- Hotel System -->
+  <div class="container mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold text-center mb-8">Hệ Thống Khách Sạn Hội An </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white shadow-md rounded-md overflow-hidden">
+        <a href="trang1.html">
+          <img alt="Ravatel Luxury Hotel" class="w-full h-48 object-cover" height="300" src="luxury.avif" width="400" />
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">HOTEL LUXURY</h3>
+          </div>
+        </a>
+      </div>
+      <div class="bg-white shadow-md rounded-md overflow-hidden">
+        <a href="trang2.html">
+          <img alt="Ravatel Home Hotel" class="w-full h-48 object-cover" height="300" src="homestay.jpg" width="400" />
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">HOMESTAY</h3>
+          </div>
+        </a>
+      </div>
+      <div class="bg-white shadow-md rounded-md overflow-hidden">
+        <a href="trang3.html">
+          <img alt="Ravatel Style Hotel" class="w-full h-48 object-cover" height="300" src="ntrhome.avif" width="400" />
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">NATURAL HOME</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Services -->
+  <div class="container mx-auto px-4 py-12 bg-gray-200">
+    <h2 class="text-3xl font-bold text-center mb-8">DỊCH VỤ ĐẶC BIỆT</h2>
+    <div class="space-y-8">
+      <div class="flex flex-col md:flex-row bg-white shadow-md rounded-md overflow-hidden">
+        <img alt="TUTA Fitness &amp; Pool" class="hinh" height="300" src="lt.jpg" width="600" />
+        <div class="p-4 flex flex-col justify-center">
+          <h3 class="text-2xl font-semibold mb-2">
+            <a href="#">Lưu Trú &amp; Nghỉ Dưỡng</a>
+          </h3>
+          <p class="text-gray-700 mb-4">🛏️ Lưu trú & nghỉ dưỡng
+            Tận hưởng không gian yên bình giữa lòng phố cổ với hệ thống phòng nghỉ tiện nghi, thiết kế hài hòa giữa nét
+            cổ điển và
+            hiện đại. Mỗi phòng đều có ban công riêng, hướng vườn hoặc sông, mang đến trải nghiệm thư giãn trọn vẹn cho
+            kỳ nghỉ của
+            bạn.</p>
+          <a class="text-blue-500 hover:underline" href="#">XEM CHI TIẾT</a>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row bg-white shadow-md rounded-md overflow-hidden">
+        <img alt="TOPHIT KARAOKE" class="hinh" height="300" src="hb.jpg" width="600" />
+        <div class="p-4 flex flex-col justify-center">
+          <h3 class="text-2xl font-semibold mb-2">
+            <a href="#">Hồ bơi &amp; Spa</a>
+          </h3>
+          <p class="text-gray-700 mb-4">🏊‍♀️ Hồ bơi & Spa
+            Tại Hội An của chúng tôi nhiều khách sở hữu hồ bơi ngoài trời rộng rãi, lý tưởng để bạn thư giãn hoặc tận
+            hưởng những phút giây vui
+            vẻ cùng gia đình và bạn bè. Ngoài ra, dịch vụ spa và massage chuyên nghiệp với các liệu trình thư giãn sẽ
+            giúp bạn xua
+            tan mệt mỏi, mang lại cảm giác sảng khoái và phục hồi năng lượng cho cơ thể.</p>
+          <a class="text-blue-500 hover:underline" href="#">XEM CHI TIẾT</a>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row bg-white shadow-md rounded-md overflow-hidden">
+        <img alt="NHÀ HÀNG ẨM THỰC TRUNG HOA" class="hinh" height="300" src="nh.jpg" width="600" />
+        <div class="p-4 flex flex-col justify-center">
+          <h3 class="text-2xl font-semibold mb-2">
+            <a href="#"> Nhà hàng & Quầy bar</a>
+          </h3>
+          <p class="text-gray-700 mb-4">🍽️ Nhà hàng & Quầy bar
+            Khách sạn của chúng tôi cung cấp nhà hàng phục vụ các món ăn đặc sắc từ ẩm thực địa phương đến quốc tế. Quầy
+            bar sang
+            trọng là nơi lý tưởng để thư giãn, thưởng thức những món cocktail tuyệt vời trong không gian ấm cúng và hiện
+            đại.
+          </p>
+          <a class="text-blue-500 hover:underline" href="#">XEM
+            CHI TIẾT</a>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row bg-white shadow-md rounded-md overflow-hidden">
+        <img alt="NHÀ HÀNG HẢI SẢN GHẸ XANH" class="hinnh" height="300" src="dx.jpg" width="600" />
+        <div class="p-4 flex flex-col justify-center">
+          <h3 class="text-2xl font-semibold mb-2">
+            <a href="#"> Xe đạp miễn phí</a>
+          </h3>
+          <p class="text-gray-700 mb-4">🚲 Xe đạp miễn phí
+            Khách sạn cung cấp dịch vụ cho mượn xe đạp miễn phí, giúp bạn dễ dàng khám phá khu vực xung quanh trong
+            những chuyến đi
+            thú vị và tự do. Đây là lựa chọn lý tưởng để trải nghiệm vẻ đẹp của thành phố một cách thoải mái và tiện
+            lợi.
+          </p>
+          <a class="text-blue-500 hover:underline" href="#">XEM
+            CHI TIẾT</a>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row bg-white shadow-md rounded-md overflow-hidden">
+        <img alt="TOPHIT KARAOKE" class="hinh" height="300" src="bay.jpg" width="600" />
+        <div class="p-4 flex flex-col justify-center">
+          <h3 class="text-2xl font-semibold mb-2">
+            <a href="#"> Đưa đón sân bay & Tour du lịch</a>
+          </h3>
+          <p class="text-gray-700 mb-4">
+            ✈️ Đưa đón sân bay & Tour du lịch
+            Chúng tôi cung cấp dịch vụ đưa đón sân bay thuận tiện và nhanh chóng, giúp bạn dễ dàng di chuyển đến khách
+            sạn. Bên cạnh
+            đó, các tour du lịch đa dạng sẽ đưa bạn khám phá vẻ đẹp của Hội An và các điểm đến nổi bật xung quanh, mang
+            đến cho bạn
+            trải nghiệm trọn vẹn trong kỳ nghỉ.</p>
+          <a class="text-blue-500 hover:underline" href="#">XEM CHI TIẾT</a>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row bg-white shadow-md rounded-md overflow-hidden">
+        <img alt="TOPHIT KARAOKE" class="hinh" height="300" src="R.jpg" width="600" />
+        <div class="p-4 flex flex-col justify-center">
+          <h3 class="text-2xl font-semibold mb-2">
+            <a href="#"> Lớp học trải nghiệm văn hóa</a>
+          </h3>
+          <p class="text-gray-700 mb-4">
+            🍳 Khách sạn tổ chức các lớp học thú vị như nấu ăn món Hội An, làm đèn lồng truyền thống, và học yoga buổi
+            sáng. Đây là cơ
+            hội tuyệt vời để bạn khám phá văn hóa địa phương và thư giãn trong không gian yên bình, mang lại trải nghiệm
+            khó quên
+            trong kỳ nghỉ.</p>
+          <a class="text-blue-500 hover:underline" href="#">XEM CHI TIẾT</a>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row bg-white shadow-md rounded-md overflow-hidden">
+        <img alt="TOPHIT KARAOKE" class="hinh" height="300" src="letan.jpg" width="600" />
+        <div class="p-4 flex flex-col justify-center">
+          <h3 class="text-2xl font-semibold mb-2">
+            <a href="#"> Dịch vụ phòng 24/7</a>
+          </h3>
+          <p class="text-gray-700 mb-4">🛏️ Dịch vụ phòng 24/7
+            Chúng tôi cung cấp dịch vụ phòng 24/7, đảm bảo bạn luôn có sự hỗ trợ mọi lúc, từ việc đặt đồ ăn đến nhu cầu
+            cá nhân. Bạn
+            có thể tận hưởng sự thoải mái và tiện nghi ngay trong phòng của mình bất cứ lúc nào trong suốt kỳ nghỉ.</p>
+          <a class="text-blue-500 hover:underline" href="#">XEM CHI TIẾT</a>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row bg-white shadow-md rounded-md overflow-hidden">
+        <img alt="TOPHIT KARAOKE" class="hinh" height="300" src="vuon.jpg" width="600" />
+        <div class="p-4 flex flex-col justify-center">
+          <h3 class="text-2xl font-semibold mb-2">
+            <a href="#"> Khu vườn thư giãn</a>
+          </h3>
+          <p class="text-gray-700 mb-4">
+            🌿 Khu vườn thư giãn
+            Khách sạn của chúng tôi tự hào sở hữu một khu vườn xanh mát, là nơi lý tưởng để bạn thư giãn và tìm lại sự
+            bình yên. Với
+            không gian rộng lớn, cây cối xanh tươi và hoa lá khoe sắc, bạn có thể thoải mái đi dạo, tận hưởng không khí
+            trong lành,
+            hoặc ngồi thưởng thức một tách trà nóng trong những chiếc ghế mây xinh xắn. Khu vườn không chỉ là điểm đến
+            lý tưởng cho
+            những ai yêu thiên nhiên, mà còn là nơi bạn có thể tái tạo năng lượng, giúp cho kỳ nghỉ của mình trở nên thư
+            giãn và
+            đáng nhớ hơn..</p>
+          <a class="text-blue-500 hover:underline" href="#">XEM CHI TIẾT</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h4 class="text-white text-lg mb-4">ĐĂNG KÝ NHẬN THÔNG TIN KHUYẾN MÃI</h4>
+          <form action="" class="flex flex-col space-y-2">
+            <input class="px-4 py-2 rounded-md bg-gray-800 text-gray-400" id="email-signup" name="Email"
+              placeholder="Email nhận bản tin khuyến mãi" type="email" />
+            <button class="px-4 py-2 bg-blue-500 text-white rounded-md" type="submit">ĐĂNG KÝ</button>
+          </form>
+        </div>
+        <div>
+          <h4 class="text-white text-lg mb-4">THÔNG TIN LIÊN HỆ ĐẶT PHÒNG</h4>
+          <ul>
+            <li><a href="tel:+84329031440">0329031440</a></li>
+            <li><a href="huyonechampfli@gmail.com">huyonechampfli@gmail.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white text-lg mb-4">ĐIỀU KHOẢN &amp; QUY ĐỊNH</h4>
+          <ul>
+            <li><a class="hover:underline" href="/Dieu-khoan-chung">Điều khoản chung</a></li>
+            <li><a class="hover:underline" href="/Quy-dinh-chung">Quy định chung</a></li>
+            <li><a class="hover:underline" href="/chinh-sach-quyen-rieng-tu">Chính sách quyền riêng tư</a></li>
+            <li><a class="hover:underline" href="/chinh-sach-giai-quyet-khieu-nai">Chính sách giải quyết khiếu nại</a>
+            </li>
+            <li><a class="hover:underline" href="/quy-dinh-ve-thanh-toan">Quy định về thanh toán</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+        <div>
+          <ul>
+            <li><strong>Số ĐKKD:</strong> 2400835688</li>
+            <li>Đăng ký lần đầu: ngày 09 tháng 04 năm 2018</li>
+            <li>Đăng ký thay đổi lần thứ: 6, ngày 22 tháng 05 năm 2023</li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li><strong>Nơi cấp:</strong> Sở Kế Hoạch và Đầu Tư Tỉnh Quảng Nam</li>
+            <li><strong>Lĩnh vực kinh doanh:</strong> Khách sạn, căn hộ kinh doanh dịch vụ lưu trú , khu du lịch sinh
+              thái, khu vui chơi giải trí</li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li><strong>Trụ sở:</strong> QUẢNG NAN HỘI AN</li>
+            <li><strong>Email: </strong> huyonechampfli@gmail.com</li>
+            <li><strong>Hotline: </strong> 0329031440</li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center mt-8">
+        <p>Quảng Bá Khu Du Lịch Hội An<a class="hover:underline" href="http://webhotel.vn"></a></p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const header = document.querySelector('header');
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    menuBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      mobileMenu.classList.toggle('show');
+      header.classList.toggle('hide'); // Thêm dòng này
+      const icon = this.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+
+    dropdowns.forEach(dropdown => {
+      dropdown.addEventListener('click', function (e) {
+        if (window.innerWidth <= 768) {
+          const content = this.querySelector('.dropdown-content');
+          content.classList.toggle('hidden');
+          e.preventDefault();
+        }
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+        mobileMenu.classList.remove('show');
+        const icon = menuBtn.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
+      }
+    });
+  });
+</script>
+
+<style>
+  @media (max-width: 768px) {
+    #mobileMenu {
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #mobileMenu.show {
+      transform: translateY(0);
+      display: flex !important;
+    }
+
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content {
+      position: static;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+  }
+</style>
+
+<style>
+  /* Base styles */
+  nav {
+    background-color: #1e3a8a;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Search container - Main styles */
+  .search-container {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 1rem;
+    width: 300px;
+  }
+
+  .search-container input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    background: transparent;
+    color: #333;
+  }
+
+  .search-container input::placeholder {
+    color: #666;
+  }
+
+  .search-container button {
+    background: #4CAF50;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .search-container button:hover {
+    background: #ff7600;
+  }
+
+  #mobileMenu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    #mobileMenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #1e3a8a;
+      padding: 1rem;
+      display: none;
+    }
+
+    #mobileMenu.show {
+      display: block !important;
+    }
+
+    .search-container {
+      width: 100%;
+      margin: 1rem 0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .search-container input {
+      padding: 12px 15px;
+      font-size: 16px;
+    }
+
+    .search-container button {
+      padding: 12px 24px;
+    }
+  }
+</style>

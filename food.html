@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KHÁNH CHIÊU FOOD</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #ff424e;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      background-color: #444;
+      padding: 10px 0;
+      color: white;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+    }
+
+    .nav a:hover {
+      background-color: #555;
+    }
+
+    .search-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .search-container input[type="text"] {
+      padding: 10px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .search-container button {
+      padding: 10px;
+      border: none;
+      background-color: #ff424e;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-left: 5px;
+    }
+
+    .slideshow-container {
+      max-width: 1000px;
+      position: relative;
+      margin: auto;
+    }
+
+    .mySlides {
+      display: block;
+      width: 100%;
+      height: 450px;
+    }
+
+    .fade {
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: .4
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .text {
+      color: #fff;
+      font-size: 15px;
+      padding: 8px 12px;
+      position: absolute;
+      bottom: 8px;
+      width: 100%;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .dot {
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active {
+      background-color: #717171;
+    }
+
+    .dot:hover {
+      background-color: #717171;
+    }
+
+    .content {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      background-color: #fdf5e6;
+      gap: 20px;
+    }
+
+    .product-item-container {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .product-item-container img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+
+      margin-top: 20px;
+    }
+
+    .product-item {
+      background-color: #f1f1f1;
+      padding: 15px;
+      box-sizing: border-box;
+      border-radius: 10px;
+      height: 300px;
+      max-width: 320px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .product-item a {
+      height: 70%;
+      display: flex;
+    }
+
+    p {
+      display: block;
+      margin-block-start: -16px;
+      margin-block-end: 21px;
+      margin-inline-start: -3px;
+      margin-inline-end: 0px;
+      unicode-bidi: isolate;
+    }
+
+
+    @media only screen and (max-width: 668px) {
+      .content {
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        background-color: #fdf5e6;
+        gap: 20px;
+      }
+    }
+
+    @media only screen and (max-width: 460px) {
+      .content {
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        background-color: #fdf5e6;
+        gap: 20px;
+      }
+
+      .product-item a {
+        height: 50%;
+        display: flex;
+      }
+    }
+
+    @media only screen and (max-width: 375px) {
+      .content {
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        background-color: #fdf5e6;
+        gap: 20px;
+      }
+
+      .product-item a {
+        height: 50%;
+        display: flex;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>CHILL FOOD</h1>
+  </div>
+
+  <div class="nav">
+    <a href='/home'>HOME</a>
+    <a href='/food'>FOOD</a>
+    <a href='/drink'>DRINK</a>
+  </div>
+
+  <div class="search-container">
+    <input type="text" placeholder="Search sản phẩm..." />
+    <button type="button">Search</button>
+  </div>
+
+
+
+  <div class="content">
+    <div class="product-item-container">
+      <div class="product-item">
+        <a href='/about'>
+          <img src="kimpap.jfif" alt="Kimpap" /></a>
+        <h2>KIMBAP</h2>
+        <p>SIZE LỚN:20K</p>
+        <P>SIZE NHỎ:15K</P>
+      </div>
+    </div>
+    <div class="product-item-container">
+      <div class="product-item">
+        <a href='/about'> <img src="banhmy.jfif" alt="Sandwich" /></a>
+        <h2>SANDWICH</h2>
+        <p>SIZE LỚN:20K</p>
+        <P>SIZE NHỎ:15K</P>
+      </div>
+    </div>
+    <div class="product-item-container">
+      <div class="product-item">
+        <a href='/about'>
+          <img src="my.jfif" alt="Bún/Mỳ Trộn" /></a>
+        <h2>MỲ TRỘN</h2>
+        <p>SIZE LỚN:20K</p>
+        <P>SIZE NHỎ:15K</P>
+      </div>
+    </div>
+    <div class="product-item-container">
+      <div class="product-item">
+        <a href='/about'>
+          <img src="com.jfif" alt="Bún/Mỳ Trộn" /></a>
+        <h2>CƠM CHIÊN</h2>
+        <p>SIZE LỚN:20K</p>
+        <P>SIZE NHỎ:15K</P>
+      </div>
+    </div>
+    <div class="product-item-container">
+      <div class="product-item">
+        <a href='/about'>
+          <img src="banhmycha.jfif" alt="Bún/Mỳ Trộn" /></a>
+        <h2>BÁNH MỲ XÁ XÍU</h2>
+        <p>SIZE LỚN:20K</p>
+        <P>SIZE NHỎ:15K</P>
+      </div>
+    </div>
+    <div class="product-item-container">
+      <div class="product-item">
+        <a href='/about'>
+          <img src="xoi.jfif" alt="Bún/Mỳ Trộn" /></a>
+        <h2>XÔI</h2>
+        <p>SIZE LỚN:20K</p>
+        <P>SIZE NHỎ:15K</P>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2024 CHILL FOOD</p>
+  </div>
+</body>
+
+</html>

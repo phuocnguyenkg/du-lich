@@ -1,0 +1,909 @@
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khám Phá Những Khách Sạn Hàng Đầu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./header-nav.css">
+  <style>
+    body {
+      background-color: rgb(242, 240, 255);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    .hotel {
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      display: flex;
+    }
+
+    .hotel img {
+      border-radius: 0.5rem;
+      width: 33.333%;
+      height: 291px;
+    }
+
+    .hotel h2 {
+      color: #1d4ed8;
+    }
+
+    .hotel .text-yellow-500 {
+      color: #f59e0b;
+    }
+
+    .hotel .text-gray-600 {
+      color: #4b5563;
+    }
+
+    .hotel .text-gray-700 {
+      color: #374151;
+    }
+
+    .hotel .text-gray-500 {
+      color: #6b7280;
+    }
+
+    .hotel .text-green-600 {
+      color: #10b981;
+    }
+
+    .hotel .bg-blue-600 {
+      background-color: #2563eb;
+    }
+
+    .hotel .text-blue-600 {
+      color: #2563eb;
+    }
+
+    .hotel .text-blue-600:hover {
+      text-decoration: underline;
+    }
+
+    .location {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .text-white {
+      --tw-text-opacity: 1;
+      color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+      text-align: center;
+    }
+
+    .hotel .text-gray-700 {
+      margin-right: 16px;
+      color: #374151;
+    }
+
+    .b {
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .slideshow-container {
+      max-width: 1000px;
+      position: relative;
+      margin: auto;
+
+    }
+
+
+    .mySlides {
+      display: none;
+    }
+
+    .mySlides img {
+      height: 500px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .fade {
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+
+    .dot {
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active {
+      background-color: #717171;
+    }
+
+    .dot:hover {
+      background-color: #717171;
+    }
+
+    .font-bold {
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .text-lg {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+
+    .dichuyen {
+      margin-left: 40%;
+    }
+
+    border-gray-300 {
+      --tw-border-opacity: -1;
+      border-color: rgb(209 213 219 / var(--tw-border-opacity, -1));
+    }
+
+    .border {
+      border-width: 1px;
+    }
+
+    .font-bold {
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .mb-4 {
+      margin-left: -72px;
+      margin-bottom: 1rem;
+    }
+
+    .text-now {
+      margin-left: -50px;
+    }
+
+    .trai {
+      margin-left: -50px;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      border-radius: 20px;
+      padding: 0.5rem;
+      max-width: 300px;
+    }
+
+    .search-container input {
+      border: none;
+      outline: none;
+      padding: 0.5rem;
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .search-container button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 0.5rem;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .search-container button:hover {
+      background-color: #45a049;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      width: 100%;
+      transition: opacity 0.3s ease;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <h1 class="text-2xl">Khám Phá Những Khách Sạn Hàng Đầu</h1>
+  </header>
+  <!-- Navbar -->
+  <!-- Cập nhật phần nav -->
+  <nav style="padding-right: 16.4px;" class="flex items-center px-6">
+    <div class="flex items-center space-x-3">
+      <img src="h.png" alt="Ravatel Logo" class="h-12 w-12" />
+      <div>
+        <h1 class="text-2xl font-bold">HOI AN</h1>
+        <p class="text-sm">LUXURY HOTEL</p>
+      </div>
+    </div>
+    <!-- Thêm nút menu cho mobile -->
+    <button id="menuBtn" class="md:hidden text-white">
+      <i class="fas fa-bars text-2xl"></i>
+    </button>
+    <!-- Thêm class mobile-menu để điều khiển hiển thị -->
+    <div id="mobileMenu" class="hidden md:flex md:items-center md:space-x-4">
+      <a href="trangchu.html" class="text-white block py-2">Trang chủ</a>
+      <div class="dropdown relative">
+        <a href="trang1.html" class="text-white block py-2">Khách sạn</a>
+
+      </div>
+      <a href="thongtin.html" class="text-white block py-2">Giới thiệu</a>
+      <a href="lienhe.html" class="text-white block py-2">Liên hệ</a>
+      <div class="search-container">
+        <input type="text" placeholder="Tìm kiếm...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </nav>
+  <div class="slideshow-container">
+    <div class="mySlides fade">
+      <img src="ky-uc-hoi-an-ve-dem-1.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="khach-san-hoi-an-2.jpg" style="width:100%">
+    </div>
+  </div>
+  <br>
+  <div style="text-align:center">
+    <span class="dot"></span>
+    <span class="dot"></span>
+
+  </div>
+  <div class="container mx-auto p-4" id="hotels">
+    <!-- Hotel 1 -->
+    <div class="hotel">
+      <img alt="View of a hotel poolside with a beautiful sunset in the background" class="rounded-lg w-1/3"
+        height="150" src="hoian14.jpg" width="150" />
+      <div class="ml-4 w-2/3">
+        <div class="flex justify-between items-start">
+          <div>
+            <h2 class="text-xl font-bold text-blue-700">
+              Nature Resort Hoi An By K D H
+            </h2>
+            <div class="flex items-center text-gray-600">
+              <i class="fas fa-map-marker-alt mr-1"></i>
+              <a href="https://www.google.com/maps/search/Nature+Resort+Hoi+An+By+K+D+H/@15.8826213,108.3107661,13z/data=!3m1!4b1!4m4!2m3!5m2!5m1!1s2025-04-07?hl=vi-VN&entry=ttu&g_ep=EgoyMDI1MDQwMS4wIKXMDSoASAFQAw%3D%3D"
+                class="text-blue-600 hover:underline">
+                Nature Resort Hoi An By K D H
+              </a>
+            </div>
+            <div class="flex items-center mt-1">
+              <span class="text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </span>
+              <i class="fas fa-bookmark text-yellow-500 ml-1"></i>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="text-lg font-bold text-gray-700">
+              Đánh Giá
+            </span>
+            <div class="bg-blue-600 text-white rounded-lg px-2 py-1 mt-1 text-lg font-bold">
+              9.2
+            </div>
+            <span class="text-sm text-gray-500">
+              800 real reviews
+            </span>
+          </div>
+        </div>
+        <p class="text-gray-700 mt-2">
+          Tọa lạc ở Hội An, cách Bảo tàng lịch sử Hội An 3.1 km, Nature Resort Hoi An By K D H cung cấp chỗ nghỉ có hồ
+          bơi ngoài
+          trời, chỗ đậu xe riêng miễn phí, trung tâm thể dục và khu vườn. Resort 4 sao này có câu lạc bộ trẻ em và phòng
+          chờ
+          chung.
+        </p>
+        <a class="text-blue-600 mt-2 inline-block" href="#">
+          Xem Thêm
+        </a>
+        <div class="flex justify-between items-end mt-4">
+          <div>
+            <span class="text-gray-500 text-sm">
+              Giá Từ
+            </span>
+            <span aria-hidden="true" class="abf093bdfe c73ff05531 e84eb96b1f">&nbsp;<del>VND 732,060</del></span>
+            <div class="text-green-600 text-2xl font-bold">
+              VND 549,045
+            </div>
+            <span class="text-gray-500 text-sm">
+              1 đêm, 2 người lớn
+            </span>
+          </div>
+          <button class="bg-blue-600 text-white rounded-lg px-4 py-2 font-bold">
+            <a href="phong13.html">KIỂM TRA PHÒNG</a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hotel 2 -->
+    <div class="hotel">
+      <img alt="View of a hotel poolside with a beautiful sunset in the background" class="rounded-lg w-1/3"
+        height="150" src="hoian15.jpg" width="150" />
+      <div class="ml-4 w-2/3">
+        <div class="flex justify-between items-start">
+          <div>
+            <h2 class="text-xl font-bold text-blue-700">
+              Serene Nature Hotel & Spa
+            </h2>
+            <div class="flex items-center text-gray-600">
+              <i class="fas fa-map-marker-alt mr-1"></i>
+              <a href="https://www.google.com/maps/place/Serene+Nature+Hotel+%26+Spa/@15.8758108,108.354883,17z/data=!4m10!3m9!1s0x31420d7fb7c4135d:0xad579702ed9ce336!5m3!1s2025-04-07!4m1!1i2!8m2!3d15.8758057!4d108.3574579!16s%2Fg%2F11s89x6m0b?hl=vi-VN&entry=ttu&g_ep=EgoyMDI1MDQwMS4wIKXMDSoASAFQAw%3D%3D"
+                class="text-blue-600 hover:underline">
+                Serene Nature Hotel & Spa
+              </a>
+            </div>
+            <div class="flex items-center mt-1">
+              <span class="text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </span>
+              <i class="fas fa-bookmark text-yellow-500 ml-1"></i>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="text-lg font-bold text-gray-700">
+              Đánh Giá
+            </span>
+            <div class="bg-blue-600 text-white rounded-lg px-2 py-1 mt-1 text-lg font-bold">
+              9.6
+            </div>
+            <span class="text-sm text-gray-500">
+              667 real reviews
+            </span>
+          </div>
+        </div>
+        <p class="text-gray-700 mt-2">
+          Tọa lạc ở Hội An, cách Hội Quán Chi Hội Triều Châu Trung Quốc 3.3 km, Serene Nature Hotel & Spa cung cấp chỗ
+          nghỉ có xe
+          đạp miễn phí, chỗ đậu xe riêng miễn phí, hồ bơi ngoài trời và khu vườn. Ngoài nhà hàng, chỗ nghỉ còn có sân
+          hiên và quầy
+          bar. Chỗ nghỉ cung cấp lễ tân 24/24, dịch vụ đưa đón sân bay, dịch vụ phòng và Wi-Fi miễn phí ở toàn bộ chỗ
+          nghỉ.
+        </p>
+        <a class="text-blue-600 mt-2 inline-block" href="#">
+          Xem Thêm
+        </a>
+        <div class="flex justify-between items-end mt-4">
+          <div>
+            <span class="text-gray-500 text-sm">
+              Giá Từ
+            </span>
+            <span aria-hidden="true" class="abf093bdfe c73ff05531 e84eb96b1f">&nbsp;<del>VND 2,700,000</del></span>
+            <div class="text-green-600 text-2xl font-bold">
+              VND 945,000
+            </div>
+            <span class="text-gray-500 text-sm">
+              1 đêm, 2 người lớn
+            </span>
+          </div>
+          <button class="bg-blue-600 text-white rounded-lg px-4 py-2 font-bold">
+            <a href="phong14.html">KIỂM TRA PHÒNG</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Hotel 2 -->
+    <div class="hotel">
+      <img alt="View of a hotel poolside with a beautiful sunset in the background" class="rounded-lg w-1/3"
+        height="150" src="hoian16.jpg" width="150" />
+      <div class="ml-4 w-2/3">
+        <div class="flex justify-between items-start">
+          <div>
+            <h2 class="text-xl font-bold text-blue-700">
+              The Nam An Villa Hoi An
+            </h2>
+            <div class="flex items-center text-gray-600">
+              <i class="fas fa-map-marker-alt mr-1"></i>
+              <a href="https://www.google.com/maps/place/The+Nam+An+Villa+Hoi+An/@15.890251,108.3278052,17z/data=!4m10!3m9!1s0x31420fa16817cee1:0xa1c7eb1f142e632c!5m3!1s2025-04-07!4m1!1i2!8m2!3d15.8902459!4d108.3303801!16s%2Fg%2F11h3g72dh9?hl=vi-VN&entry=ttu&g_ep=EgoyMDI1MDQwMS4wIKXMDSoASAFQAw%3D%3D"
+                class="text-blue-600 hover:underline">
+                The Nam An Villa Hoi An
+              </a>
+            </div>
+            <div class="flex items-center mt-1">
+              <span class="text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </span>
+              <i class="fas fa-bookmark text-yellow-500 ml-1"></i>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="text-lg font-bold text-gray-700">
+              Đánh Giá
+            </span>
+            <div class="bg-blue-600 text-white rounded-lg px-2 py-1 mt-1 text-lg font-bold">
+              9.2
+            </div>
+            <span class="text-sm text-gray-500">
+              342 real reviews
+            </span>
+          </div>
+        </div>
+        <p class="text-gray-700 mt-2">
+          Nằm ở Hội An, cách Bãi biển An Bàng 3 km, The Nam An Villa Hoi An cung cấp chỗ nghỉ có xe đạp miễn phí, chỗ
+          đậu xe riêng
+          miễn phí, khu vườn và phòng chờ chung. Ngoài nhà hàng, chỗ nghỉ còn có sân hiên và hồ bơi trong nhà. Chỗ nghỉ
+          cung cấp
+          lễ tân 24/24, dịch vụ đưa đón sân bay, dịch vụ phòng và Wi-Fi miễn phí ở toàn bộ chỗ nghỉ.
+        </p>
+        <a class="text-blue-600 mt-2 inline-block" href="#">
+          Xem Thêm
+        </a>
+        <div class="flex justify-between items-end mt-4">
+          <div>
+            <span class="text-gray-500 text-sm">
+              Giá Từ
+            </span>
+            <span aria-hidden="true" class="abf093bdfe c73ff05531 e84eb96b1f">&nbsp;<del>VND 2,700,000</del></span>
+            <div class="text-green-600 text-2xl font-bold">
+              VND 700,000
+            </div>
+            <span class="text-gray-500 text-sm">
+              1 đêm, 2 người lớn
+            </span>
+          </div>
+          <button class="bg-blue-600 text-white rounded-lg px-4 py-2 font-bold">
+            <a href="phong15.html">KIỂM TRA PHÒNG</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Hotel 3-->
+    <div class="hotel">
+      <img alt="View of a hotel poolside with a beautiful sunset in the background" class="rounded-lg w-1/3"
+        height="150" src="hoian17.jpg" width="150" />
+      <div class="ml-4 w-2/3">
+        <div class="flex justify-between items-start">
+          <div>
+            <h2 class="text-xl font-bold text-blue-700">
+              Crony Villa - STAY 24H
+            </h2>
+            <div class="flex items-center text-gray-600">
+              <i class="fas fa-map-marker-alt mr-1"></i>
+              <a href="https://www.google.com/maps/place/Crony+Villa+-+STAY+24H/@15.8721075,108.3600453,17z/data=!4m10!3m9!1s0x31420d35c1214a95:0xbe045f17f08119e6!5m3!1s2025-04-07!4m1!1i2!8m2!3d15.8721024!4d108.3626202!16s%2Fg%2F11hdyd741s?hl=vi-VN&entry=ttu&g_ep=EgoyMDI1MDQwMS4wIKXMDSoASAFQAw%3D%3D"
+                class="text-blue-600 hover:underline">
+                Crony Villa - STAY 24H
+              </a>
+            </div>
+            <div class="flex items-center mt-1">
+              <span class="text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </span>
+              <i class="fas fa-bookmark text-yellow-500 ml-1"></i>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="text-lg font-bold text-gray-700">
+              Đánh Giá
+            </span>
+            <div class="bg-blue-600 text-white rounded-lg px-2 py-1 mt-1 text-lg font-bold">
+              8.4
+            </div>
+            <span class="text-sm text-gray-500">
+              1.197 real reviews
+            </span>
+          </div>
+        </div>
+        <p class="text-gray-700 mt-2">
+          Nằm ở Hội An, cách Hội Quán Chi Hội Triều Châu Trung Quốc 1.7 km, Crony Villa - STAY 24H cung cấp chỗ nghỉ có
+          hồ bơi
+          ngoài trời, chỗ đậu xe riêng miễn phí, khu vườn và khu vực bãi biển riêng. Ngoài dịch vụ tiền sảnh, chỗ nghỉ
+          này còn có
+          sân hiên. Chỗ nghỉ cung cấp lễ tân 24/24, dịch vụ đưa đón sân bay, dịch vụ phòng và Wi-Fi miễn phí ở toàn bộ
+          chỗ nghỉ.
+        </p>
+        <a class="text-blue-600 mt-2 inline-block" href="#">
+          Xem Thêm
+        </a>
+        <div class="flex justify-between items-end mt-4">
+          <div>
+            <span class="text-gray-500 text-sm">
+              Giá Từ
+            </span>
+            <div class="text-green-600 text-2xl font-bold">
+              VND 601.800
+            </div>
+            <span class="text-gray-500 text-sm">
+              1 đêm, 2 người lớn
+            </span>
+          </div>
+          <button class="bg-blue-600 text-white rounded-lg px-4 py-2 font-bold">
+            <a href="phong16.html">KIỂM TRA PHÒNG</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Hotel 2 -->
+    <div class="hotel">
+      <img alt="View of a hotel poolside with a beautiful sunset in the background" class="rounded-lg w-1/3"
+        height="150" src="hoian18.jpg" width="150" />
+      <div class="ml-4 w-2/3">
+        <div class="flex justify-between items-start">
+          <div>
+            <h2 class="text-xl font-bold text-blue-700">
+              RAON Old Town Hotel
+            </h2>
+            <div class="flex items-center text-gray-600">
+              <i class="fas fa-map-marker-alt mr-1"></i>
+              <a href="https://www.google.com/maps/search/RAON+Old+Town+Hotel/@15.8721178,108.3600453,17z/data=!3m1!4b1!4m4!2m3!5m2!5m1!1s2025-04-07?hl=vi-VN&entry=ttu&g_ep=EgoyMDI1MDQwMS4wIKXMDSoASAFQAw%3D%3D"
+                class="text-blue-600 hover:underline">
+                RAON Old Town Hotel
+              </a>
+            </div>
+            <div class="flex items-center mt-1">
+              <span class="text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </span>
+              <i class="fas fa-bookmark text-yellow-500 ml-1"></i>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="text-lg font-bold text-gray-700">
+              Đánh Giá
+            </span>
+            <div class="bg-blue-600 text-white rounded-lg px-2 py-1 mt-1 text-lg font-bold">
+              9.2
+            </div>
+            <span class="text-sm text-gray-500">
+              362 real reviews
+            </span>
+          </div>
+        </div>
+        <p class="text-gray-700 mt-2">
+          Nằm tại vị trí thuận tiện ở Hội An, RAON Old Town Hotel cung cấp các phòng có điều hòa, khu vườn, Wi-Fi miễn
+          phí và khu
+          vực bãi biển riêng. Khách sạn 4 sao này có dịch vụ phòng và quầy lễ tân 24 giờ. Chỗ nghỉ có hồ bơi trong nhà,
+          nhà hàng
+          và phòng chờ chung, đồng thời cách Bảo tàng lịch sử Hội An 7 phút đi bộ.
+        </p>
+        <a class="text-blue-600 mt-2 inline-block" href="#">
+          Xem Thêm
+        </a>
+        <div class="flex justify-between items-end mt-4">
+          <div>
+            <span class="text-gray-500 text-sm">
+              Giá Từ
+            </span>
+            <div class="text-green-600 text-2xl font-bold">
+              VND 1.000.500
+            </div>
+            <span class="text-gray-500 text-sm">
+              1 đêm, 2 người lớn
+            </span>
+          </div>
+          <button class="bg-blue-600 text-white rounded-lg px-4 py-2 font-bold">
+            <a href="phong17.html">KIỂM TRA PHÒNG</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Hotel 3 -->
+    <div class="hotel">
+      <img alt="View of a hotel poolside with a beautiful sunset in the background" class="rounded-lg w-1/3"
+        height="150" src="hoian19.jpg" width="150" />
+      <div class="ml-4 w-2/3">
+        <div class="flex justify-between items-start">
+          <div>
+            <h2 class="text-xl font-bold text-blue-700">
+              Banana Garden Villa
+            </h2>
+            <div class="flex items-center text-gray-600">
+              <i class="fas fa-map-marker-alt mr-1"></i>
+              <a href="https://www.google.com/maps/place/Banana+Garden+Villa+Hoi+An/@15.8774543,108.3399311,17z/data=!4m10!3m9!1s0x31420dd23f18c533:0x82383bac4e80a9e2!5m3!1s2025-04-07!4m1!1i2!8m2!3d15.8774492!4d108.342506!16s%2Fg%2F11bysjq10_?hl=vi-VN&entry=ttu&g_ep=EgoyMDI1MDQwMS4wIKXMDSoASAFQAw%3D%3D"
+                class="text-blue-600 hover:underline">
+                Banana Garden Villa
+              </a>
+            </div>
+            <div class="flex items-center mt-1">
+              <span class="text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </span>
+              <i class="fas fa-bookmark text-yellow-500 ml-1"></i>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="text-lg font-bold text-gray-700">
+              Đánh Giá
+            </span>
+            <div class="bg-blue-600 text-white rounded-lg px-2 py-1 mt-1 text-lg font-bold">
+              9.0
+            </div>
+            <span class="text-sm text-gray-500">
+              354 real reviews
+            </span>
+          </div>
+        </div>
+        <p class="text-gray-700 mt-2">
+          Nhìn ra hồ bơi, Banana Garden Villa tọa lạc ở Hội An và có nhà hàng, dịch vụ phòng, quầy bar, khu vườn, hồ bơi
+          ngoài
+          trời cũng như sân hiên. Chỗ nghỉ có Wi-Fi miễn phí ở toàn bộ chỗ nghỉ và chỗ đậu xe riêng có sẵn trong khuôn
+          viên.
+        </p>
+        <a class="text-blue-600 mt-2 inline-block" href="#">
+          Xem Thêm
+        </a>
+        <div class="flex justify-between items-end mt-4">
+          <div>
+            <span class="text-gray-500 text-sm">
+              Giá Từ
+            </span>
+            <div class="text-green-600 text-2xl font-bold">
+              VND 862.897
+            </div>
+            <span class="text-gray-500 text-sm">
+              1 đêm, 2 người lớn
+            </span>
+          </div>
+          <button class="bg-blue-600 text-white rounded-lg px-4 py-2 font-bold">
+            <a href="phong18.html">KIỂM TRA PHÒNG</a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="content" class="mb-4 text-lg font-bold">
+    Trang 3
+  </div>
+  <div class="dichuyen">
+    <button id="prev" class="px-3 py-2 border-r border-gray-300 text-gray-400" onclick="changePage('prev')">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button id="page1" class="px-3 py-2 bg-lime-500 text-white font-bold" onclick="changePage(1)">
+      <a href="trang1.html">1</a>
+    </button>
+    <button id="page2" class="px-3 py-2 bg-lime-500 text-white font-bold" onclick="changePage(2)">
+      <a href="trang2.html">2</a>
+    </button>
+    <button id="page3" class="px-3 py-2 bg-lime-500 text-white font-bold" onclick="changePage(3)">
+      <a href="trang3.html">3</a>
+    </button>
+    <button id="next" class="px-3 py-2 border-l border-gray-300 text-gray-700" onclick="changePage('next')">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+  </div>
+
+
+  <script>
+    let currentPage = 3;
+
+    function changePage(page) {
+      if (page === 'prev') {
+        if (currentPage > 1) currentPage--;
+      } else if (page === 'next') {
+        if (currentPage < 3) currentPage++;
+      } else {
+        currentPage = page;
+      }
+
+      document.getElementById('content').innerText = `Trang ${currentPage}`;
+
+      document.getElementById('page1').classList.remove('bg-lime-500', 'text-white');
+      document.getElementById('page2').classList.remove('bg-lime-500', 'text-white');
+      document.getElementById('page3').classList.remove('bg-lime-500', 'text-white');
+
+      document.getElementById('page1').classList.add('text-gray-700');
+      document.getElementById('page2').classList.add('text-gray-700');
+      document.getElementById('page3').classList.add('text-gray-700');
+
+      document.getElementById(`page${currentPage}`).classList.add('bg-lime-500', 'text-white');
+    }
+  </script>
+  <div class="location text-center my-8">
+    <h2 class="text-now font-bold">Địa chỉ của chúng tôi</h2>
+    <div class="trai">
+      <p>Hội An, Quảng Nam</p>
+    </div>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.502016279065!2d106.70098751471882!3d10.776104192320093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31718620b72f6f85%3A0x312c249cd61db92c!2zQ2hpbmggTm9nLCBIb3kgQW4gQ2hhbiwgQ3VhbnQwLCBRdWFuZyBOb3V0aCwgVnllbGxhbiBLaXRoIFN0YXRlLkNoaW5oLCBRdWFuZyBNYW4!5e0!3m2!1sen!2s!4v1649162951185"
+      width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+
+  <footer class="bg-gray-900 text-white text-center py-4">
+    <p>&copy; 2025 Quảng Cáo Khách Sạn. Mọi quyền được bảo lưu.</p>
+  </footer>
+
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1 }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+      setTimeout(showSlides, 2000);
+    }
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const header = document.querySelector('header');
+      const dropdowns = document.querySelectorAll('.dropdown');
+
+      menuBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        mobileMenu.classList.toggle('show');
+        header.classList.toggle('hide'); // Thêm dòng này
+        const icon = this.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+
+      dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('click', function (e) {
+          if (window.innerWidth <= 768) {
+            const content = this.querySelector('.dropdown-content');
+            content.classList.toggle('hidden');
+            e.preventDefault();
+          }
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+          mobileMenu.classList.remove('show');
+          const icon = menuBtn.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+    });
+  </script>
+  <style>
+    @media (max-width: 720px) {
+      .hotel {
+        flex-direction: column;
+        padding: 0.75rem;
+      }
+  
+      .hotel img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        margin-bottom: 1rem;
+      }
+  
+      .hotel .ml-4 {
+        width: 100%;
+        margin-left: 0;
+      }
+  
+      .slideshow-container {
+        max-width: 100%;
+      }
+  
+      .mySlides img {
+        height: 300px;
+      }
+  
+      .dichuyen {
+        margin-left: 0;
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+  
+      .search-container {
+        width: 100%;
+        margin: 0.5rem 0;
+      }
+  
+     
+  
+      .text-now, .trai {
+        margin-left: 0;
+        text-align: center;
+      }
+  
+      .mb-4 {
+        margin-left: 0;
+        text-align: center;
+      }
+  
+      nav {
+        padding: 0.75rem !important;
+      }
+  
+      .hotel .flex.justify-between {
+        flex-direction: column;
+        gap: 1rem;
+      }
+  
+      .hotel .text-right {
+        text-align: left;
+      }
+  
+      .hotel .flex.justify-between.items-end {
+        flex-direction: row;
+      }
+    }
+  
+    @media (max-width: 480px) {
+      .mySlides img {
+        height: 250px;
+      }
+  
+      .hotel h2 {
+        font-size: 1.25rem;
+      }
+  
+      .hotel .text-2xl {
+        font-size: 19px;
+        margin-right: 43px;
+      }
+    }
+  
+    @media (max-width: 360px) {
+      .mySlides img {
+        height: 200px;
+      }
+  
+      .dichuyen button {
+        padding: 0.5rem;
+        font-size: 0.875rem;
+      }
+    }
+  </style>
+</body>
+
+</html>

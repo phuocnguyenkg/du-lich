@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khách Sạn Hội An</title>
+  <meta name="description"
+    content="Hệ thống khách sạn lớn nhất tại thành phố Hội An với 3 sao, 4 sao. RAVATEL có nhiều tiện ích tiện và nhiều cây xanh mang lại không gian sống như ngôi nhà của bạn. Giá cả cạnh tranh" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="./header-nav.css">
+ <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+    }
+
+    h1,
+    h2 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    nav {
+      background-color: #1e3a8a;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  .text{
+    font-size: 3em;line-height: 1;
+    font-weight:bold ;
+    color:white;
+  }
+    
+    @media (max-width: 720px) {
+      .text{font-size: 2em;line-height: 1;}
+      }
+  </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+  <!-- Banner -->
+  
+
+  <!-- Header -->
+  <header>
+    <h1 class="text-2xl">Khám Phá Những Khách Sạn Hàng Đầu</h1>
+  </header>
+  <!-- Navbar -->
+  <!-- Cập nhật phần nav -->
+  <nav style="padding-right: 16.4px;" class="flex items-center px-6">
+    <div class="flex items-center space-x-3">
+      <img src="h.png" alt="Ravatel Logo" class="h-12 w-12" />
+      <div>
+        <h1 class="text-2xl font-bold">HOI AN</h1>
+        <p class="text-sm">LUXURY HOTEL</p>
+      </div>
+    </div>
+    <!-- Thêm nút menu cho mobile -->
+    <button id="menuBtn" class="md:hidden text-white">
+      <i class="fas fa-bars text-2xl"></i>
+    </button>
+    <!-- Thêm class mobile-menu để điều khiển hiển thị -->
+    <div id="mobileMenu" class="hidden md:flex md:items-center md:space-x-4">
+      <a href="trangchu.html" class="text-white block py-2">Trang chủ</a>
+      <div class="dropdown relative">
+        <a href="trang1.html" class="text-white block py-2">Khách sạn</a>
+
+      </div>
+      <a href="thongtin.html" class="text-white block py-2">Giới thiệu</a>
+      <a href="lienhe.html" class="text-white block py-2">Liên hệ</a>
+      <div class="search-container">
+        <input type="text" placeholder="Tìm kiếm...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Update the banner image to a Hoi An specific image -->
+  <div class="w-full relative">
+    <img src="Hoi-An-22.jpeg" alt="Hoi An Ancient Town" class="w-full h-96 object-cover brightness-75" />
+    <div class="absolute inset-0 flex items-center justify-center">
+      <h1 class="text">Liên Hệ & Đặt Phòng</h1>
+    </div>
+  </div>
+  
+  <!-- Update the grid section -->
+  <section class="py-16 bg-gradient-to-br from-blue-50 to-gray-100">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12">
+      <!-- Info Section -->
+      <div class="space-y-8">
+        <div>
+          <h2 class="text-3xl font-bold mb-6 text-blue-800 relative">
+            Liên hệ với chúng tôi
+            <span class="block w-20 h-1 bg-blue-600 mt-2"></span>
+          </h2>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Chào mừng bạn đến với Khách sạn Hội An! Chúng tôi luôn sẵn sàng hỗ trợ bạn 24/7. Hãy liên hệ với chúng tôi 
+            để được tư vấn và đặt phòng với những ưu đãi tốt nhất.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Keep existing contact cards and add new ones -->
+          <!-- ... existing address, phone, email, working hours cards ... -->
+          
+          <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center space-x-4 mb-4">
+              <div class="bg-pink-100 p-3 rounded-full">
+                <i class="fab fa-facebook text-pink-600 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-lg">Mạng xã hội</h3>
+                <p class="text-gray-600">Facebook: HoiAnHotel</p>
+                <p class="text-gray-600">Instagram: @hoianhotel</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center space-x-4 mb-4">
+              <div class="bg-yellow-100 p-3 rounded-full">
+                <i class="fas fa-taxi text-yellow-600 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-lg">Dịch vụ đưa đón</h3>
+                <p class="text-gray-600">Sân bay Đà Nẵng</p>
+                <p class="text-gray-600">Tour du lịch địa phương</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Updated Map with Hoi An location -->
+        <div class="rounded-xl overflow-hidden shadow-lg">
+          <iframe class="w-full h-80"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15336.397174612798!2d108.32152682967392!3d15.878058603805726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31420dd4e14b2edb%3A0xbc6e1faf738be4c5!2zUGjhu5EgYyG1rSBI4buZaSBBbiwgSG9pIEFuLCBRdWFuZyBOYW0sIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1709703163899!5m2!1sen!2s"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <!-- Add new section for quick links -->
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">Liên kết nhanh</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <a href="#" class="flex items-center space-x-2 text-blue-600 hover:text-blue-800">
+              <i class="fas fa-hotel"></i>
+              <span>Xem phòng</span>
+            </a>
+            <a href="#" class="flex items-center space-x-2 text-blue-600 hover:text-blue-800">
+              <i class="fas fa-utensils"></i>
+              <span>Nhà hàng</span>
+            </a>
+            <a href="#" class="flex items-center space-x-2 text-blue-600 hover:text-blue-800">
+              <i class="fas fa-spa"></i>
+              <span>Spa & Massage</span>
+            </a>
+            <a href="#" class="flex items-center space-x-2 text-blue-600 hover:text-blue-800">
+              <i class="fas fa-car"></i>
+              <span>Thuê xe</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Update the contact form -->
+      <div>
+        <form class="bg-white shadow-xl rounded-xl p-8 space-y-6">
+          <h3 class="text-2xl font-bold text-gray-800 mb-6">Gửi thông tin liên hệ</h3>
+          
+          <div class="space-y-4">
+            <div>
+              <label class="block font-semibold mb-2 text-gray-700">Họ và tên</label>
+              <input type="text" placeholder="Nhập họ và tên của bạn"
+                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                required>
+            </div>
+            
+            <div>
+              <label class="block font-semibold mb-2 text-gray-700">Email</label>
+              <input type="email" placeholder="example@domain.com"
+                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                required>
+            </div>
+
+            <div>
+              <label class="block font-semibold mb-2 text-gray-700">Số điện thoại</label>
+              <input type="tel" placeholder="Nhập số điện thoại của bạn"
+                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                required>
+            </div>
+
+            <div>
+              <label class="block font-semibold mb-2 text-gray-700">Chủ đề</label>
+              <select class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <option>Đặt phòng</option>
+                <option>Báo giá</option>
+                <option>Khiếu nại</option>
+                <option>Góp ý</option>
+                <option>Khác</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-semibold mb-2 text-gray-700">Nội dung</label>
+              <textarea rows="5" placeholder="Nhập nội dung tin nhắn của bạn"
+                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                required></textarea>
+            </div>
+          </div>
+
+          <button type="submit"
+            class="w-full bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-200">
+            Gửi liên hệ
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-12 mt-12">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+      <div>
+        <h4 class="text-white text-lg mb-4">ĐĂNG KÝ NHẬN THÔNG TIN</h4>
+        <form class="space-y-2">
+          <input type="email" placeholder="Email nhận tin" class="w-full px-4 py-2 rounded bg-gray-800" />
+          <button class="w-full bg-blue-600 py-2 text-white rounded">ĐĂNG KÝ</button>
+        </form>
+      </div>
+      <div>
+        <h4 class="text-white text-lg mb-4">LIÊN HỆ</h4>
+        <ul>
+          <li>Điện thoại: <a href="tel:+84329031440">0329031440</a></li>
+          <li>Email: <a href="mailto:huyonechampfli@gmail.com">huyonechampfli@gmail.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white text-lg mb-4">THÔNG TIN PHÁP LÝ</h4>
+        <ul class="space-y-1">
+          <li>Số ĐKKD: 2400835688</li>
+          <li>Nơi cấp: Sở KH&ĐT Quảng Nam</li>
+          <li>Trụ sở: Quảng Nam, Hội An</li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center text-sm mt-8">&copy; 2025 Khách sạn Hội An. Thiết kế bởi WebHotel.vn</div>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const header = document.querySelector('header');
+      const dropdowns = document.querySelectorAll('.dropdown');
+
+      menuBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        mobileMenu.classList.toggle('show');
+        header.classList.toggle('hide'); // Thêm dòng này
+        const icon = this.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+
+      dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('click', function (e) {
+          if (window.innerWidth <= 768) {
+            const content = this.querySelector('.dropdown-content');
+            content.classList.toggle('hidden');
+            e.preventDefault();
+          }
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+          mobileMenu.classList.remove('show');
+          const icon = menuBtn.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

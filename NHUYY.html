@@ -1,0 +1,371 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>
+    Hotel Page
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./header-nav.css">
+  <style>
+
+    .content-section {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background-color: #f9f9f9;
+      border-radius: 0.5rem;
+    }
+
+    .content-section p {
+      margin-bottom: 1rem;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    nav {
+      background-color: blue;
+      text-align: center;
+      padding: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      color: white;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #007BFF;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: white;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<header>
+  <h1 class="text-2xl">Khám Phá Những Khách Sạn Hàng Đầu</h1>
+</header>
+<!-- Navbar -->
+<!-- Cập nhật phần nav -->
+<nav style="padding-right: 16.4px;" class="flex items-center px-6">
+  <div class="flex items-center space-x-3">
+    <img src="h.png" alt="Ravatel Logo" class="h-12 w-12" />
+    <div>
+      <h1 class="text-2xl font-bold">HOI AN</h1>
+      <p class="text-sm">LUXURY HOTEL</p>
+    </div>
+  </div>
+  <!-- Thêm nút menu cho mobile -->
+  <button id="menuBtn" class="md:hidden text-white">
+    <i class="fas fa-bars text-2xl"></i>
+  </button>
+  <!-- Thêm class mobile-menu để điều khiển hiển thị -->
+  <div id="mobileMenu" class="hidden md:flex md:items-center md:space-x-4">
+    <a href="trangchu.html" class="text-white block py-2">Trang chủ</a>
+    <div class="dropdown relative">
+      <a href="trang1.html" class="text-white block py-2">Khách sạn</a>
+
+    </div>
+    <a href="thongtin.html" class="text-white block py-2">Giới thiệu</a>
+    <a href="lienhe.html" class="text-white block py-2">Liên hệ</a>
+    <div class="search-container">
+      <input type="text" placeholder="Tìm kiếm...">
+      <button type="submit"><i class="fas fa-search"></i></button>
+    </div>
+  </div>
+</nav>
+
+<body class="bg-gray-100 p-4">
+  <div class="max-w-5xl mx-auto bg-white p-4 rounded-lg shadow-lg">
+    <div class="flex items-center mb-4">
+      <div class="flex items-center">
+        <i class="fas fa-star text-yellow-500">
+        </i>
+        <i class="fas fa-star text-yellow-500">
+        </i>
+        <i class="fas fa-star text-yellow-500">
+        </i>
+        <i class="fas fa-star text-yellow-500">
+        </i>
+      </div>
+      <div class="ml-2 flex items-center">
+        <i class="fas fa-thumbs-up text-yellow-500">
+        </i>
+        <i class="fas fa-plus text-yellow-500 ml-1">
+        </i>
+      </div>
+      <div class="ml-4 bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+        Dịch Vụ Phòng
+      </div>
+      <div class="ml-2 bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+        Bữa Sáng Tuyệt Hảo
+      </div>
+    </div>
+    <h1 class="text-2xl font-bold mb-2">
+      Cozy Savvy Boutique Hotel Hoi An
+    </h1>
+    <div class="flex items-center text-blue-600 mb-4">
+      <i class="fas fa-map-marker-alt">
+      </i>
+      <span class="ml-2">
+        116 Dao Duy Tu, Cam Pho Ward, Cẩm Phô, Hội An, Việt Nam Vị trí xuất sắc –
+        <span class="text-blue-800 font-semibold">
+          Great location - show map
+        </span>
+      </span>
+    </div>
+    <div class="grid grid-cols-3 gap-2">
+      <div class="col-span-2">
+        <img alt="Scenic view of a river with buildings along the shore during sunset"
+          class="w-full h-full object-cover rounded-lg" height="400" src="ht1.jpg" width="600" />
+      </div>
+      <div class="grid grid-cols-2 gap-2">
+        <img alt="Interior view of the hotel with a beautiful ceiling" class="w-full h-full object-cover rounded-lg"
+          height="200" src="ht2.jpg" width="300" />
+        <img alt="Balcony view overlooking the river" class="w-full h-full object-cover rounded-lg" height="200"
+          src="ht8.jpg" width="300" />
+        <img alt="Exterior view of the hotel with lush greenery" class="w-full h-full object-cover rounded-lg"
+          height="200" src="ht4.jpg" width="300" />
+        <img alt="Balcony with a view of the river and a table with flowers"
+          class="w-full h-full object-cover rounded-lg" height="200" src="ht5.jpg" width="300" />
+        <img alt="Entrance of the hotel with a signboard" class="w-full h-full object-cover rounded-lg" height="200"
+          src="ht6.jpg" width="300" />
+        <div class="relative">
+          <img alt="Interior view of a hotel room with a bed and a window" class="w-full h-full object-cover rounded-lg"
+            height="200" src="ht7.jpg" width="300" />
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center rounded-lg">
+            <span class="text-white text-lg font-semibold">
+              + 4 photos
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-section">
+      <p>
+        Tận hưởng dịch vụ đỉnh cao, đẳng cấp thế giới tại Cozy Savvy Boutique Hotel Hoi An
+        Nằm ở thành phố Hội An, cách Chùa Cầu Nhật Bản 850 km, Cozy Savvy Boutique Hotel Hoi An cung cấp chỗ nghỉ với
+        nhà hàng,
+        chỗ đỗ xe riêng miễn phí, xe máy cho khách sử dụng miễn phí và trung tâm thể dục. Trong số nhiều tiện nghi của
+        khách sạn
+        này còn có quầy bar, sảnh khách chung và khu vườn. Chỗ nghỉ cũng có lễ tân 24 giờ, bếp chung và dịch vụ thu đổi
+        ngoại tệ
+        cho khách.
+      </p>
+      <p>
+        Phòng nghỉ tại Cozy Savvy Boutique Hotel Hoi An được trang bị máy điều hòa, truyền hình cáp màn hình phẳng, tủ
+        lạnh, ấm
+        đun nước, bể sục, máy sấy tóc và bàn làm việc. Các phòng còn có phòng tắm riêng với chậu rửa vệ sinh (bidet)
+        cùng đồ
+        vệ sinh cá nhân miễn phí và tầm nhìn ra vườn. Mỗi phòng đều được bố trí tủ để quần áo.
+      </p>
+      <p>
+        Chỗ nghỉ phục vụ bữa sáng tự chọn hàng ngày.
+      </p>
+      <p>
+        Cozy Savvy Boutique Hotel Hoi An cung cấp chỗ nghỉ 4 sao với phòng xông hơi khô và sân hiên. Du khách có thể
+        chơi bi-a
+        và thuê xe máy cũng như xe hơi tại khách sạn.
+      </p>
+      <p>
+        Các điểm tham quan nổi tiếng gần Cozy Savvy Boutique Hotel Hoi An bao gồm Hội quán Quảng Đông, Bảo tàng Lịch sử
+        Hội An
+        và Đình Cẩm Phô. Sân bay gần nhất là sân bay quốc tế Đà Nẵng, cách đó 28 km, và chỗ nghỉ cung cấp dịch vụ đưa
+        đón sân
+        bay với một khoản phụ phí.
+      </p>
+      <p>
+        Các cặp đôi đặc biệt thích địa điểm này — họ cho điểm 9,3 khi đánh giá chuyến đi hai người.
+      </p>
+    </div>
+    <div class="content-section">
+      <h2 class="text-xl font-bold mb-4">Đánh giá của khách hàng</h2>
+      <div class="mb-4">
+        <p class="font-semibold">Đặng Tiến Hoàng</p>
+        <p>"Khách sạn tuyệt vời, dịch vụ chu đáo. Tôi sẽ quay lại!"</p>
+        <p class="text-yellow-500">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </p>
+      </div>
+      <div class="mb-4">
+        <p class="font-semibold">Trịnh Trần Phương Tuấn</p>
+        <p>"Phòng sạch sẽ, view đẹp. Rất hài lòng với kỳ nghỉ tại đây."</p>
+        <p class="text-yellow-500">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </p>
+      </div>
+      <div class="mb-4">
+        <p class="font-semibold">Đoàn Duy Băng</p>
+        <p>"Nhân viên thân thiện, đồ ăn ngon. Sẽ giới thiệu cho bạn bè."</p>
+        <p class="text-yellow-500">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </p>
+      </div>
+      <hr class="my-4">
+      <h3 class="text-lg font-bold mb-2">Đánh giá của bạn</h3>
+      <form id="reviewForm" class="space-y-2">
+        <input id="nameInput" type="text" placeholder="Tên của bạn" class="w-full border p-2 rounded" required />
+        <textarea id="commentInput" placeholder="Nội dung đánh giá" class="w-full border p-2 rounded"
+          required></textarea>
+        <select id="ratingInput" class="w-full border p-2 rounded" required>
+          <option value="">Chọn số sao</option>
+          <option value="5">★★★★★ (5 sao)</option>
+          <option value="4">★★★★☆ (4 sao)</option>
+          <option value="3">★★★☆☆ (3 sao)</option>
+          <option value="2">★★☆☆☆ (2 sao)</option>
+          <option value="1">★☆☆☆☆ (1 sao)</option>
+        </select>
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">Gửi đánh
+          giá</button>
+      </form>
+
+      <div id="userReviews" class="mt-4"></div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="text-xl font-bold mb-4">Đặt phòng ngay</h2>
+      <a href="booking.html"
+        class="w-full bg-blue-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-center block">Đặt
+        phòng</a>
+    </div>
+  </div>
+  <script>
+    // Khi trang tải lại, hiển thị danh sách đánh giá
+    window.addEventListener('DOMContentLoaded', () => {
+      renderReviews();
+    });
+
+    document.getElementById("reviewForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("nameInput").value.trim();
+      const comment = document.getElementById("commentInput").value.trim();
+      const rating = parseInt(document.getElementById("ratingInput").value);
+
+      if (!name || !comment || !rating) return;
+
+      const newReview = { name, comment, rating };
+
+      // Lấy danh sách cũ, thêm đánh giá mới vào đầu mảng
+      const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+      reviews.unshift(newReview);
+      localStorage.setItem('reviews', JSON.stringify(reviews));
+
+      // Cập nhật giao diện
+      renderReviews();
+
+      // Xóa form sau khi gửi
+      this.reset();
+    });
+
+    function renderReviews() {
+      const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+      const reviewsContainer = document.getElementById("userReviews");
+
+      // Xóa nội dung cũ trước khi cập nhật
+      reviewsContainer.innerHTML = "";
+
+      reviews.forEach(review => {
+        const stars = '<i class="fas fa-star text-yellow-500"></i>'.repeat(review.rating) +
+          '<i class="far fa-star text-yellow-500"></i>'.repeat(5 - review.rating);
+
+        const newReview = `
+            <div class="mb-4">
+                <p class="font-semibold">${review.name}</p>
+                <p>"${review.comment}"</p>
+                <p class="text-yellow-500">${stars}</p>
+            </div>
+        `;
+        reviewsContainer.insertAdjacentHTML("beforeend", newReview);
+      });
+    }
+    // Khi trang tải lại, xóa dữ liệu trong localStorage và hiển thị danh sách đánh giá
+    window.addEventListener('DOMContentLoaded', () => {
+      localStorage.clear();  // Xóa toàn bộ dữ liệu trong localStorage
+      renderReviews();  // Hiển thị lại danh sách đánh giá (sẽ là rỗng sau khi clear)
+    });
+
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const header = document.querySelector('header');
+      const dropdowns = document.querySelectorAll('.dropdown');
+
+      menuBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        mobileMenu.classList.toggle('show');
+        header.classList.toggle('hide'); // Thêm dòng này
+        const icon = this.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+
+      dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('click', function (e) {
+          if (window.innerWidth <= 768) {
+            const content = this.querySelector('.dropdown-content');
+            content.classList.toggle('hidden');
+            e.preventDefault();
+          }
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+          mobileMenu.classList.remove('show');
+          const icon = menuBtn.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đặt hàng - KHÁNH CHIÊU FOOD</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+    }
+
+    .container {
+      width: 80%;
+      margin: auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      margin-top: 50px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #ff424e;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    input,
+    textarea,
+    select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    button {
+      padding: 15px;
+      background-color: #ff424e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e04343;
+    }
+
+    .quantity-container {
+
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .quantity-container span {
+      margin: 0 10px;
+    }
+
+    .quantity-btn {
+      padding: 5px 10px;
+      background-color: #ff424e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .quantity-btn:hover {
+      background-color: #e04343;
+    }
+
+    .order-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .order-item img {
+      max-width: 100px;
+      border-radius: 8px;
+    }
+
+    .remove-item {
+      background-color: #ff424e;
+      color: white;
+      border: none;
+      padding: 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 37px;
+      height: 27px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .remove-item:hover {
+      background-color: #e04343;
+    }
+
+    .footer {
+      background-color: pink;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 20px;
+    }
+
+
+
+    @media only screen and (max-width: 768px) {
+      body {
+        padding: 10px;
+        font-size: 0.95em;
+      }
+
+      .container {
+        width: 95%;
+        margin-top: 30px;
+      }
+
+      h2 {
+        font-size: 1.4em;
+      }
+
+      form {
+        gap: 15px;
+      }
+
+      input,
+      textarea,
+      select {
+        font-size: 0.95em;
+      }
+
+      button {
+        font-size: 0.9em;
+        padding: 10px;
+      }
+    }
+
+    @media only screen and (max-width: 668px) {
+      body {
+        padding: 8px;
+        font-size: 0.9em;
+      }
+
+      .container {
+        width: 98%;
+        margin-top: 20px;
+      }
+
+      h2 {
+        font-size: 1.3em;
+      }
+
+      input,
+      textarea,
+      select {
+        font-size: 0.9em;
+        padding: 8px;
+      }
+
+      button {
+        padding: 8px;
+        font-size: 0.85em;
+      }
+
+      .order-item {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .quantity-container {
+        flex-direction: row;
+        justify-content: flex-start;
+      }
+    }
+
+    @media only screen and (max-width: 460px) {
+      body {
+        padding: 5px;
+        font-size: 0.85em;
+      }
+
+      h2 {
+        font-size: 1.2em;
+      }
+
+      .container {
+        padding: 10px;
+      }
+
+      input,
+      textarea,
+      select {
+        padding: 6px;
+        font-size: 0.85em;
+      }
+
+      button {
+        padding: 7px;
+        font-size: 0.8em;
+      }
+
+      .order-item img {
+        max-width: 50px;
+      }
+    }
+
+    @media only screen and (max-width: 375px) {
+      body {
+        padding: 5px;
+        font-size: 0.8em;
+      }
+
+      .container {
+        padding: 5px;
+      }
+
+      h2 {
+        font-size: 1em;
+        margin-bottom: 10px;
+      }
+
+      input,
+      textarea,
+      select {
+        padding: 5px;
+        font-size: 0.8em;
+      }
+
+      button {
+        padding: 5px;
+        font-size: 0.75em;
+      }
+
+      .order-item {
+        padding: 8px;
+      }
+
+      .quantity-container {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .quantity-container button {
+        padding: 5px;
+        font-size: 0.75em;
+      }
+
+      .order-item img {
+        max-width: 40px;
+      }
+    }
+
+    @media only screen and (max-width: 768px) {
+      .order-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .order-item label {
+        font-weight: bold;
+        font-size: 1em;
+      }
+
+      .productSelection {
+        width: 100%;
+      }
+
+      .quantity-container {
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      .quantity-container span {
+        font-size: 1em;
+        font-weight: bold;
+      }
+
+      .product-image {
+        display: block;
+
+        max-width: 80px;
+      }
+
+      .remove-item {
+
+        font-size: 0.9em;
+        padding: 8px;
+      }
+    }
+
+    @media only screen and (max-width: 668px) {
+      .order-item {
+        gap: 15px;
+      }
+
+      .quantity-container {
+        justify-content: space-between;
+      }
+
+      .product-image {
+        max-width: 70px;
+      }
+    }
+
+    @media only screen and (max-width: 460px) {
+      .order-item {
+        padding: 10px;
+        gap: 10px;
+      }
+
+      .productSelection {
+        font-size: 0.9em;
+        padding: 8px;
+      }
+
+      .product-image {
+        max-width: 60px;
+      }
+
+      .quantity-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .remove-item {
+        font-size: 0.8em;
+        padding: 5px;
+      }
+    }
+
+    @media only screen and (max-width: 375px) {
+      .order-item {
+        padding: 8px;
+      }
+
+      .productSelection {
+        font-size: 0.85em;
+        padding: 6px;
+      }
+
+      .product-image {
+        max-width: 50px;
+      }
+
+      .quantity-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .remove-item {
+        font-size: 0.75em;
+        padding: 4px;
+      }
+    }
+  </style>
+
+
+
+
+  </style>
+
+  </style>
+
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+
+    (function () {
+      emailjs.init("neFeefFy6lcRVzvON");
+    })();
+  </script>
+</head>
+
+<body>
+  <section style="text-align: center; background-color: #ff424e;">
+    <button type="submit"><a style="text-decoration: none;" href="home.html">HOME</a></button>
+  </section>
+
+  <div class="container">
+    <h2>Đặt hàng</h2>
+    <form id="orderForm">
+      <input type="text" id="customerName" placeholder="Tên khách hàng" required>
+      <input type="text" id="customerPhone" placeholder="Số điện thoại" required>
+      <textarea id="customerAddress" rows="4" placeholder="Địa chỉ giao hàng" required></textarea>
+
+      <div id="orderItemsContainer">
+        <div class="order-item" id="orderItem1">
+          <label for="productSelection1">Chọn món:</label>
+          <select id="productSelection1" class="productSelection" onchange="updateProductImage(1)">
+            <option value="Cơm Chiên:Size Lớn" data-img="com.jfif">Cơm Chiên:Size Lớn</option>
+            <option value="Cơm Chiên:Size Nhỏ" data-img="com.jfif">Cơm Chiên:Size Nhỏ</option>
+            <option value="Sandwich" data-img="banhmy.jfif">Sandwich</option>
+            <option value="Mỳ Trộn:Size Lớn" data-img="my.jfif">Mỳ Trộn:Size Lớn</option>
+            <option value="Mỳ Trộn:Size Nhỏ" data-img="my.jfif">Mỳ Trộn:Size Nhỏ</option>
+            <option value="Kimbap:Size Lớn" data-img="kimpap.jfif">Kimbap:Size Lớn</option>
+            <option value="Kimbap:Size Nhỏ" data-img="kimpap.jfif">Kimbap:Size Nhỏ</option>
+            <option value="Sữa Bí Đỏ:Size Lớn" data-img="suabi.jfif">Sữa Bí Đỏ:Size Lớn</option>
+            <option value="Sữa Bí Đỏ:Size Nhỏ" data-img="suabi.jfif">Sữa Bí Đỏ:Size Nhỏ</option>
+            <option value="Trà Sữa:Size Lớn" data-img="trasua.jfif">Trà Sữa:Size Lớn</option>
+            <option value="Trà Sữa:Size Nhỏ" data-img="trasua.jfif">Trà Sữa:Size Nhỏ</option>
+            <option value="Bánh Mỳ Xá Xíu" data-img="banhmycha.jfif">Bánh Mỳ Xá Xíu</option>
+            <option value="Xôi:Size Lớn" data-img="xoi.jfif">Xôi:Size Lớn</option>
+            <option value="Xôi:Size Nhỏ" data-img="xoi.jfif">Xôi:Size Nhỏ</option>
+            <option value="Nước Ép Dưa Hấu:Size Lớn" data-img="hau.jfif">Nước Ép Dưa Hấu:Size Lớn</option>
+            <option value="Nước Ép Dưa Hấu:Size Nhỏ" data-img="hau.jfif">Nước Ép Dưa Hấu:Size Nhỏ</option>
+            <option value="Nước Ép Cà Rốt:Size Lớn" data-img="rot.jfif">Nước Ép Cà Rốt:Size Lớn</option>
+            <option value="Nước Ép Cà Rốt:Size Nhỏ" data-img="rot.jfif">Nước Ép Cà Rốt:Size Nhỏ</option>
+            <option value="Choco Latte" data-img="choco.jfif">Choco Latte</option>
+            <option value="Matcha Latte" data-img="bo.jfif">Matcha Latte</option>
+          </select>
+          <img id="productImage1" src="com.jfif" alt="Image" class="product-image">
+          <div class="quantity-container">
+            <button type="button" class="quantity-btn" onclick="decreaseQuantity('quantity1')">-</button>
+            <span id="quantity1" class="quantity">1</span>
+            <button type="button" class="quantity-btn" onclick="increaseQuantity('quantity1')">+</button>
+          </div>
+          <button type="button" class="remove-item" onclick="removeOrderItem(1)">Xóa</button>
+        </div>
+      </div>
+
+      <button type="button" onclick="addOrderItem()">Thêm món</button>
+      <textarea id="orderNotes" rows="4" placeholder="Ghi chú đơn hàng"></textarea>
+      <button type="submit">Gửi đơn hàng</button>
+    </form>
+  </div>
+
+  <div class="footer">
+    <p>© 2024 KHÁNH CHIÊU FOOD</p>
+  </div>
+
+  <script>
+    let itemIndex = 1;
+
+
+    function updateProductImage(index) {
+      const selectElement = document.getElementById(`productSelection${index}`);
+      const selectedOption = selectElement.options[selectElement.selectedIndex];
+      const imagePath = selectedOption.getAttribute('data-img');
+      document.getElementById(`productImage${index}`).src = imagePath;
+    }
+
+
+    function addOrderItem() {
+      itemIndex++;
+      const container = document.getElementById('orderItemsContainer');
+      const newItem = `
+        <div class="order-item" id="orderItem${itemIndex}">
+          <label for="productSelection${itemIndex}">Chọn món:</label>
+          <select id="productSelection${itemIndex}" class="productSelection" onchange="updateProductImage(${itemIndex})">
+            <option value="Cơm Chiên:Size Lớn" data-img="com.jfif">Cơm Chiên:Size Lớn</option>
+            <option value="Cơm Chiên:Size Nhỏ" data-img="com.jfif">Cơm Chiên:Size Nhỏ</option>
+            <option value="Sandwich" data-img="banhmy.jfif">Sandwich</option>
+            <option value="Mỳ Trộn:Size Lớn" data-img="my.jfif">Mỳ Trộn:Size Lớn</option>
+             <option value="Mỳ Trộn:Size Nhỏ" data-img="my.jfif">Mỳ Trộn:Size Nhỏ</option>
+            <option value="Kimbap:Size Lớn" data-img="kimpap.jfif">Kimbap:Size Lớn</option>
+            <option value="Kimbap:Size Nhỏ" data-img="kimpap.jfif">Kimbap:Size Nhỏ</option>
+            <option value="Sữa Bí Đỏ:Size Lớn" data-img="suabi.jfif">Sữa Bí Đỏ:Size Lớn</option>
+              <option value="Sữa Bí Đỏ:Size Nhỏ" data-img="suabi.jfif">Sữa Bí Đỏ:Size Nhỏ</option>
+            <option value="Trà Sữa:Size Lớn" data-img="trasua.jfif">Trà Sữa:Size Lớn</option>
+             <option value="Trà Sữa:Size Nhỏ" data-img="trasua.jfif">Trà Sữa:Size Nhỏ</option>
+            <option value="Bánh Mỳ Xá Xíu" data-img="banhmycha.jfif">Bánh Mỳ Xá Xíu</option>
+            <option value="Xôi:Size Lớn" data-img="xoi.jfif">Xôi:Size Lớn</option>
+              <option value="Xôi:Size Nhỏ" data-img="xoi.jfif">Xôi:Size Nhỏ</option>
+            <option value="Nước Ép Dưa Hấu:Size Lớn" data-img="hau.jfif">Nước Ép Dưa Hấu:Size Lớn</option>
+             <option value="Nước Ép Dưa Hấu:Size Nhỏ" data-img="hau.jfif">Nước Ép Dưa Hấu:Size Nhỏ</option>
+            <option value="Nước Ép Cà Rốt:Size Lớn" data-img="rot.jfif">Nước Ép Cà Rốt:Size Lớn</option>
+             <option value="Nước Ép Cà Rốt:Size Nhỏ" data-img="rot.jfif">Nước Ép Cà Rốt:Size Nhỏ</option>
+            <option value="Choco Latte" data-img="choco.jfif">Choco Latte</option>
+            <option value="Matcha Latte" data-img="bo.jfif">Matcha Latte</option>
+          </select>
+          <img id="productImage${itemIndex}" src="com.jfif" alt="Image" class="product-image">
+          <div class="quantity-container">
+            <button type="button" class="quantity-btn" onclick="decreaseQuantity('quantity${itemIndex}')">-</button>
+            <span id="quantity${itemIndex}" class="quantity">1</span>
+            <button type="button" class="quantity-btn" onclick="increaseQuantity('quantity${itemIndex}')">+</button>
+          </div>
+          <button type="button" class="remove-item" onclick="removeOrderItem(${itemIndex})">Xóa</button>
+        </div>
+      `;
+      container.insertAdjacentHTML('beforeend', newItem);
+    }
+
+    function increaseQuantity(quantityId) {
+      let quantity = parseInt(document.getElementById(quantityId).innerText);
+      quantity += 1;
+      document.getElementById(quantityId).innerText = quantity;
+    }
+
+
+    function decreaseQuantity(quantityId) {
+      let quantity = parseInt(document.getElementById(quantityId).innerText);
+      if (quantity > 1) {
+        quantity -= 1;
+        document.getElementById(quantityId).innerText = quantity;
+      }
+    }
+
+    function removeOrderItem(index) {
+      const item = document.getElementById(`orderItem${index}`);
+      item.remove();
+    }
+
+
+    function updateProductImage(index) {
+      const selectElement = document.getElementById(`productSelection${index}`);
+      const selectedOption = selectElement.options[selectElement.selectedIndex];
+      const imagePath = selectedOption.getAttribute('data-img');
+      document.getElementById(`productImage${index}`).src = imagePath;
+    }
+
+    document.getElementById('orderForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const customerName = document.getElementById('customerName').value;
+      const customerPhone = document.getElementById('customerPhone').value;
+      const customerAddress = document.getElementById('customerAddress').value;
+      const orderNotes = document.getElementById('orderNotes').value;
+
+      let orderDetails = '';
+      for (let i = 1; i <= itemIndex; i++) {
+        const product = document.getElementById(`productSelection${i}`).value; // Lấy tên món và kích thước
+        const quantity = document.getElementById(`quantity${i}`).innerText;
+        if (product) {
+          orderDetails += `Món ${i}: ${product} (x${quantity})\n`;
+        }
+      }
+
+      const templateParams = {
+        to_name: 'Chủ cửa hàng',
+        from_name: customerName,
+        customer_phone: customerPhone,
+        customer_address: customerAddress,
+        order_details: orderDetails,
+        notes: orderNotes,
+        to_email: 'huyonechamfli@gmail.com',
+      };
+
+      emailjs.send('service_v0jmdmn', 'template_wjdjnms', templateParams)
+        .then(function (response) {
+          console.log('SUCCESS!', response.status, response.text);
+          alert('Đơn hàng đã được gửi thành công!');
+        }, function (error) {
+          console.log('FAILED...', error);
+          alert('Có lỗi xảy ra khi gửi đơn hàng. Vui lòng thử lại!');
+        });
+    });
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+/* Coppy header & navbar */
+@media (max-width: 768px) {
+    #mobileMenu {
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #mobileMenu.show {
+      transform: translateY(0);
+      display: flex !important;
+    }
+
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content {
+      position: static;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+  }
+
+  /* Base styles */
+  nav {
+    background-color: #1e3a8a;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Search container - Main styles */
+  .search-container {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 1rem;
+    width: 300px;
+  }
+
+  .search-container input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    background: transparent;
+    color: #333;
+  }
+
+  .search-container input::placeholder {
+    color: #666;
+  }
+
+  .search-container button {
+    background: #4CAF50;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .search-container button:hover {
+    background: #ff7600;
+  }
+
+  #mobileMenu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    #mobileMenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #1e3a8a;
+      padding: 1rem;
+      display: none;
+    }
+
+    #mobileMenu a{
+      text-align: left
+    }
+
+    #mobileMenu.show {
+      display: block !important;
+    }
+
+    .search-container {
+      width: 100%;
+      margin: 1rem 0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .search-container input {
+      padding: 12px 15px;
+      font-size: 16px;
+    }
+
+    .search-container button {
+      padding: 12px 24px;
+    }
+  }
