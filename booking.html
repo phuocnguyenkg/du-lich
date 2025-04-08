@@ -1320,101 +1320,32 @@
 
     
 
-    <form id="booking-form" onsubmit="submitForm(event)">
-      <h2>Thông tin đặt phòng</h2>
+    
+<div style="text-align: center; padding: 20px 0 40px 0;">
+  <button onclick="window.location.href='datphong.html'" style="
+    background: linear-gradient(to right, #6366f1, #ec4899);
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  "><a style="text-decoration: none;" href="dathang.html">
+    Nhấn vào đây để tiếp tục đặt phòng ➜
+  </a></button>
+</div>
 
-      <label>Họ và tên</label>
-      <input type="text" id="name" required>
-
-      <label>Số điện thoại</label>
-      <input type="tel" id="phone" required>
-
-      <label>Email</label>
-      <input type="email" id="email" required>
-
-      <label>Ngày nhận phòng</label>
-      <input type="date" id="checkin" required>
-
-      <label>Ngày trả phòng</label>
-      <input type="date" id="checkout" required onchange="updateNights()">
-
-      <div id="summary"></div>
-
-      <button type="submit">Xác nhận đặt phòng</button>
-    </form>
-  </div>
-
-  <div class="popup" id="popup">
-    <div class="popup-content">
-      <h3>Đặt phòng thành công!</h3>
-      <p>Thông tin đã được gửi. Cảm ơn bạn!</p>
-      <button onclick="closePopup()">Đóng</button>
-    </div>
-  </div>
-
-  <footer>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</body>
+  <footer style="background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));">
     &copy; 2025 Khách Sạn VIP. Bản quyền thuộc về bạn.
   </footer>
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script>
-    emailjs.init("neFeefFy6lcRVzvON");
-
-    let selectedRoom = null;
-    let pricePerNight = 0;
-
-    function selectRoom(name, price) {
-      selectedRoom = name;
-      pricePerNight = price;
-      document.getElementById("summary").textContent = 
-        `Đã chọn: ${name} (${price.toLocaleString()}đ/đêm)`;
-    }
-
-    function updateNights() {
-      const checkin = new Date(document.getElementById("checkin").value);
-      const checkout = new Date(document.getElementById("checkout").value);
-      const diff = (checkout - checkin) / (1000 * 60 * 60 * 24);
-      if (diff > 0 && pricePerNight > 0) {
-        const total = diff * pricePerNight;
-        document.getElementById("summary").textContent =
-          `Đã chọn: ${selectedRoom} - ${diff} đêm - Tổng: ${total.toLocaleString()}đ`;
-      }
-    }
-
-    function submitForm(e) {
-      e.preventDefault();
-      if (!selectedRoom) {
-        alert("Vui lòng chọn phòng trước!");
-        return;
-      }
-
-      const templateParams = {
-        name: document.getElementById("name").value,
-        room: selectedRoom,
-        checkin: document.getElementById("checkin").value,
-        checkout: document.getElementById("checkout").value,
-        total: ((new Date(document.getElementById("checkout").value) - new Date(document.getElementById("checkin").value)) / (1000 * 60 * 60 * 24)) * pricePerNight,
-        email: document.getElementById("email").value
-      };
-
-      emailjs.send('service_rqc6kqf', 'template_6jk3z13', templateParams)
-        .then(function(response) {
-          console.log('SUCCESS!', response.status, response.text);
-          document.getElementById("popup").style.display = "flex";
-        }, function(error) {
-          console.log('FAILED...', error);
-          alert('Gửi email thất bại! Vui lòng thử lại.');
-        });
-    }
-
-    function closePopup() {
-      document.getElementById("popup").style.display = "none";
-      document.getElementById("booking-form").reset();
-      document.getElementById("summary").textContent = '';
-      selectedRoom = null;
-      pricePerNight = 0;
-    }
-  </script>
+ 
 
 </body>
 </html>

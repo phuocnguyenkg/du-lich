@@ -1,574 +1,362 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Đặt hàng - KHÁNH CHIÊU FOOD</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đặt Phòng Khách Sạn VIP Siêu Cấp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      background-color: white;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
     }
-
-    .container {
-      width: 80%;
-      margin: auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-      margin-top: 50px;
-    }
-
-    h2 {
-      text-align: center;
-      color: #ff424e;
-    }
-
-    form {
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    input,
-    textarea,
-    select {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1em;
-    }
-
-    button {
-      padding: 15px;
-      background-color: #ff424e;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 1em;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #e04343;
-    }
-
-    .quantity-container {
-
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .quantity-container span {
-      margin: 0 10px;
-    }
-
-    .quantity-btn {
-      padding: 5px 10px;
-      background-color: #ff424e;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .quantity-btn:hover {
-      background-color: #e04343;
-    }
-
-    .order-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 15px;
-      padding: 15px;
-      background-color: #f9f9f9;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .order-item img {
-      max-width: 100px;
-      border-radius: 8px;
-    }
-
-    .remove-item {
-      background-color: #ff424e;
-      color: white;
-      border: none;
-      padding: 8px;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 37px;
-      height: 27px;
-      display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      color: #fff;
+    }
+    .container {
+      background: #1e1e2f;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0, 255, 255, 0.2);
+      width: 100%;
+      max-width: 800px;
+      animation: slideIn 1s ease-in-out;
+    }
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateY(50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
       text-align: center;
+      margin-bottom: 2rem;
+      color: #00e5ff;
+      font-size: 2.8rem;
     }
-
-    .remove-item:hover {
-      background-color: #e04343;
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #f8f8f8;
     }
-
-    .footer {
-      background-color: pink;
-      color: white;
+    select, input[type="text"], input[type="date"] {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1.2rem;
+      border-radius: 12px;
+      border: 1px solid #888;
+      background: #2e2e42;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+    select:focus, input:focus {
+      border-color: #00e5ff;
+      box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.3);
+    }
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .checkbox-group label {
+      background: #2e2e42;
+      padding: 0.7rem;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      transition: all 0.3s;
+      color: #fff;
+    }
+    .checkbox-group label:hover {
+      background: #00e5ff;
+      color: #000;
+      box-shadow: 0 0 10px #00e5ff;
+    }
+    .checkbox-group input[type="checkbox"] {
+      transform: scale(1.2);
+    }
+    .total {
+      font-weight: 700;
+      margin-bottom: 1.5rem;
       text-align: center;
-      padding: 10px 0;
-      margin-top: 20px;
+      font-size: 1.5rem;
+      color: #00e676;
     }
-
-
-
-    @media only screen and (max-width: 768px) {
-      body {
-        padding: 10px;
-        font-size: 0.95em;
-      }
-
+    .summary {
+      background: #263238;
+      padding: 1rem;
+      border-radius: 12px;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: #cfd8dc;
+    }
+    .room-info {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: #333;
+      border-radius: 12px;
+      color: #fff;
+    }
+    .room-info img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+    .room-info .details {
+      font-size: 1.1rem;
+      color: #cfd8dc;
+    }
+    button {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(90deg, #00e5ff, #00bcd4);
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #00e5ff;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #00bcd4, #00e5ff);
+      box-shadow: 0 0 20px #00e5ff, 0 0 30px #00e5ff;
+    }
+    @media (max-width: 600px) {
       .container {
-        width: 95%;
-        margin-top: 30px;
+        padding: 1.5rem;
       }
-
-      h2 {
-        font-size: 1.4em;
-      }
-
-      form {
-        gap: 15px;
-      }
-
-      input,
-      textarea,
-      select {
-        font-size: 0.95em;
-      }
-
-      button {
-        font-size: 0.9em;
-        padding: 10px;
-      }
-    }
-
-    @media only screen and (max-width: 668px) {
-      body {
-        padding: 8px;
-        font-size: 0.9em;
-      }
-
-      .container {
-        width: 98%;
-        margin-top: 20px;
-      }
-
-      h2 {
-        font-size: 1.3em;
-      }
-
-      input,
-      textarea,
-      select {
-        font-size: 0.9em;
-        padding: 8px;
-      }
-
-      button {
-        padding: 8px;
-        font-size: 0.85em;
-      }
-
-      .order-item {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .quantity-container {
-        flex-direction: row;
-        justify-content: flex-start;
-      }
-    }
-
-    @media only screen and (max-width: 460px) {
-      body {
-        padding: 5px;
-        font-size: 0.85em;
-      }
-
-      h2 {
-        font-size: 1.2em;
-      }
-
-      .container {
-        padding: 10px;
-      }
-
-      input,
-      textarea,
-      select {
-        padding: 6px;
-        font-size: 0.85em;
-      }
-
-      button {
-        padding: 7px;
-        font-size: 0.8em;
-      }
-
-      .order-item img {
-        max-width: 50px;
-      }
-    }
-
-    @media only screen and (max-width: 375px) {
-      body {
-        padding: 5px;
-        font-size: 0.8em;
-      }
-
-      .container {
-        padding: 5px;
-      }
-
-      h2 {
-        font-size: 1em;
-        margin-bottom: 10px;
-      }
-
-      input,
-      textarea,
-      select {
-        padding: 5px;
-        font-size: 0.8em;
-      }
-
-      button {
-        padding: 5px;
-        font-size: 0.75em;
-      }
-
-      .order-item {
-        padding: 8px;
-      }
-
-      .quantity-container {
-        flex-direction: column;
-        gap: 5px;
-      }
-
-      .quantity-container button {
-        padding: 5px;
-        font-size: 0.75em;
-      }
-
-      .order-item img {
-        max-width: 40px;
-      }
-    }
-
-    @media only screen and (max-width: 768px) {
-      .order-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-
-      .order-item label {
-        font-weight: bold;
-        font-size: 1em;
-      }
-
-      .productSelection {
-        width: 100%;
-      }
-
-      .quantity-container {
-        flex-wrap: wrap;
-        gap: 5px;
-      }
-
-      .quantity-container span {
-        font-size: 1em;
-        font-weight: bold;
-      }
-
-      .product-image {
-        display: block;
-
-        max-width: 80px;
-      }
-
-      .remove-item {
-
-        font-size: 0.9em;
-        padding: 8px;
-      }
-    }
-
-    @media only screen and (max-width: 668px) {
-      .order-item {
-        gap: 15px;
-      }
-
-      .quantity-container {
-        justify-content: space-between;
-      }
-
-      .product-image {
-        max-width: 70px;
-      }
-    }
-
-    @media only screen and (max-width: 460px) {
-      .order-item {
-        padding: 10px;
-        gap: 10px;
-      }
-
-      .productSelection {
-        font-size: 0.9em;
-        padding: 8px;
-      }
-
-      .product-image {
-        max-width: 60px;
-      }
-
-      .quantity-container {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .remove-item {
-        font-size: 0.8em;
-        padding: 5px;
-      }
-    }
-
-    @media only screen and (max-width: 375px) {
-      .order-item {
-        padding: 8px;
-      }
-
-      .productSelection {
-        font-size: 0.85em;
-        padding: 6px;
-      }
-
-      .product-image {
-        max-width: 50px;
-      }
-
-      .quantity-container {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .remove-item {
-        font-size: 0.75em;
-        padding: 4px;
+      .checkbox-group {
+        grid-template-columns: 1fr;
       }
     }
   </style>
-
-
-
-
-  </style>
-
-  </style>
-
-  </style>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script type="text/javascript">
-
-    (function () {
-      emailjs.init("neFeefFy6lcRVzvON");
-    })();
-  </script>
+  
+  
+  
 </head>
-
 <body>
-  <section style="text-align: center; background-color: #ff424e;">
-    <button type="submit"><a href='/home' style='text-decoration: none;'>HOME</a></button>
-  </section>
+  <body>
+    
+  
+    
+      <!-- Các nội dung đặt phòng ở đây -->
 
   <div class="container">
-    <h2>Đặt hàng</h2>
-    <form id="orderForm">
-      <input type="text" id="customerName" placeholder="Tên khách hàng" required>
-      <input type="text" id="customerPhone" placeholder="Số điện thoại" required>
-      <textarea id="customerAddress" rows="4" placeholder="Địa chỉ giao hàng" required></textarea>
+    <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; width: 100%; justify-content: center;">
 
-      <div id="orderItemsContainer">
-        <div class="order-item" id="orderItem1">
-          <label for="productSelection1">Chọn món:</label>
-          <select id="productSelection1" class="productSelection" onchange="updateProductImage(1)">
-            <option value="Cơm Chiên:Size Lớn" data-img="com.jfif">Cơm Chiên:Size Lớn</option>
-            <option value="Cơm Chiên:Size Nhỏ" data-img="com.jfif">Cơm Chiên:Size Nhỏ</option>
-            <option value="Sandwich" data-img="banhmy.jfif">Sandwich</option>
-            <option value="Mỳ Trộn:Size Lớn" data-img="my.jfif">Mỳ Trộn:Size Lớn</option>
-            <option value="Mỳ Trộn:Size Nhỏ" data-img="my.jfif">Mỳ Trộn:Size Nhỏ</option>
-            <option value="Kimbap:Size Lớn" data-img="kimpap.jfif">Kimbap:Size Lớn</option>
-            <option value="Kimbap:Size Nhỏ" data-img="kimpap.jfif">Kimbap:Size Nhỏ</option>
-            <option value="Sữa Bí Đỏ:Size Lớn" data-img="suabi.jfif">Sữa Bí Đỏ:Size Lớn</option>
-            <option value="Sữa Bí Đỏ:Size Nhỏ" data-img="suabi.jfif">Sữa Bí Đỏ:Size Nhỏ</option>
-            <option value="Trà Sữa:Size Lớn" data-img="trasua.jfif">Trà Sữa:Size Lớn</option>
-            <option value="Trà Sữa:Size Nhỏ" data-img="trasua.jfif">Trà Sữa:Size Nhỏ</option>
-            <option value="Bánh Mỳ Xá Xíu" data-img="banhmycha.jfif">Bánh Mỳ Xá Xíu</option>
-            <option value="Xôi:Size Lớn" data-img="xoi.jfif">Xôi:Size Lớn</option>
-            <option value="Xôi:Size Nhỏ" data-img="xoi.jfif">Xôi:Size Nhỏ</option>
-            <option value="Nước Ép Dưa Hấu:Size Lớn" data-img="hau.jfif">Nước Ép Dưa Hấu:Size Lớn</option>
-            <option value="Nước Ép Dưa Hấu:Size Nhỏ" data-img="hau.jfif">Nước Ép Dưa Hấu:Size Nhỏ</option>
-            <option value="Nước Ép Cà Rốt:Size Lớn" data-img="rot.jfif">Nước Ép Cà Rốt:Size Lớn</option>
-            <option value="Nước Ép Cà Rốt:Size Nhỏ" data-img="rot.jfif">Nước Ép Cà Rốt:Size Nhỏ</option>
-            <option value="Choco Latte" data-img="choco.jfif">Choco Latte</option>
-            <option value="Matcha Latte" data-img="bo.jfif">Matcha Latte</option>
-          </select>
-          <img id="productImage1" src="com.jfif" alt="Image" class="product-image">
-          <div class="quantity-container">
-            <button type="button" class="quantity-btn" onclick="decreaseQuantity('quantity1')">-</button>
-            <span id="quantity1" class="quantity">1</span>
-            <button type="button" class="quantity-btn" onclick="increaseQuantity('quantity1')">+</button>
-          </div>
-          <button type="button" class="remove-item" onclick="removeOrderItem(1)">Xóa</button>
-        </div>
-      </div>
+      <a href="trangchu.html" style="
+        padding: 0.8rem 1.5rem;
+        background: linear-gradient(90deg, #ff6f00, #ffa000);
+        color: #fff;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-decoration: none;
+        box-shadow: 0 0 10px #ff9800;
+        transition: all 0.3s ease;
+      " onmouseover="this.style.boxShadow='0 0 20px #ff9800, 0 0 30px #ff9800'" onmouseout="this.style.boxShadow='0 0 10px #ff9800'">
+        ← Về trang chủ
+      </a>
+    </div>
+    <h1>Đặt Phòng Khách Sạn VIP</h1>
 
-      <button type="button" onclick="addOrderItem()">Thêm món</button>
-      <textarea id="orderNotes" rows="4" placeholder="Ghi chú đơn hàng"></textarea>
-      <button type="submit">Gửi đơn hàng</button>
-    </form>
+    <label for="name">Tên của bạn:</label>
+    <input type="text" id="name" placeholder="Nguyễn Văn A" required />
+
+    <label for="checkin">Ngày nhận phòng:</label>
+    <input type="date" id="checkin" required />
+
+    <label for="checkout">Ngày trả phòng:</label>
+    <input type="date" id="checkout" required />
+
+    <label for="guests">Số người:</label>
+    <select id="guests">
+      <option value="1">1 Người</option>
+      <option value="2">2 Người</option>
+      <option value="3">3 Người</option>
+      <option value="4">4 Người</option>
+    </select>
+
+    <label for="room">Chọn loại phòng:</label>
+    <select id="room">
+      <option value="0">-- Chọn phòng --</option>
+      <option value="1456560" data-desc="Phòng VIP -Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian1.jpg">Cozy Savvy Boutique Hotel Hoi An - 1.456.560đ</option>
+      <option value="837589" data-desc="Phòng VIP - Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian2.webp">MaiChi Villa Hoi An - 837.589đ</option>
+      <option value="449280" data-desc="Phòng VIP - Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian4.jpg">Hoi An Dream City Hotel - 449.280đ</option>
+      <option value="1048800" data-desc="Phòng VIP - Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian5.jpg">Golden River - 1.048.800đ</option>
+      <option value="413100" data-desc="Phòng VIP - Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian6.jpg">Viet Long Hoian Beach Hotel - STAY 24H - 413.100đ</option>
+      <option value="690000" data-desc="Phòng VIP - Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian3.jpg">Hoianese Heritage Hotel - Truly Hoi An - 690.000đ</option>
+      <option value="625600" data-desc="Phòng VIP - Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian7.jpg">December Hoi An Villa - 625.600đ</option>
+      <option value="1169460" data-desc="Phòng VIP - Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian8.jpg">Calm House Hotel Hoi An 1 - 1.169.460đ</option>
+      <option value="1450508" data-desc="Phòng VIP - Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian9.jpg">Lantana Riverside Hoi An Boutique Hotel & Spa - 1.450.508đ</option>
+      <option value="1296000" data-desc="Phòng VIP - Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian10jpg.jpg">Uptown Hoi An Hotel & Spa - 1.296.000đ</option>
+      <option value="520000" data-desc="Phòng VIP - Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian12.jpg">Premium CGP Hotel Hoi An - 520.000đ</option>
+      <option value="479273" data-desc="Phòng VIP - Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian11.jpg">Hoi An Legend Charm Boutique Hoi An Hotel - 479.273đ</option>
+      <option value="549045" data-desc="Phòng VIP - Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian14.jpg">Nature Resort Hoi An By K D H - 549.045đ</option>
+      <option value="945000" data-desc="Phòng VIP - Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian15.jpg">Serene Nature Hotel & Spa - 945.000</option>
+      <option value="700000" data-desc="Phòng VIP - Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian16.jpg">The Nam An Villa Hoi An - 700.000đ</option>
+      <option value="601800" data-desc="Phòng VIP - Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian17.jpg">Crony Villa - STAY 24H - 601.800</option>
+      <option value="1000500" data-desc="Phòng VIP - Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian18.jpg">RAON Old Town Hotel - 1.000.500đ</option>
+      <option value="862897" data-desc="Phòng VIP - Phòng cao cấp, view biển, đầy đủ dịch vụ." data-img="hoian19.jpg">Banana Garden Villa - 862.897đ</option>
+    </select>
+
+    <div class="room-info" id="room-info">
+      <img id="room-img" src="" alt="Ảnh phòng" style="display:none;" />
+      <p id="room-desc" class="details"></p>
+    </div>
+
+    <label>Dịch vụ kèm theo:</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" value="200000" class="service"> Ăn sáng - 200.000đ</label>
+      <label><input type="checkbox" value="300000" class="service"> Đưa đón sân bay - 300.000đ</label>
+      <label><input type="checkbox" value="100000" class="service"> Spa - 100.000đ</label>
+    </div>
+
+    <div class="total" id="total">Tổng tiền: 0đ</div>
+    <div class="summary" id="summary">Chi tiết đặt phòng sẽ hiển thị ở đây sau khi bạn chọn đầy đủ thông tin.</div>
+    <button onclick="bookRoom()">Đặt phòng</button>
   </div>
-
-  <div class="footer">
-    <p>© 2024 KHÁNH CHIÊU FOOD</p>
-  </div>
+  
 
   <script>
-    let itemIndex = 1;
+    emailjs.init("neFeefFy6lcRVzvON");
 
+    const roomSelect = document.getElementById("room");
+    const guestsSelect = document.getElementById("guests");
+    const serviceCheckboxes = document.querySelectorAll(".service");
+    const totalDisplay = document.getElementById("total");
+    const summaryDisplay = document.getElementById("summary");
+    const roomInfo = document.getElementById("room-info");
+    const roomDesc = document.getElementById("room-desc");
+    const roomImg = document.getElementById("room-img");
 
-    function updateProductImage(index) {
-      const selectElement = document.getElementById(`productSelection${index}`);
-      const selectedOption = selectElement.options[selectElement.selectedIndex];
-      const imagePath = selectedOption.getAttribute('data-img');
-      document.getElementById(`productImage${index}`).src = imagePath;
-    }
-
-
-    function addOrderItem() {
-      itemIndex++;
-      const container = document.getElementById('orderItemsContainer');
-      const newItem = `
-        <div class="order-item" id="orderItem${itemIndex}">
-          <label for="productSelection${itemIndex}">Chọn món:</label>
-          <select id="productSelection${itemIndex}" class="productSelection" onchange="updateProductImage(${itemIndex})">
-            <option value="Cơm Chiên:Size Lớn" data-img="com.jfif">Cơm Chiên:Size Lớn</option>
-            <option value="Cơm Chiên:Size Nhỏ" data-img="com.jfif">Cơm Chiên:Size Nhỏ</option>
-            <option value="Sandwich" data-img="banhmy.jfif">Sandwich</option>
-            <option value="Mỳ Trộn:Size Lớn" data-img="my.jfif">Mỳ Trộn:Size Lớn</option>
-             <option value="Mỳ Trộn:Size Nhỏ" data-img="my.jfif">Mỳ Trộn:Size Nhỏ</option>
-            <option value="Kimbap:Size Lớn" data-img="kimpap.jfif">Kimbap:Size Lớn</option>
-            <option value="Kimbap:Size Nhỏ" data-img="kimpap.jfif">Kimbap:Size Nhỏ</option>
-            <option value="Sữa Bí Đỏ:Size Lớn" data-img="suabi.jfif">Sữa Bí Đỏ:Size Lớn</option>
-              <option value="Sữa Bí Đỏ:Size Nhỏ" data-img="suabi.jfif">Sữa Bí Đỏ:Size Nhỏ</option>
-            <option value="Trà Sữa:Size Lớn" data-img="trasua.jfif">Trà Sữa:Size Lớn</option>
-             <option value="Trà Sữa:Size Nhỏ" data-img="trasua.jfif">Trà Sữa:Size Nhỏ</option>
-            <option value="Bánh Mỳ Xá Xíu" data-img="banhmycha.jfif">Bánh Mỳ Xá Xíu</option>
-            <option value="Xôi:Size Lớn" data-img="xoi.jfif">Xôi:Size Lớn</option>
-              <option value="Xôi:Size Nhỏ" data-img="xoi.jfif">Xôi:Size Nhỏ</option>
-            <option value="Nước Ép Dưa Hấu:Size Lớn" data-img="hau.jfif">Nước Ép Dưa Hấu:Size Lớn</option>
-             <option value="Nước Ép Dưa Hấu:Size Nhỏ" data-img="hau.jfif">Nước Ép Dưa Hấu:Size Nhỏ</option>
-            <option value="Nước Ép Cà Rốt:Size Lớn" data-img="rot.jfif">Nước Ép Cà Rốt:Size Lớn</option>
-             <option value="Nước Ép Cà Rốt:Size Nhỏ" data-img="rot.jfif">Nước Ép Cà Rốt:Size Nhỏ</option>
-            <option value="Choco Latte" data-img="choco.jfif">Choco Latte</option>
-            <option value="Matcha Latte" data-img="bo.jfif">Matcha Latte</option>
-          </select>
-          <img id="productImage${itemIndex}" src="com.jfif" alt="Image" class="product-image">
-          <div class="quantity-container">
-            <button type="button" class="quantity-btn" onclick="decreaseQuantity('quantity${itemIndex}')">-</button>
-            <span id="quantity${itemIndex}" class="quantity">1</span>
-            <button type="button" class="quantity-btn" onclick="increaseQuantity('quantity${itemIndex}')">+</button>
-          </div>
-          <button type="button" class="remove-item" onclick="removeOrderItem(${itemIndex})">Xóa</button>
-        </div>
-      `;
-      container.insertAdjacentHTML('beforeend', newItem);
-    }
-
-    function increaseQuantity(quantityId) {
-      let quantity = parseInt(document.getElementById(quantityId).innerText);
-      quantity += 1;
-      document.getElementById(quantityId).innerText = quantity;
-    }
-
-
-    function decreaseQuantity(quantityId) {
-      let quantity = parseInt(document.getElementById(quantityId).innerText);
-      if (quantity > 1) {
-        quantity -= 1;
-        document.getElementById(quantityId).innerText = quantity;
-      }
-    }
-
-    function removeOrderItem(index) {
-      const item = document.getElementById(`orderItem${index}`);
-      item.remove();
-    }
-
-
-    function updateProductImage(index) {
-      const selectElement = document.getElementById(`productSelection${index}`);
-      const selectedOption = selectElement.options[selectElement.selectedIndex];
-      const imagePath = selectedOption.getAttribute('data-img');
-      document.getElementById(`productImage${index}`).src = imagePath;
-    }
-
-    document.getElementById('orderForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const customerName = document.getElementById('customerName').value;
-      const customerPhone = document.getElementById('customerPhone').value;
-      const customerAddress = document.getElementById('customerAddress').value;
-      const orderNotes = document.getElementById('orderNotes').value;
-
-      let orderDetails = '';
-      for (let i = 1; i <= itemIndex; i++) {
-        const product = document.getElementById(`productSelection${i}`).value; // Lấy tên món và kích thước
-        const quantity = document.getElementById(`quantity${i}`).innerText;
-        if (product) {
-          orderDetails += `Món ${i}: ${product} (x${quantity})\n`;
+    function calculateTotal() {
+      const roomPrice = parseInt(roomSelect.value);
+      const numGuests = parseInt(guestsSelect.value);
+      let serviceTotal = 0;
+      const selectedServices = [];
+      serviceCheckboxes.forEach(cb => {
+        if (cb.checked) {
+          serviceTotal += parseInt(cb.value);
+          selectedServices.push(cb.parentElement.textContent.trim());
         }
-      }
+      });
+      const total = roomPrice + serviceTotal;
+      const totalPerGuest = total / numGuests;
+      totalDisplay.textContent = `Tổng tiền: ${total.toLocaleString()}đ (Mỗi người: ${totalPerGuest.toLocaleString()}đ)`;
 
-      const templateParams = {
-        to_name: 'Chủ cửa hàng',
-        from_name: customerName,
-        customer_phone: customerPhone,
-        customer_address: customerAddress,
-        order_details: orderDetails,
-        notes: orderNotes,
-        to_email: 'huyonechamfli@gmail.com',
-      };
+      const roomText = roomSelect.options[roomSelect.selectedIndex].text;
+      summaryDisplay.innerHTML = `
+        <strong>Loại phòng:</strong> ${roomText}<br>
+        <strong>Số người:</strong> ${numGuests}<br>
+        <strong>Dịch vụ:</strong> ${selectedServices.join(", ") || "Không có"}<br>
+        <strong>Tổng tiền:</strong> ${total.toLocaleString()}đ
+      `;
+    }
 
-      emailjs.send('service_v0jmdmn', 'template_wjdjnms', templateParams)
-        .then(function (response) {
-          console.log('SUCCESS!', response.status, response.text);
-          alert('Đơn hàng đã được gửi thành công!');
-        }, function (error) {
-          console.log('FAILED...', error);
-          alert('Có lỗi xảy ra khi gửi đơn hàng. Vui lòng thử lại!');
-        });
+    function updateRoomInfo() {
+      const selectedOption = roomSelect.options[roomSelect.selectedIndex];
+      const roomDescText = selectedOption.getAttribute("data-desc");
+      const roomImgUrl = selectedOption.getAttribute("data-img");
+      roomDesc.textContent = roomDescText;
+      roomImg.src = roomImgUrl;
+      roomImg.style.display = roomImgUrl ? "block" : "none";
+      calculateTotal();
+    }
+
+    roomSelect.addEventListener("change", updateRoomInfo);
+    guestsSelect.addEventListener("change", calculateTotal);
+    serviceCheckboxes.forEach(cb => cb.addEventListener("change", calculateTotal));
+
+    function bookRoom() {
+  const name = document.getElementById("name").value;
+  const checkin = document.getElementById("checkin").value;
+  const checkout = document.getElementById("checkout").value;
+  const guests = guestsSelect.value;
+  const roomOption = roomSelect.options[roomSelect.selectedIndex];
+  const roomType = roomOption.text;
+  const roomPrice = roomOption.value;
+  const confirmationCode = "VIP" + Math.floor(Math.random() * 1000000);
+
+  let selectedServices = [];
+  let serviceTotal = 0;
+  serviceCheckboxes.forEach(cb => {
+    if (cb.checked) {
+      serviceTotal += parseInt(cb.value);
+      selectedServices.push(cb.parentElement.textContent.trim());
+    }
+  });
+
+  const total = parseInt(roomPrice) + serviceTotal;
+  const totalPerGuest = total / parseInt(guests);
+
+  const emailParams = {
+    name: name,
+    checkin: checkin,
+    checkout: checkout,
+    guests: guests,
+    room: roomType,
+    services: selectedServices.join(", ") || "Không có",
+    total: total.toLocaleString() + "đ",
+    totalPerGuest: totalPerGuest.toLocaleString() + "đ",
+    confirmationCode: confirmationCode,
+    to_email: "huyonechampfli@gmail.com" // <-- THAY bằng email bạn dùng để nhận đơn
+  };
+
+  emailjs.send("service_rqc6kqf", "template_6jk3z13", emailParams)
+    .then(() => {
+      summaryDisplay.innerHTML += `
+        <br><strong>Mã xác nhận:</strong> ${confirmationCode}
+        <br><span style="color: #00e676;">✅ Đơn đặt phòng đã được gửi thành công qua email!</span>
+      `;
+    })
+    .catch((error) => {
+      summaryDisplay.innerHTML += `
+        <br><strong style="color: red;">❌ Gửi email thất bại.</strong>
+        <br>Lỗi: ${error.text}
+      `;
     });
+}
 
+  </script>
+  <script>
+    function bookRoom() {
+  const name = document.getElementById("name").value.trim();
+  const checkin = document.getElementById("checkin").value;
+  const checkout = document.getElementById("checkout").value;
+  const roomSelected = roomSelect.selectedIndex > 0;
+
+  if (!name || !checkin || !checkout || !roomSelected) {
+    alert("Vui lòng điền đầy đủ thông tin và chọn loại phòng trước khi đặt.");
+    return;
+  }
+
+  // Tiếp tục xử lý gửi email và hiển thị mã xác nhận...
+}
+
+  </script>
+  <script>
+    document.getElementById("popup").style.display = "block";
+document.getElementById("popup-content").innerHTML = `
+  Mã xác nhận: <strong>${confirmationCode}</strong><br>
+  Tổng tiền: <strong>${total.toLocaleString()}đ</strong><br>
+  Cảm ơn bạn đã đặt phòng! Chúng tôi sẽ liên hệ sớm nhất.
+`;
 
   </script>
 </body>
-
 </html>

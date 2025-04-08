@@ -22,76 +22,49 @@
     .content-section p {
       margin-bottom: 1rem;
     }
-
     header {
       background-color: #222;
       color: white;
       text-align: center;
       padding: 1rem;
+      width: 100%;
+      transition: opacity 0.3s ease;
     }
-
-    nav {
-      background-color: blue;
-      text-align: center;
-      padding: 0.5rem;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-    }
-
-    nav a {
-      margin: 0 1rem;
-      color: white;
-      text-decoration: none;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #007BFF;
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    .dropdown-content a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: white;
-      text-align: left;
-    }
-
-    .dropdown-content a:hover {
-      background-color: #0056b3;
-    }
+    
   </style>
 </head>
 <header>
   <h1 class="text-2xl">Khám Phá Những Khách Sạn Hàng Đầu</h1>
 </header>
-<nav>
-  <a style="text-decoration: none;" href="trangchu.html" class="mx-4">Trang chủ</a>
-  <div class="dropdown inline-block relative">
-    <a style="text-decoration: none;" href="trang1.html" class="mx-4">Khách sạn</a>
-    <div class="dropdown-content absolute hidden bg-blue-600 text-white shadow-lg">
-
+<!-- Navbar -->
+<!-- Cập nhật phần nav -->
+<nav style="padding-right: 16.4px;" class="flex items-center px-6">
+  <div class="flex items-center space-x-3">
+    <img src="h.png" alt="Ravatel Logo" class="h-12 w-12" />
+    <div>
+      <h1 class="text-2xl font-bold">HOI AN</h1>
+      <p class="text-sm">LUXURY HOTEL</p>
     </div>
   </div>
-  <div class="dropdown inline-block relative">
-    <a style="text-decoration: none;" href="thongtin.html" class="mx-4">Giới thiệu</a>
-    <div class="dropdown-content absolute hidden bg-blue-600 text-white shadow-lg">
+  <!-- Thêm nút menu cho mobile -->
+  <button id="menuBtn" class="md:hidden text-white">
+    <i class="fas fa-bars text-2xl"></i>
+  </button>
+  <!-- Thêm class mobile-menu để điều khiển hiển thị -->
+  <div id="mobileMenu" class="hidden md:flex md:items-center md:space-x-4">
+    <a href="trangchu.html" class="text-white block py-2">Trang chủ</a>
+    <div class="dropdown relative">
+      <a href="trang1.html" class="text-white block py-2">Khách sạn</a>
 
     </div>
+    <a href="thongtin.html" class="text-white block py-2">Giới thiệu</a>
+    <a href="lienhe.html" class="text-white block py-2">Liên hệ</a>
+    <div class="search-container">
+      <input type="text" placeholder="Tìm kiếm...">
+      <button type="submit"><i class="fas fa-search"></i></button>
+    </div>
   </div>
-  <a style="text-decoration: none;" href="lienhe.html" class="mx-4">Liên hệ</a>
 </nav>
-
 <body class="bg-gray-100 p-4">
   <div class="max-w-5xl mx-auto bg-white p-4 rounded-lg shadow-lg">
     <div class="flex items-center mb-4">

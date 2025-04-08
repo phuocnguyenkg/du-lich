@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: #fff;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 255, 255, 0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #0ff;
+            text-shadow: 0 0 10px #0ff;
+        }
+
+        nav {
+            background-color: #111;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 255, 255, 0.2);
+            flex-wrap: wrap;
+        }
+
+        nav .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav .logo-container img {
+            height: 50px;
+            width: 50px;
+        }
+
+        nav .logo-container h1 {
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        nav .logo-container p {
+            margin: 0;
+            font-size: 0.8em;
+        }
+
+        nav a {
+            color: #0ff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 5px 10px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background: #0ff;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container input {
+            padding: 5px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .search-container button {
+            padding: 5px 10px;
+            border: none;
+            background-color: #0ff;
+            color: #000;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .room {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .room:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+        }
+
+        .room img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid #0ff;
+        }
+
+        .room-content {
+            padding: 15px;
+        }
+
+        .room-content h2 {
+            color: #0ff;
+            margin: 0 0 10px;
+            font-size: 1.5em;
+            text-shadow: 0 0 5px #0ff;
+        }
+
+        .room-content p {
+            line-height: 1.5;
+            font-size: 0.95em;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style> 
+</head>
+
+<body>
+    <header>
+        <h1 class="text-2xl">Khám Phá Những Khách Sạn Hàng Đầu</h1>
+    </header>
+    <nav style="padding-right: 16.4px;">
+        <div class="logo-container">
+            <img src="h.png" alt="Ravatel Logo" class="h-12 w-12" />
+            <div>
+                <h1 class="text-2xl font-bold">HOI AN</h1>
+                <p class="text-sm">LUXURY HOTEL</p>
+            </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <a href="trangchu.html">Trang chủ</a>
+            <a href="trang1.html">Khách sạn</a>
+            <a href="thongtin.html">Giới thiệu</a>
+            <a href="lienhe.html">Liên hệ</a>
+            <div class="search-container">
+                <input type="text" placeholder="Tìm kiếm...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="room">
+            <img src="https://images.unsplash.com/photo-1560347876-aeef00ee58a1" alt="Deluxe Room">
+            <div class="room-content">
+                <h2>Deluxe Room</h2>
+                <p>Spacious room with ocean view, king-size bed, free Wi-Fi, and complimentary breakfast.</p>
+            </div>
+        </div>
+        <div class="room">
+            <img src="https://images.unsplash.com/photo-1582719478148-fb1e6e8b3cde" alt="Suite Room">
+            <div class="room-content">
+                <h2>Suite Room</h2>
+                <p>Luxury suite with private balcony, bathtub, minibar, and 24/7 room service.</p>
+            </div>
+        </div>
+        <div class="room">
+            <img src="https://images.unsplash.com/photo-1582719478250-5c5709f16c88" alt="Standard Room">
+            <div class="room-content">
+                <h2>Standard Room</h2>
+                <p>Cozy and affordable, queen-size bed, flat-screen TV, air-conditioning and modern décor.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

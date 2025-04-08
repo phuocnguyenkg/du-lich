@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đặt Phòng Khách Sạn VIP Siêu Cấp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+    }
+    body {
+      background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+    .container {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 800px;
+      animation: slideIn 1s ease-in-out;
+    }
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateY(50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #d84315;
+      font-size: 2.8rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #444;
+    }
+    select, input[type="text"], input[type="date"] {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1.2rem;
+      border-radius: 12px;
+      border: 1px solid #bbb;
+      transition: all 0.3s ease;
+    }
+    select:focus, input:focus {
+      border-color: #ff7043;
+      box-shadow: 0 0 0 3px rgba(255, 112, 67, 0.2);
+    }
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .checkbox-group label {
+      background: #fff3e0;
+      padding: 0.7rem;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+    .checkbox-group label:hover {
+      background: #ffe0b2;
+    }
+    .checkbox-group input[type="checkbox"] {
+      transform: scale(1.2);
+    }
+    .total {
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #1b5e20;
+    }
+    .summary {
+      background: #f1f8e9;
+      padding: 1rem;
+      border-radius: 12px;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: #444;
+    }
+    button {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(90deg, #ff5722, #ff9800);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #e64a19, #fb8c00);
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 1.5rem;
+      }
+      .checkbox-group {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Đặt Phòng Khách Sạn VIP</h1>
+
+    <label for="name">Tên của bạn:</label>
+    <input type="text" id="name" placeholder="Nguyễn Văn A" required />
+
+    <label for="checkin">Ngày nhận phòng:</label>
+    <input type="date" id="checkin" required />
+
+    <label for="checkout">Ngày trả phòng:</label>
+    <input type="date" id="checkout" required />
+
+    <label for="guests">Số người:</label>
+    <select id="guests">
+      <option value="1">1 Người</option>
+      <option value="2">2 Người</option>
+      <option value="3">3 Người</option>
+      <option value="4">4 Người</option>
+    </select>
+
+    <label for="room">Chọn loại phòng:</label>
+    <select id="room">
+      <option value="0">-- Chọn phòng --</option>
+      <option value="500000">Phòng đơn - 500.000đ</option>
+      <option value="800000">Phòng đôi - 800.000đ</option>
+      <option value="1500000">Phòng VIP - 1.500.000đ</option>
+    </select>
+
+    <label>Dịch vụ kèm theo:</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" value="200000" class="service"> Ăn sáng - 200.000đ</label>
+      <label><input type="checkbox" value="300000" class="service"> Đưa đón sân bay - 300.000đ</label>
+      <label><input type="checkbox" value="100000" class="service"> Spa - 100.000đ</label>
+    </div>
+
+    <div class="total" id="total">Tổng tiền: 0đ</div>
+    <div class="summary" id="summary">Chi tiết đặt phòng sẽ hiển thị ở đây sau khi bạn chọn đầy đủ thông tin.</div>
+    <button onclick="bookRoom()">Đặt phòng ngay</button>
+  </div>
+
+  <script>
+    emailjs.init("neFeefFy6lcRVzvON");
+
+    const roomSelect = document.getElementById("room");
+    const guestsSelect = document.getElementById("guests");
+    const serviceCheckboxes = document.querySelectorAll(".service");
+    const totalDisplay = document.getElementById("total");
+    const summaryDisplay = document.getElementById("summary");
+
+    function calculateTotal() {
+      const roomPrice = parseInt(roomSelect.value);
+      const numGuests = parseInt(guestsSelect.value);
+      let serviceTotal = 0;
+      const selectedServices = [];
+      serviceCheckboxes.forEach(cb => {
+        if (cb.checked) {
+          serviceTotal += parseInt(cb.value);
+          selectedServices.push(cb.parentElement.textContent.trim());
+        }
+      });
+      const total = roomPrice + serviceTotal;
+      const totalPerGuest = total / numGuests;
+      totalDisplay.textContent = `Tổng tiền: ${total.toLocaleString()}đ (Mỗi người: ${totalPerGuest.toLocaleString()}đ)`;
+
+      const roomText = roomSelect.options[roomSelect.selectedIndex].text;
+      summaryDisplay.innerHTML = `
+        <strong>Loại phòng:</strong> ${roomText}<br>
+        <strong>Số người:</strong> ${numGuests}<br>
+        <strong>Dịch vụ:</strong> ${selectedServices.join(", ") || "Không có"}<br>
+        <strong>Mỗi người trả:</strong> ${totalPerGuest.toLocaleString()}đ
+      `;
+
+      return total;
+    }
+
+    roomSelect.addEventListener("change", calculateTotal);
+    guestsSelect.addEventListener("change", calculateTotal);
+    serviceCheckboxes.forEach(cb => cb.addEventListener("change", calculateTotal));
+
+    function bookRoom() {
+      const name = document.getElementById("name").value;
+      const checkin = document.getElementById("checkin").value;
+      const checkout = document.getElementById("checkout").value;
+      const roomText = roomSelect.options[roomSelect.selectedIndex].text;
+      const numGuests = guestsSelect.value;
+
+      if (!name || !checkin || !checkout || roomSelect.value === "0") {
+        alert("Vui lòng điền đầy đủ thông tin đặt phòng!");
+        return;
+      }
+
+      const services = [];
+      serviceCheckboxes.forEach(cb => {
+        if (cb.checked) services.push(cb.parentElement.textContent.trim());
+      });
+
+      const total = calculateTotal();
+
+      const booking = {
+        name,
+        room: roomText,
+        services,
+        checkin,
+        checkout,
+        total
+      };
+      localStorage.setItem("booking", JSON.stringify(booking));
+
+      emailjs.send("service_rqc6kqf", "template_6jk3z13", {
+        name: name,
+        room: roomText,
+        checkin: checkin,
+        checkout: checkout,
+        total: total.toLocaleString() + "đ",
+        totalPerGuest: (total / numGuests).toLocaleString() + "đ"
+      }).then(() => {
+        alert("✅ Đặt phòng thành công! Thông tin đã được gửi qua email.");
+      }, (error) => {
+        alert("❌ Gửi email thất bại: " + error.text);
+      });
+    }
+  </script>
+</body>
+</html>
