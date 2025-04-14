@@ -1,213 +1,569 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Booking</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-            color: #fff;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vinpearl Nam Hội An - Trang chủ</title>
+  <meta name="description"
+    content="Khám phá Vinpearl Nam Hội An - thiên đường nghỉ dưỡng và giải trí đẳng cấp bên bờ biển Bình Minh.">
+  <meta property="og:title" content="Vinpearl Nam Hội An">
+  <meta property="og:description"
+    content="Kỳ nghỉ tuyệt vời với Vinpearl: Resort 5 sao, VinWonders, Safari, ẩm thực đa dạng...">
+  <meta property="og:image" content="https://cdn.vinpearl.com/hero-banner-vinpearl-nam-hoi-an.jpg">
+  <meta property="og:url" content="https://vinpearl.com/nam-hoi-an">
+  <link rel="icon" href="https://via.placeholder.com/32" type="image/png">
+  <link rel="preload" href="https://static.vinwonders.com/2022/12/vinpearl-nam-hoi-an.jpg" as="image">
+  <!-- Chèn AOS CSS cục bộ -->
+  <link href="css/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-        header {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 255, 255, 0.3);
-        }
+    body {
+      background-color: #ffffff;
+      color: #333;
+      scroll-behavior: smooth;
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #0ff;
-            text-shadow: 0 0 10px #0ff;
-        }
+    header {
+      position: relative;
+      background: url('https://static.vinwonders.com/2022/12/vinpearl-nam-hoi-an.jpg') center/cover no-repeat;
+      color: #003c2f;
+      text-align: center;
+      padding: 100px 20px;
+      overflow: hidden;
+    }
 
-        nav {
-            background-color: #111;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            box-shadow: 0 2px 5px rgba(0, 255, 255, 0.2);
-            flex-wrap: wrap;
-        }
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(173, 216, 230, 0.5), rgba(204, 236, 221, 0.5));
+      z-index: 1;
+    }
 
-        nav .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    header * {
+      position: relative;
+      z-index: 2;
+    }
 
-        nav .logo-container img {
-            height: 50px;
-            width: 50px;
-        }
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+      transition: transform 0.3s ease-in-out;
+    }
 
-        nav .logo-container h1 {
-            font-size: 1.5em;
-            margin: 0;
-        }
+    header:hover h1 {
+      transform: scale(1.05);
+    }
 
-        nav .logo-container p {
-            margin: 0;
-            font-size: 0.8em;
-        }
+    nav {
+      position: sticky;
+      top: 0;
+      background: linear-gradient(to right, #cceccd, #b2ebf2);
+      display: flex;
+      justify-content: center;
+      z-index: 999;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-        nav a {
-            color: #0ff;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 5px 10px;
-            transition: all 0.3s;
-            position: relative;
-        }
+    nav a {
+      color: #003366;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 500;
+    }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 100%;
-            height: 2px;
-            background: #0ff;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease-in-out;
-        }
+    nav a:hover {
+      background-color: teal;
+    }
 
-        nav a:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
+    nav a:focus {
+      outline: 2px solid #004d99;
+      outline-offset: 2px;
+    }
 
-        .search-container {
-            display: flex;
-            align-items: center;
-        }
+    .section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-        .search-container input {
-            padding: 5px;
-            border: none;
-            border-radius: 5px 0 0 5px;
-        }
+    .section h2 {
+      font-size: 36px;
+      margin-bottom: 30px;
+      color: #004d99;
+      text-align: center;
+    }
 
-        .search-container button {
-            padding: 5px 10px;
-            border: none;
-            background-color: #0ff;
-            color: #000;
-            border-radius: 0 5px 5px 0;
-            cursor: pointer;
-        }
+    .section p {
+      font-size: 18px;
+      line-height: 1.6;
+      text-align: center;
+    }
 
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 30px;
-            animation: fadeIn 1s ease-in-out;
-        }
+    .highlight {
+      background-color: #f9f9f9;
+    }
 
-        .room {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
 
-        .room:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
-        }
+    .card {
+      background-color: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-        .room img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-bottom: 2px solid #0ff;
-        }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
 
-        .room-content {
-            padding: 15px;
-        }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
 
-        .room-content h2 {
-            color: #0ff;
-            margin: 0 0 10px;
-            font-size: 1.5em;
-            text-shadow: 0 0 5px #0ff;
-        }
+    .card:hover img {
+      transform: scale(1.1);
+    }
 
-        .room-content p {
-            line-height: 1.5;
-            font-size: 0.95em;
-        }
+    .card-content {
+      padding: 20px;
+    }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style> 
+    .card-content h3 {
+      font-size: 20px;
+      color: #0b486b;
+      margin-bottom: 10px;
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .cta a {
+      display: inline-block;
+      background-color: #f56217;
+      color: white;
+      padding: 14px 28px;
+      font-size: 18px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.3s;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .cta a:hover {
+      background-color: #e75c1a;
+      transform: scale(1.05);
+    }
+
+    .cta a:focus {
+      outline: 2px solid #004d99;
+      outline-offset: 2px;
+    }
+
+    .fixed-cta {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #f56217;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+
+    .fixed-cta:hover {
+      background: #e75c1a;
+    }
+
+    .fixed-cta:focus {
+      outline: 2px solid #004d99;
+      outline-offset: 2px;
+    }
+
+    footer {
+      background: linear-gradient(45deg, #f1f1f1, #d0d0d0);
+      color: #333;
+      font-size: 14px;
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 2px solid #e5e5e5;
+    }
+
+    .social-links a {
+      color: #003366;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .social-links a:hover {
+      color: #f56217;
+    }
+
+    #topBtn {
+      display: none;
+      position: fixed;
+      bottom: 40px;
+      right: 30px;
+      z-index: 99;
+      font-size: 20px;
+      background: #f56217;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      padding: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transition: opacity 0.3s ease, background 0.3s ease;
+    }
+
+    #topBtn.show {
+      opacity: 0.8;
+    }
+
+    #topBtn:hover {
+      opacity: 1;
+      background: #d94e06;
+    }
+
+    #topBtn:focus {
+      outline: 2px solid #004d99;
+      outline-offset: 2px;
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-        <h1 class="text-2xl">Khám Phá Những Khách Sạn Hàng Đầu</h1>
-    </header>
-    <nav style="padding-right: 16.4px;">
-        <div class="logo-container">
-            <img src="h.png" alt="Ravatel Logo" class="h-12 w-12" />
-            <div>
-                <h1 class="text-2xl font-bold">HOI AN</h1>
-                <p class="text-sm">LUXURY HOTEL</p>
-            </div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-            <a href="trangchu.html">Trang chủ</a>
-            <a href="trang1.html">Khách sạn</a>
-            <a href="thongtin.html">Giới thiệu</a>
-            <a href="lienhe.html">Liên hệ</a>
-            <div class="search-container">
-                <input type="text" placeholder="Tìm kiếm...">
-                <button type="submit"><i class="fas fa-search"></i></button>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="room">
-            <img src="https://images.unsplash.com/photo-1560347876-aeef00ee58a1" alt="Deluxe Room">
-            <div class="room-content">
-                <h2>Deluxe Room</h2>
-                <p>Spacious room with ocean view, king-size bed, free Wi-Fi, and complimentary breakfast.</p>
-            </div>
-        </div>
-        <div class="room">
-            <img src="https://images.unsplash.com/photo-1582719478148-fb1e6e8b3cde" alt="Suite Room">
-            <div class="room-content">
-                <h2>Suite Room</h2>
-                <p>Luxury suite with private balcony, bathtub, minibar, and 24/7 room service.</p>
-            </div>
-        </div>
-        <div class="room">
-            <img src="https://images.unsplash.com/photo-1582719478250-5c5709f16c88" alt="Standard Room">
-            <div class="room-content">
-                <h2>Standard Room</h2>
-                <p>Cozy and affordable, queen-size bed, flat-screen TV, air-conditioning and modern décor.</p>
-            </div>
-        </div>
+  <header role="banner">
+    <h1 translate="no">Khám phá Vinpearl Nam Hội An</h1>
+  </header>
+
+  <nav role="navigation">
+    <a href="index.html" translate="no">Trang chủ</a>
+    <a href="about.html" translate="no">Giới thiệu</a>
+    <a href="experience.html" translate="no">Trải nghiệm</a>
+    <a href="dining.html" translate="no">Ẩm thực</a>
+    <a href="contact.html" translate="no">Liên hệ</a>
+  </nav>
+
+  <div style="text-align:right; padding:10px 20px;">
+    <label for="lang-switch" translate="no">Ngôn ngữ:</label>
+    <select id="lang-switch" aria-label="Chọn ngôn ngữ">
+      <option value="vi" selected translate="no">Tiếng Việt</option>
+      <option value="en" translate="no">English</option>
+    </select>
+  </div>
+
+  <main role="main">
+    <div class="section" data-aos="fade-up">
+      <h2 translate="no">Thiên đường nghỉ dưỡng và giải trí bên bờ biển</h2>
+      <p>Vinpearl Nam Hội An là khu nghỉ dưỡng đẳng cấp quốc tế tọa lạc tại bãi biển Bình Minh hoang sơ, nơi hội tụ tinh
+        hoa nghỉ dưỡng – vui chơi – khám phá văn hóa. Tại đây, bạn sẽ tận hưởng kỳ nghỉ tuyệt vời với các tiện nghi hiện
+        đại, thiên nhiên tuyệt đẹp và dịch vụ chu đáo bậc nhất.</p>
     </div>
+
+    <div class="section highlight" data-aos="fade-up">
+      <h2 translate="no">Điểm nổi bật</h2>
+      <div class="grid">
+        <div class="card" data-aos="zoom-in">
+          <img src="https://cdn.vinpearl.com/vw-namhoian.jpg" alt="Toàn cảnh công viên giải trí VinWonders Nam Hội An từ trên cao">
+          <div class="card-content">
+            <h3 translate="no">VinWonders Nam Hội An</h3>
+            <p>Công viên chủ đề kết hợp văn hóa – giải trí – công nghệ hiện đại bậc nhất miền Trung.</p>
+          </div>
+        </div>
+        <div class="card" data-aos="zoom-in">
+          <img src="https://cdn.vinpearl.com/safari-namhoian.jpg" alt="Vườn thú mở Vinpearl River Safari với các loài động vật quý hiếm">
+          <div class="card-content">
+            <h3 translate="no">Vinpearl River Safari</h3>
+            <p>Vườn thú mở đầu tiên và duy nhất tại Việt Nam với hàng trăm loài động vật quý hiếm.</p>
+          </div>
+        </div>
+        <div class="card" data-aos="zoom-in">
+          <img src="https://cdn.vinpearl.com/culinary-namhoian.jpg" alt="Bàn tiệc ẩm thực Á-Âu tại Vinpearl Nam Hội An">
+          <div class="card-content">
+            <h3 translate="no">Hành trình ẩm thực đa sắc màu</h3>
+            <p>Thưởng thức ẩm thực Á – Âu tinh tế, hải sản tươi ngon và đặc sản miền Trung.</p>
+          </div>
+        </div>
+        <div class="card" data-aos="zoom-in">
+          <img src="https://cdn.vinpearl.com/resort-namhoian.jpg" alt="Phòng nghỉ sang trọng với tầm nhìn biển tại Vinpearl Nam Hội An">
+          <div class="card-content">
+            <h3 translate="no">Resort 5 sao sang trọng</h3>
+            <p>Hệ thống phòng nghỉ hiện đại, view biển tuyệt đẹp, hồ bơi tràn bờ và spa thư giãn.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" data-aos="fade-up">
+      <h2 translate="no">Giới thiệu về Vinpearl Nam Hội An</h2>
+      <p>Vinpearl Nam Hội An là một khu nghỉ dưỡng đẳng cấp 5 sao, tọa lạc tại bãi biển Bình Minh thơ mộng. Khu nghỉ dưỡng
+        này không chỉ nổi bật với vẻ đẹp thiên nhiên hoang sơ mà còn với các tiện nghi hiện đại và dịch vụ cao cấp. Đến
+        với Vinpearl, bạn sẽ được trải nghiệm những dịch vụ nghỉ dưỡng đỉnh cao, từ phòng nghỉ sang trọng đến các hoạt động
+        giải trí, khám phá độc đáo. Đây là nơi lý tưởng để bạn thư giãn, tái tạo năng lượng và thưởng thức những trải nghiệm
+        không thể quên.</p>
+      <img src="https://cdn.vinpearl.com/intro-nam-hoian.jpg" alt="Toàn cảnh khu nghỉ dưỡng Vinpearl Nam Hội An bên bãi biển Bình Minh" style="width: 100%; border-radius: 8px;">
+    </div>
+
+    <div class="section" data-aos="fade-up">
+      <h2 translate="no">Dịch vụ đặc biệt tại Vinpearl Nam Hội An</h2>
+      <p>Vinpearl Nam Hội An cung cấp nhiều dịch vụ đặc biệt cho khách hàng như:</p>
+      <ul>
+        <li><strong translate="no">Spa thư giãn:</strong> Trải nghiệm các liệu pháp chăm sóc sức khỏe và làm đẹp tại khu spa cao cấp của chúng tôi.</li>
+        <li><strong translate="no">Hồ bơi vô cực:</strong> Tận hưởng những giây phút thư giãn tuyệt vời tại hồ bơi tràn bờ, với tầm nhìn ra biển rộng lớn.</li>
+        <li><strong translate="no">Phòng tập gym hiện đại:</strong> Tập luyện tại khu phòng gym được trang bị đầy đủ máy móc hiện đại, giúp bạn duy trì sức khỏe trong kỳ nghỉ.</li>
+        <li><strong translate="no">Khu vui chơi trẻ em:</strong> Với nhiều trò chơi và hoạt động sáng tạo, khu vui chơi trẻ em là lựa chọn lý tưởng cho các gia đình.</li>
+      </ul>
+    </div>
+
+    <div class="section news-section" data-aos="fade-up">
+      <h2 translate="no">Tin tức & Ưu đãi mới nhất</h2>
+      <div class="grid">
+        <div class="card" data-aos="flip-up">
+          <img src="https://cdn.vinpearl.com/news-deal1.jpg" alt="Ưu đãi mùa hè tại Vinpearl Nam Hội An">
+          <div class="card-content">
+            <h3 translate="no">Ưu đãi mùa hè - Giảm 40%</h3>
+            <p>Đặt phòng trước 30/5 để nhận mức giá hấp dẫn cùng nhiều quyền lợi đặc biệt.</p>
+          </div>
+        </div>
+        <div class="card" data-aos="flip-up">
+          <img src="https://cdn.vinpearl.com/news-kidcamp.jpg" alt="Trại hè Kid Camp cho trẻ em tại Vinpearl">
+          <div class="card-content">
+            <h3 translate="no">Trại hè Kid Camp</h3>
+            <p>Chương trình trải nghiệm dành cho trẻ em với các hoạt động sáng tạo và khám phá thiên nhiên.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" data-aos="fade-up">
+        <h2 translate="no">Khám phá Vinpearl Nam Hội An qua video</h2>
+        <div style="text-align:center;">
+          <iframe width="800" height="450" src="https://www.youtube.com/embed/xxxxxxxxx" frameborder="0" allowfullscreen></iframe>
+          <p style="text-align: center; margin-top: 10px;" translate="no">Khám phá vẻ đẹp của Vinpearl Nam Hội An qua góc nhìn sống động!</p>
+        </div>
+      </div>
+
+      <div class="section highlight" data-aos="fade-up">
+        <h2 translate="no">Đánh giá từ khách hàng</h2>
+        <div class="grid">
+          <div class="card" data-aos="zoom-in">
+            <img src="https://cdn.vinpearl.com/review1.jpg" alt="Khách hàng Mai Lan tại Vinpearl Nam Hội An">
+            <div class="card-content">
+              <h3 translate="no">Chị Mai Lan</h3>
+              <p>"Vinpearl Nam Hội An thực sự là thiên đường nghỉ dưỡng. Mọi thứ ở đây đều hoàn hảo, từ phòng ở đến các dịch vụ tiện ích. Tôi đã có một kỳ nghỉ tuyệt vời cùng gia đình."</p>
+            </div>
+          </div>
+          <div class="card" data-aos="zoom-in">
+            <img src="https://cdn.vinpearl.com/review2.jpg" alt="Khách hàng Minh Tuấn tại Vinpearl Nam Hội An">
+            <div class="card-content">
+              <h3 translate="no">Anh Minh Tuấn</h3>
+              <p>"Dịch vụ tại Vinpearl Nam Hội An rất tuyệt vời, nhân viên thân thiện và luôn sẵn sàng hỗ trợ. Chắc chắn tôi sẽ quay lại trong những kỳ nghỉ sau!"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta" data-aos="fade-up">
+        <a href="contact.html" translate="no">Liên hệ đặt phòng ngay</a>
+      </div>
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    <div id="footer-text" translate="no"></div>
+    <p translate="no">Địa chỉ: Thôn Bình Minh, Xã Bình Dương, Huyện Thăng Bình, Tỉnh Quảng Nam<br>
+      Hotline: 1900 232389 | Email: info@vinpearl.com</p>
+    <div class="social-links">
+      <a href="https://facebook.com/vinpearl" target="_blank" translate="no">Facebook</a>
+      <a href="https://instagram.com/vinpearl" target="_blank" translate="no">Instagram</a>
+    </div>
+  </footer>
+
+  <button onclick="topFunction()" id="topBtn" title="Lên đầu trang" translate="no">↑</button>
+  <a href="contact.html" class="fixed-cta" translate="no">Đặt phòng ngay</a>
+
+  <!-- Chèn AOS JavaScript cục bộ -->
+  <script defer src="js/aos.js"></script>
+  <script>
+    // Khởi tạo AOS
+    try {
+      AOS.init();
+    } catch (error) {
+      console.error("Error initializing AOS:", error);
+    }
+
+    const translations = {
+      vi: {
+        header: "Khám phá Vinpearl Nam Hội An",
+        section1_title: "Thiên đường nghỉ dưỡng và giải trí bên bờ biển",
+        section1_text: "Vinpearl Nam Hội An là khu nghỉ dưỡng đẳng cấp quốc tế tọa lạc tại bãi biển Bình Minh hoang sơ...",
+        highlights_title: "Điểm nổi bật",
+        highlight_1_title: "VinWonders Nam Hội An",
+        highlight_1_text: "Công viên chủ đề kết hợp văn hóa – giải trí – công nghệ hiện đại...",
+        highlight_2_title: "Vinpearl River Safari",
+        highlight_2_text: "Vườn thú mở đầu tiên và duy nhất tại Việt Nam...",
+        highlight_3_title: "Hành trình ẩm thực đa sắc màu",
+        highlight_3_text: "Thưởng thức ẩm thực Á – Âu tinh tế...",
+        highlight_4_title: "Resort 5 sao sang trọng",
+        highlight_4_text: "Hệ thống phòng nghỉ hiện đại, view biển tuyệt đẹp...",
+        news_title: "Tin tức & Ưu đãi mới nhất",
+        news_1_title: "Ưu đãi mùa hè - Giảm 40%",
+        news_1_text: "Đặt phòng trước 30/5 để nhận mức giá hấp dẫn...",
+        news_2_title: "Trại hè Kid Camp",
+        news_2_text: "Chương trình trải nghiệm dành cho trẻ em...",
+        cta: "Liên hệ đặt phòng ngay",
+        footer: `© ${new Date().getFullYear()} Vinpearl Nam Hội An. All rights reserved.`
+      },
+      en: {
+        header: "Discover Vinpearl Nam Hoi An",
+        section1_title: "Paradise for Relaxation and Entertainment",
+        section1_text: "Vinpearl Nam Hoi An is a world-class resort located on the pristine Binh Minh beach...",
+        highlights_title: "Highlights",
+        highlight_1_title: "VinWonders Nam Hoi An",
+        highlight_1_text: "A theme park combining culture – entertainment – modern technology...",
+        highlight_2_title: "Vinpearl River Safari",
+        highlight_2_text: "Vietnam's first and only open zoo with hundreds of rare animals...",
+        highlight_3_title: "Colorful Culinary Journey",
+        highlight_3_text: "Enjoy exquisite Asian – European cuisine, fresh seafood...",
+        highlight_4_title: "Luxury 5-Star Resort",
+        highlight_4_text: "Modern rooms with ocean view, infinity pool and spa...",
+        news_title: "Latest News & Promotions",
+        news_1_title: "Summer Deal - 40% OFF",
+        news_1_text: "Book before May 30 to get the best price with special perks...",
+        news_2_title: "Kid Camp Summer Program",
+        news_2_text: "Fun and educational camp for kids with nature & creativity...",
+        cta: "Contact us now to book",
+        footer: `© ${new Date().getFullYear()} Vinpearl Nam Hoi An. All rights reserved.`
+      }
+    };
+
+    function updateLanguage(lang) {
+      const t = translations[lang];
+      try {
+        document.querySelector('header h1').textContent = t.header;
+        document.querySelectorAll('.section')[0].querySelector('h2').textContent = t.section1_title;
+        document.querySelectorAll('.section')[0].querySelector('p').textContent = t.section1_text;
+        document.querySelectorAll('.section')[1].querySelector('h2').textContent = t.highlights_title;
+
+        const cards = document.querySelectorAll('.highlight .card');
+        if (cards[0]) {
+          cards[0].querySelector('h3').textContent = t.highlight_1_title;
+          cards[0].querySelector('p').textContent = t.highlight_1_text;
+        }
+        if (cards[1]) {
+          cards[1].querySelector('h3').textContent = t.highlight_2_title;
+          cards[1].querySelector('p').textContent = t.highlight_2_text;
+        }
+        if (cards[2]) {
+          cards[2].querySelector('h3').textContent = t.highlight_3_title;
+          cards[2].querySelector('p').textContent = t.highlight_3_text;
+        }
+        if (cards[3]) {
+          cards[3].querySelector('h3').textContent = t.highlight_4_title;
+          cards[3].querySelector('p').textContent = t.highlight_4_text;
+        }
+
+        const newsSection = document.querySelector('.news-section');
+        if (newsSection) {
+          newsSection.querySelector('h2').textContent = t.news_title;
+          const newsCards = newsSection.querySelectorAll('.card');
+          if (newsCards[0]) {
+            newsCards[0].querySelector('h3').textContent = t.news_1_title;
+            newsCards[0].querySelector('p').textContent = t.news_1_text;
+          }
+          if (newsCards[1]) {
+            newsCards[1].querySelector('h3').textContent = t.news_2_title;
+            newsCards[1].querySelector('p').textContent = t.news_2_text;
+          }
+          const ctaLink = newsSection.querySelector('.cta a');
+          if (ctaLink) ctaLink.textContent = t.cta;
+        }
+
+        const footerText = document.getElementById('footer-text');
+        if (footerText) footerText.textContent = t.footer;
+      } catch (error) {
+        console.error("Error updating language:", error);
+      }
+    }
+
+    document.getElementById('lang-switch').addEventListener('change', function () {
+      const lang = this.value;
+      localStorage.setItem('language', lang);
+      updateLanguage(lang);
+    });
+
+    window.addEventListener('load', () => {
+      const savedLang = localStorage.getItem('language') || 'vi';
+      document.getElementById('lang-switch').value = savedLang;
+      updateLanguage(savedLang);
+    });
+
+    window.onscroll = function () {
+      let header = document.querySelector('header');
+      let topBtn = document.getElementById("topBtn");
+      try {
+        header.style.opacity = 1 - window.scrollY / 400;
+        if (window.scrollY > 300) {
+          topBtn.classList.add("show");
+        } else {
+          topBtn.classList.remove("show");
+        }
+      } catch (error) {
+        console.error("Error in onscroll:", error);
+      }
+    };
+
+    function topFunction() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mouseover', () => {
+        card.style.transform = 'scale(1.05)';
+        card.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.15)';
+      });
+
+      card.addEventListener('mouseout', () => {
+        card.style.transform = 'scale(1)';
+        card.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.1)';
+      });
+    });
+
+    document.querySelectorAll('.highlight .card img').forEach(img => {
+      img.addEventListener('mouseover', () => {
+        img.style.transform = 'scale(1.1)';
+      });
+
+      img.addEventListener('mouseout', () => {
+        img.style.transform = 'scale(1)';
+      });
+    });
+  </script>
 </body>
 
 </html>

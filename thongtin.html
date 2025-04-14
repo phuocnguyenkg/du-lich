@@ -6,22 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Khách Sạn Hội An</title>
   <meta name="description"
-    content="Hệ thống khách sạn lớn nhất tại thành phố Hội An  với 3 sao, 4 sao. RAVATEL có nhiều tiện ích tiện và nhiều cây xanh mang lại không gian sống như ngôi nhà của bạn. Giá cả cạnh tranh" />
+    content="Hệ thống khách sạn lớn nhất tại thành phố Hội An với 3 sao, 4 sao. RAVATEL có nhiều tiện ích tiện và nhiều cây xanh mang lại không gian sống như ngôi nhà của bạn. Giá cả cạnh tranh" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="./header-nav.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap"
     rel="stylesheet">
-    <link rel="stylesheet" href="./header-nav.css"><style>
+  <style>
     body {
       font-family: 'Roboto', sans-serif;
       font-size: 1rem;
+      scroll-behavior: smooth;
     }
 
     h1,
-    h2 {
+    h2,
+    h3 {
       font-family: 'Playfair Display', serif;
     }
 
@@ -47,19 +50,162 @@
       font-weight: 500;
     }
 
-   
+    /* Fade-in Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Fallback để tránh animation lỗi trên mobile */
+    @media (max-width: 768px) {
+      .fade-in {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+    }
+
+    /* Zoom Hover for Cards */
+    .card {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.08);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Parallax Effect */
+    .parallax {
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Text Reveal Animation */
+    .reveal-text {
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .reveal-text.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Sticky Sidebar */
+    .sticky-sidebar {
+      position: sticky;
+      top: 100px;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      max-width: 600px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Glow Animation for CTA */
+    @keyframes glow {
+      0% {
+        box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+      }
+
+      50% {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+      }
+
+      100% {
+        box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+      }
+    }
+
+    .glow {
+      animation: glow 2s infinite;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+
+      /* Vô hiệu hóa sticky trên mobile */
+      .sticky-sidebar {
+        position: static !important;
+        top: auto !important;
+        display: block !important;
+        /* Đảm bảo div không bị ẩn */
+      }
+
+      /* Đảm bảo hình ảnh hiển thị trên mobile */
+      .sticky-sidebar img {
+        display: block !important;
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: cover;
+      }
+
+      /* Điều chỉnh grid thành cột trên mobile */
+      .grid.md\:grid-cols-5 {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      /* Thứ tự hiển thị: hình ảnh trước, văn bản sau */
+      .md\:col-span-2 {
+        order: 1;
+        margin-bottom: 2rem;
+      }
+
+      .md\:col-span-3 {
+        order: 2;
+      }
+
+      /* Tối ưu padding cho section trên mobile */
+      .fade-in {
+        padding: 1rem;
+      }
+    }
   </style>
 </head>
 
 <body class="bg-gray-100 text-gray-800">
-  <!-- Banner -->
-  
-
-  <!-- Header --><header>
+  <!-- Header (Unchanged) -->
+  <header>
     <h1 class="text-2xl">Khám Phá Những Khách Sạn Hàng Đầu</h1>
   </header>
-  <!-- Navbar -->
-  <!-- Cập nhật phần nav -->
+
+  <!-- Navbar (Unchanged) -->
   <nav style="padding-right: 16.4px;" class="flex items-center px-6">
     <div class="flex items-center space-x-3">
       <img src="h.png" alt="Ravatel Logo" class="h-12 w-12" />
@@ -68,16 +214,13 @@
         <p class="text-sm">LUXURY HOTEL</p>
       </div>
     </div>
-    <!-- Thêm nút menu cho mobile -->
     <button id="menuBtn" class="md:hidden text-white">
       <i class="fas fa-bars text-2xl"></i>
     </button>
-    <!-- Thêm class mobile-menu để điều khiển hiển thị -->
     <div id="mobileMenu" class="hidden md:flex md:items-center md:space-x-4">
       <a href="trangchu.html" class="text-white block py-2">Trang chủ</a>
       <div class="dropdown relative">
         <a href="trang1.html" class="text-white block py-2">Khách sạn</a>
-
       </div>
       <a href="thongtin.html" class="text-white block py-2">Giới thiệu</a>
       <a href="lienhe.html" class="text-white block py-2">Liên hệ</a>
@@ -87,74 +230,260 @@
       </div>
     </div>
   </nav>
-  
 
-  <!-- Nội dung chính -->
-  <div class="max-w-5xl mx-auto px-4 py-8 space-y-10">
-    <section>
-      <h1 class="text-3xl font-semibold mb-4">Chào Mừng Đến Với Khách Sạn Hội An</h1>
-      <img src="t1.webp" class="w-full h-64 object-cover rounded-xl mb-4">
-      <h2 style="font-size: 25px;">Khám Phá Sự Kết Hợp Hoàn Hảo Giữa Vẻ Đẹp Cổ Kính và Tiện Nghi Hiện Đại</h2>
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 py-16 space-y-24">
+    <!-- Hero Section -->
+    <section
+      class="relative parallax bg-[url('hs1.jpg')] h-[800px] rounded-2xl overflow-hidden flex items-center justify-center">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/70 to-transparent"></div>
+      <div class="text-center text-white z-10 fade-in">
+        <h1 class="text-7xl font-bold mb-6 reveal-text">Chào Mừng Đến Với Khách Sạn Hội An</h1>
+        <p class="text-2xl max-w-4xl mx-auto mb-8 reveal-text" style="transition-delay: 0.2s;">Nơi phố cổ kể những câu
+          chuyện xưa, hòa quyện cùng tiện nghi hiện đại, mang đến kỳ nghỉ đong đầy cảm xúc.</p>
+        <button onclick="openModal()"
+          class="inline-block bg-yellow-600 text-gray-900 py-4 px-10 rounded-full text-xl font-semibold hover:bg-yellow-700 glow">Khám
+          Phá Ngay</button>
+      </div>
     </section>
 
-    <section>
-      <h2 class="text-3xl font-semibold mb-4">Vị Trí Lý Tưởng</h2>
-      <img src="t2.webp" class="w-full h-64 object-cover rounded-xl mb-4">
-      <p style="font-size: 20px;">Khách sạn chúng tôi nằm ngay gần các địa điểm nổi bật của Hội An như phố cổ, Chợ đêm
-        Hội An, các cửa hàng thủ công mỹ
-        nghệ, và chỉ cách bãi biển Cửa Đại khoảng 15 phút lái xe. Vị trí trung tâm giúp du khách dễ dàng tham quan các
-        danh
-        thắng, thưởng thức ẩm thực địa phương và trải nghiệm văn hóa đặc sắc của Hội An.</p>
+    <!-- About Section -->
+    <section class="grid md:grid-cols-5 gap-12 fade-in">
+      <div class="md:col-span-3">
+        <h2 class="text-5xl font-semibold mb-6 reveal-text">Vị Trí Đắc Địa</h2>
+        <p class="text-xl mb-4 reveal-text" style="transition-delay: 0.2s;">Hội An nổi tiếng với khu phố cổ kính, nơi
+          bạn có thể dạo bước qua những con đường nhỏ, ngắm nhìn các ngôi nhà cổ và khám
+          phá những cửa hàng thủ công đầy màu sắc.</p>
+        <p class="text-xl mb-6 reveal-text" style="transition-delay: 0.4s;">Hội An cũng nổi tiếng với các bãi biển xinh
+          đẹp như Cửa Đại và An Bàng, nơi bạn có thể thư giãn và tận hưởng vẻ đẹp
+          hoang sơ của thiên nhiên.</p>
+        <p class="text-xl mb-6 reveal-text" style="transition-delay: 0.4s;">Chợ đêm Hội An là điểm đến sôi động, nơi bạn
+          có thể thưởng thức các món ăn đặc sản, mua sắm đồ thủ công mỹ nghệ, và tận
+          hưởng không khí nhộn nhịp của một trong những khu chợ nổi tiếng nhất trong khu vực.</p>
+        <p class="text-xl mb-6 reveal-text" style="transition-delay: 0.4s;">Làng nghề Kim Bồng, nổi bật với nghề mộc
+          truyền thống, hay làng gốm Thanh Hà, nơi bạn có thể chiêm ngưỡng các sản phẩm
+          gốm sứ đặc sắc, là những địa điểm bạn không nên bỏ qua khi khám phá Hội An.</p>
+        <p class="text-xl mb-6 reveal-text" style="transition-delay: 0.4s;">Với vị trí đắc địa ngay trung tâm Hội An,
+          khách sạn là điểm dừng chân hoàn hảo cho những ai muốn khám phá vẻ đẹp hoài cổ
+          của phố cổ cùng sự pha trộn hài hòa giữa nét truyền thống và sự phát triển hiện đại của thành phố này.</p>
+        <p class="text-xl mb-6 reveal-text" style="transition-delay: 0.4s;"> Với sự tận tâm, đội ngũ của chúng tôi luôn
+          sẵn sàng đồng hành cùng bạn để trải nghiệm trọn vẹn nền ẩm thực tinh tế và
+          nét duyên ngầm của thành phố cổ Hội An.</p>
+      </div>
+      <div class="md:col-span-2 sticky-sidebar">
+        <img src="hs2.jpg" alt="Hoi An Location" class="w-full h-[600px] object-cover rounded-2xl card" loading="lazy">
+        <div class="absolute top-6 right-6 bg-yellow-600 text-white px-4 py-2 rounded-full">Gần Chợ Đêm</div>
+      </div>
     </section>
 
-    <section>
-      <h2 class="text-3xl font-semibold mb-4">Phòng Nghỉ Được Thiết Kế Sang Trọng và Tiện Nghi</h2>
-      <img src="t3.jpg" class="w-full h-64 object-cover rounded-xl mb-4">
-      <p style="font-size: 20px;">Chúng tôi tự hào cung cấp một loạt các loại phòng đa dạng để đáp ứng nhu cầu của từng
-        khách hàng, từ các phòng đơn ấm
-        cúng, phòng đôi cho các cặp đôi, đến các phòng gia đình rộng rãi và thoải mái. Mỗi phòng đều được trang bị nội
-        thất hiện
-        đại, đầy đủ tiện nghi như máy lạnh, Wi-Fi miễn phí, TV màn hình phẳng, minibar, và đặc biệt là cửa sổ hoặc ban
-        công nhìn
-        ra khung cảnh thành phố cổ hoặc khu vườn xanh mát.</p>
+    <!-- Rooms Section -->
+    <section class="fade-in">
+      <h2 class="text-5xl font-semibold text-center mb-12 reveal-text">Nghỉ Ngơi Trong Sự Sang Trọng</h2>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="card bg-white rounded-2xl overflow-hidden relative">
+          <img src="Phòng Deluxe.jpg" alt="Deluxe Room" class="w-full h-72 object-cover" loading="lazy">
+          <div class="p-10">
+            <h3 class="text-3xl font-semibold mb-4">Phòng Deluxe</h3>
+            <p class="text-gray-600 mb-4">Không gian ấm áp với ban công ngắm phố cổ, giường king-size êm ái, nội thất gỗ
+              thủ công và ánh sáng tự nhiên dịu nhẹ.</p>
+            <button onclick="openModal()" class="bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700">Đặt
+              Ngay</button>
+          </div>
+        </div>
+        <div class="card bg-white rounded-2xl overflow-hidden relative">
+          <img src="Phòng Suite.jpg" alt="Suite Room" class="w-full h-72 object-cover" loading="lazy">
+          <div class="p-10">
+            <h3 class="text-3xl font-semibold mb-4">Phòng Suite</h3>
+            <p class="text-gray-600 mb-4">Thoải mái với phòng khách riêng, bồn tắm jacuzzi, và tầm nhìn khu vườn xanh
+              mát, hoàn hảo cho những khoảnh khắc riêng tư.</p>
+            <button onclick="openModal()" class="bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700">Đặt
+              Ngay</button>
+          </div>
+        </div>
+        <div class="card bg-white rounded-2xl overflow-hidden relative">
+          <img src="phòng gia đình.jpg" alt="Family Room" class="w-full h-72 object-cover" loading="lazy">
+          <div class="p-10">
+            <h3 class="text-3xl font-semibold mb-4">Phòng Gia Đình</h3>
+            <p class="text-gray-600 mb-4">Rộng rãi với 2 giường lớn, khu vực sinh hoạt chung và tiện nghi hiện đại, lý
+              tưởng cho kỳ nghỉ cùng người thân.</p>
+            <button onclick="openModal()" class="bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700">Đặt
+              Ngay</button>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2 class="text-3xl font-semibold mb-4">Dịch Vụ Tiện Ích Cao Cấp</h2>
-      <img src="t4.jpg" class="w-full h-64 object-cover rounded-xl mb-4">
-      <p style="font-size: 25px;">Chúng tôi cung cấp đầy đủ các dịch vụ để đảm bảo một kỳ nghỉ thư giãn và thoải mái
-        nhất:
-      </p>
-      <ul class="list-disc pl-6 space-y-2">
-        <li style="font-size: 20px;"><b>Hồ bơi ngoài trời</b>: Một nơi lý tưởng để thư giãn...</li>
-        <li style="font-size: 20px;"><b>Nhà hàng</b>: Nơi phục vụ các món ăn đậm đà hương vị địa phương...</li>
-        <li style="font-size: 20px;"><b>Spa và Massage</b>: Dịch vụ spa cao cấp giúp bạn thư giãn...</li>
-        <li style="font-size: 20px;"><b>Phòng tập gym</b>: Trang thiết bị hiện đại...</li>
-      </ul>
+    <!-- Amenities Section -->
+    <section class="fade-in">
+      <h2 class="text-5xl font-semibold text-center mb-12 reveal-text">Tiện Nghi Đỉnh Cao</h2>
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="card bg-white rounded-2xl p-10 text-center">
+          <i class="fas fa-swimming-pool text-6xl text-yellow-600 mb-6"></i>
+          <h3 class="text-2xl font-semibold mb-4">Hồ Bơi Vô Cực</h3>
+          <p class="text-gray-600">Thư giãn trong làn nước trong xanh, ngắm nhìn phố cổ từ hồ bơi mở cửa 6h-22h mỗi
+            ngày.</p>
+        </div>
+        <div class="card bg-white rounded-2xl p-10 text-center">
+          <i class="fas fa-utensils text-6xl text-yellow-600 mb-6"></i>
+          <h3 class="text-2xl font-semibold mb-4">Nhà Hàng Đèn Lồng</h3>
+          <p class="text-gray-600">Thưởng thức cao lầu, mì Quảng, và các món Âu trong không gian ấm cúng đậm chất Hội
+            An.</p>
+        </div>
+        <div class="card bg-white rounded-2xl p-10 text-center">
+          <i class="fas fa-spa text-6xl text-yellow-600 mb-6"></i>
+          <h3 class="text-2xl font-semibold mb-4">Spa Ánh Trăng</h3>
+          <p class="text-gray-600">Liệu pháp massage với thảo dược thiên nhiên, mang lại sự thư thái tuyệt đối.</p>
+        </div>
+        <div class="card bg-white rounded-2xl p-10 text-center">
+          <i class="fas fa-dumbbell text-6xl text-yellow-600 mb-6"></i>
+          <h3 class="text-2xl font-semibold mb-4">Phòng Gym 24/7</h3>
+          <p class="text-gray-600">Trang bị hiện đại, không gian thoáng đãng, hỗ trợ tập luyện mọi lúc.</p>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2 class="text-3xl font-semibold mb-4">Khám Phá Văn Hóa và Lịch Sử Hội An</h2>
-      <img src="t5.jpg" class="w-full h-64 object-cover rounded-xl mb-4">
-      <p>Với vị trí thuận lợi, khách sạn của chúng tôi là nơi tuyệt vời để bạn khám phá Hội An - một trong những thành
-        phố cổ nổi
-        bật nhất Việt Nam. Từ phố cổ nhộn nhịp với các cửa hàng thủ công, quán cà phê đến những ngôi đền, chùa cổ kính,
-        Hội An
-        luôn mang lại những trải nghiệm khó quên. Bên cạnh đó, bạn có thể tham gia vào các tour du lịch khám phá các
-        làng nghề
-        truyền thống, đi thuyền trên sông Hoài, hay tham gia các lớp học nấu ăn để học cách chế biến các món ăn đặc
-        trưng của
-        Hội An.</p>
-      <h2>Đặt Phòng Ngay Hôm Nay!</h2>
-      <p>Chúng tôi hy vọng rằng bạn sẽ có một kỳ nghỉ tuyệt vời tại Khách sạn Hội An. Để đặt phòng hoặc yêu cầu thêm
-        thông tin,
-        vui lòng liên hệ với chúng tôi qua số điện thoại [0329031440] hoặc email [huyonechampfli@gmail.com]. Đừng quên
-        theo
-        dõi chúng
-        tôi trên các mạng xã hội để cập nhật những khuyến mãi và sự kiện đặc biệt!</p>
-
-      <p>Chúng tôi rất mong được chào đón bạn tại Khách sạn Hội An - nơi những kỷ niệm đáng nhớ bắt đầu!</p>
+    <!-- Video Section -->
+    <section class="fade-in">
+      <h2 class="text-5xl font-semibold text-center mb-12 reveal-text">Khám Phá Hội An Qua Video</h2>
+      <div class="relative w-full h-[600px] rounded-2xl overflow-hidden">
+        <video class="w-full h-full object-cover" autoplay muted loop>
+          <source src="khampha.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </section>
+
+    <!-- Culture Section -->
+    <section class="grid md:grid-cols-5 gap-12 fade-in">
+      <div class="md:col-span-2 sticky-sidebar">
+        <img src="songhoai.jpg" alt="Hoi An Culture" class="w-full h-[600px] object-cover rounded-2xl card"
+          loading="lazy">
+        <div class="absolute bottom-6 left-6 bg-yellow-600 text-white px-4 py-2 rounded-full">Sông Hoài Lung Linh</div>
+      </div>
+      <div class="md:col-span-3">
+        <h2 class="text-5xl font-semibold mb-6 reveal-text">Hòa Mình Vào Văn Hóa Hội An</h2>
+        <p class="text-xl mb-4 reveal-text" style="transition-delay: 0.2s;">Hội An - viên ngọc quý với những con phố cổ
+          phủ đầy đèn lồng, những ngôi nhà gỗ hàng thế kỷ, và dòng sông Hoài lấp lánh mỗi đêm. Mỗi bước chân ở đây là
+          một hành trình trở về quá khứ.</p>
+        <ul class="list-none space-y-4 text-xl reveal-text" style="transition-delay: 0.4s;">
+          <li class="flex items-start">
+            <i class="fas fa-star text-yellow-600 mr-3 mt-1"></i>
+            <span><b>Thuyền hoa đăng</b>: Thả đèn trên sông Hoài, cầu bình an trong ánh sáng lung linh.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-star text-yellow-600 mr-3 mt-1"></i>
+            <span><b>Lớp học nấu ăn</b>: Tự tay làm bánh bao - bánh vạc, cao lầu dưới sự hướng dẫn của đầu bếp địa
+              phương.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-star text-yellow-600 mr-3 mt-1"></i>
+            <span><b>Làng nghề</b>: Tham quan gốm Thanh Hà, lụa Hội An, và mộc Kim Bồng để thấy bàn tay nghệ
+              nhân.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-star text-yellow-600 mr-3 mt-1"></i>
+            <span><b>Lễ hội đèn lồng</b>: Trải nghiệm không khí rực rỡ vào mỗi tối rằm hàng tháng.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-star text-yellow-600 mr-3 mt-1"></i>
+            <span><b>Hoạt động ban ngày</b>: Ban ngày, bạn có thể khám phá làng gốm Thanh Hà, làng rau Trà Quế hoặc tắm
+              biển tại bãi biển Cửa Đại, An Bàng.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-star text-yellow-600 mr-3 mt-1"></i>
+            <span><b>Lưu ý khi tham quan</b>: Hãy mặc trang phục thoải mái, mang giày dép dễ di chuyển và chuẩn bị mũ, ô
+              vì thời tiết Hội An có thể nắng nóng vào ban
+              ngày.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-star text-yellow-600 mr-3 mt-1"></i>
+            <span><b>Thông tin giao thông</b>: Từ Đà Nẵng, bạn có thể di chuyển đến Hội An bằng xe máy, ô tô hoặc xe
+              buýt với khoảng cách chỉ 30km, mất khoảng 45 phút.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Local Experiences Section -->
+    <section class="fade-in">
+      <h2 class="text-5xl font-semibold text-center mb-12 reveal-text">Trải Nghiệm Địa Phương Độc Đáo</h2>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="card bg-white rounded-2xl overflow-hidden">
+          <img src="hs3.jpg" alt="Cooking Class" class="w-full h-64 object-cover" loading="lazy">
+          <div class="p-10">
+            <h3 class="text-3xl font-semibold mb-4">Lớp Học Nấu Ăn</h3>
+            <p class="text-gray-600">Học làm các món đặc sản Hội An như mì Quảng, cao lầu trong không gian ấm cúng, kèm
+              quà lưu niệm.</p>
+          </div>
+        </div>
+        <div class="card bg-white rounded-2xl overflow-hidden">
+          <img src="hs4.jpg" alt="Bicycle Tour" class="w-full h-64 object-cover" loading="lazy">
+          <div class="p-10">
+            <h3 class="text-3xl font-semibold mb-4">Đạp Xe Khám Phá</h3>
+            <p class="text-gray-600">Đi xe đạp qua những cánh đồng lúa, làng chài, và phố cổ, cảm nhận nhịp sống chậm
+              rãi của Hội An.</p>
+          </div>
+        </div>
+        <div class="card bg-white rounded-2xl overflow-hidden">
+          <img src="hs5.jpg" alt="Lantern Making" class="w-full h-64 object-cover" loading="lazy">
+          <div class="p-10">
+            <h3 class="text-3xl font-semibold mb-4">Làm Đèn Lồng</h3>
+            <p class="text-gray-600">Tự tay tạo chiếc đèn lồng Hội An truyền thống, mang về một món quà đầy ý nghĩa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="fade-in">
+      <h2 class="text-5xl font-semibold text-center mb-12 reveal-text">Câu Hỏi Thường Gặp</h2>
+      <div class="space-y-6 max-w-4xl mx-auto">
+        <div class="bg-white rounded-2xl p-6 card">
+          <h3 class="text-2xl font-semibold mb-2">Khách sạn có cung cấp dịch vụ đưa đón sân bay không?</h3>
+          <p class="text-gray-600">Có, chúng tôi cung cấp xe đưa đón từ sân bay Đà Nẵng với chi phí hợp lý, chỉ cần đặt
+            trước!</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 card">
+          <h3 class="text-2xl font-semibold mb-2">Tôi có thể mang thú cưng không?</h3>
+          <p class="text-gray-600">Rất tiếc, hiện tại khách sạn chưa hỗ trợ thú cưng để đảm bảo sự thoải mái cho mọi
+            khách.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 card">
+          <h3 class="text-2xl font-semibold mb-2">Có ưu đãi cho nhóm lớn không?</h3>
+          <p class="text-gray-600">Chúng tôi có gói ưu đãi cho nhóm từ 5 phòng trở lên, liên hệ để được tư vấn chi tiết!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Call-to-Action -->
+    <section id="booking"
+      class="text-center bg-gradient-to-r from-blue-700 to-indigo-800 text-white py-20 rounded-2xl fade-in">
+      <h2 class="text-6xl font-semibold mb-8 reveal-text">🌟 Bắt Đầu Kỳ Nghỉ Mơ Ước Tại Hội An 🌟</h2>
+      <p class="text-2xl max-w-4xl mx-auto mb-8 reveal-text" style="transition-delay: 0.2s;">Từ những con phố cổ lấp
+        lánh đèn lồng đến những bữa ăn đậm đà hương vị, Khách Sạn Hội An sẽ là nơi lưu giữ những khoảnh khắc đẹp nhất
+        của bạn. Hãy để chúng tôi chăm sóc bạn!</p>
+      <p class="text-xl mb-8 reveal-text" style="transition-delay: 0.4s;">📞 <a href="tel:+84329031440"
+          class="underline">0329031440</a> | ✉️ <a href="mailto:huyonechampfli@gmail.com"
+          class="underline">huyonechampfli@gmail.com</a></p>
+      <button onclick="openModal()"
+        class="inline-block bg-yellow-600 text-gray-900 py-4 px-10 rounded-full text-xl font-semibold hover:bg-yellow-700 glow"><a
+          style="text-decoration: none;" href="booking.html"></a>Đặt
+        Phòng Ngay</button>
+    </section>
+  </main>
+
+  <!-- Modal for Booking -->
+  <div id="bookingModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">×</span>
+      <h2 class="text-3xl font-semibold mb-4">Đặt Phòng Của Bạn</h2>
+      <p class="text-lg mb-6">Vui lòng liên hệ để đặt phòng và nhận ưu đãi tốt nhất!</p>
+      <p class="text-lg mb-4">📞 <a href="tel:+84329031440">0329031440</a></p>
+      <p class="text-lg mb-6">✉️ <a href="mailto:huyonechampfli@gmail.com">huyonechampfli@gmail.com</a></p>
+      <a href="lienhe.html" class="inline-block bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700">Đi đến
+        trang liên hệ</a>
+    </div>
   </div>
 
   <!-- Footer -->
@@ -183,8 +512,10 @@
         </ul>
       </div>
     </div>
-    <div class="text-center text-sm mt-8">&copy; 2025 Khách sạn Hội An. Thiết kế bởi WebHotel.vn</div>
+    <div class="text-center text-sm mt-8">© 2025 Khách sạn Hội An. Thiết kế bởi WebHotel.vn</div>
   </footer>
+
+  <!-- JavaScript for Animations and Interactivity -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const menuBtn = document.getElementById('menuBtn');
@@ -195,7 +526,7 @@
       menuBtn.addEventListener('click', function (e) {
         e.stopPropagation();
         mobileMenu.classList.toggle('show');
-        header.classList.toggle('hide'); // Thêm dòng này
+        header.classList.toggle('hide');
         const icon = this.querySelector('i');
         icon.classList.toggle('fa-bars');
         icon.classList.toggle('fa-times');
@@ -205,7 +536,7 @@
         dropdown.addEventListener('click', function (e) {
           if (window.innerWidth <= 768) {
             const content = this.querySelector('.dropdown-content');
-            content.classList.toggle('hidden');
+            if (content) content.classList.toggle('hidden');
             e.preventDefault();
           }
         });
@@ -218,6 +549,35 @@
           icon.classList.add('fa-bars');
           icon.classList.remove('fa-times');
         }
+      });
+
+      // Fade-in and Reveal Animation on Scroll
+      const fadeIns = document.querySelectorAll('.fade-in, .reveal-text');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      fadeIns.forEach((el) => observer.observe(el));
+
+      // Modal Functionality
+      window.openModal = function () {
+        document.getElementById('bookingModal').style.display = 'flex';
+      };
+
+      window.closeModal = function () {
+        document.getElementById('bookingModal').style.display = 'none';
+      };
+
+      document.getElementById('bookingModal').addEventListener('click', function (e) {
+        if (e.target === this) closeModal();
       });
     });
   </script>

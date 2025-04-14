@@ -1,0 +1,533 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+/* Loading Overlay */
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+#loading-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #f56217;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Parallax Header */
+header.parallax {
+  position: relative;
+  background: url("https://static.vinwonders.com/2022/12/vinpearl-nam-hoi-an.jpg")
+    center/cover no-repeat;
+  background-attachment: fixed;
+  color: #003c2f;
+  text-align: center;
+  padding: 150px 20px;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(173, 216, 230, 0.5),
+    rgba(204, 236, 221, 0.5)
+  );
+  z-index: 1;
+}
+
+header * {
+  position: relative;
+  z-index: 2;
+}
+
+header h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease-in-out;
+}
+
+header:hover h1 {
+  transform: scale(1.05);
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(to right, #cceccd, #b2ebf2);
+  display: flex;
+  justify-content: center;
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+  color: #003366;
+  padding: 14px 20px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+nav a:hover {
+  background-color: teal;
+}
+
+nav a:focus {
+  outline: 2px solid #004d99;
+  outline-offset: 2px;
+}
+
+.section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #004d99;
+  text-align: center;
+}
+
+.section p {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.highlight {
+  background-color: #f9f9f9;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card {
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  font-size: 20px;
+  color: #0b486b;
+  margin-bottom: 10px;
+}
+
+.cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.cta a,
+.cta button {
+  display: inline-block;
+  background-color: #f56217;
+  color: white;
+  padding: 14px 28px;
+  font-size: 18px;
+  border-radius: 30px;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cta a:hover,
+.cta button:hover {
+  background-color: #e75c1a;
+  transform: scale(1.05);
+}
+
+.cta a:focus,
+.cta button:focus {
+  outline: 2px solid #004d99;
+  outline-offset: 2px;
+}
+
+.hidden {
+  display: none;
+}
+
+.fixed-cta {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #f56217;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  z-index: 1000;
+  transition: background 0.3s;
+}
+
+.fixed-cta:hover {
+  background: #e75c1a;
+}
+
+.fixed-cta:focus {
+  outline: 2px solid #004d99;
+  outline-offset: 2px;
+}
+
+footer {
+  background: linear-gradient(45deg, #f1f1f1, #d0d0d0);
+  color: #333;
+  font-size: 14px;
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 2px solid #e5e5e5;
+}
+
+.map {
+  margin: 20px 0;
+}
+
+.social-links a,
+.social-links button {
+  color: #003366;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.social-links a:hover,
+.social-links button:hover {
+  color: #f56217;
+}
+
+#topBtn {
+  display: none;
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  z-index: 99;
+  font-size: 20px;
+  background: #f56217;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+#topBtn.show {
+  opacity: 0.8;
+}
+
+#topBtn:hover {
+  opacity: 1;
+  background: #d94e06;
+}
+
+#topBtn:focus {
+  outline: 2px solid #004d99;
+  outline-offset: 2px;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+#booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#booking-form label {
+  font-weight: 500;
+}
+
+#booking-form input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#booking-form button {
+  background: #f56217;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#booking-form button:hover {
+  background: #e75c1a;
+}
+.parallax {
+  background-image: url("https://cdn.vinpearl.com/hero-banner-vinpearl-nam-hoi-an.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.section-parallax {
+  position: relative;
+  overflow: hidden;
+}
+.section-parallax img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateY(0);
+  transition: transform 0.1s;
+}
+.section-parallax img[data-parallax] {
+  position: absolute;
+  top: -10%;
+  bottom: -10%;
+  transform: translateY(calc(-10% + var(--scroll)));
+}
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.card img {
+  transition: transform 0.5s ease;
+}
+.card:hover img {
+  transform: scale(1.1);
+}
+.cta a,
+.cta button {
+  background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+  padding: 12px 24px;
+  border-radius: 50px;
+  color: white;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.cta a::before,
+.cta button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+.cta a:hover::before,
+.cta button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+.swup-transition-fade {
+  transition: opacity 0.4s;
+}
+.swup-transition-fade.is-leaving {
+  opacity: 0;
+}
+.video-header {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.video-header video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.timeline {
+  position: relative;
+  padding: 20px 0;
+}
+.timeline-item {
+  margin-bottom: 40px;
+  padding-left: 40px;
+  position: relative;
+}
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  background: #ff6b6b;
+  border-radius: 50%;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #ddd;
+}
+.timeline {
+  position: relative;
+  padding: 20px 0;
+}
+.timeline-item {
+  margin-bottom: 40px;
+  padding-left: 40px;
+  position: relative;
+}
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  background: #ff6b6b;
+  border-radius: 50%;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #ddd;
+}

@@ -100,134 +100,386 @@
       </div>
     </div>
   </div>
-  <!-- Services -->
+  <!-- Dịch Vụ Đặc Biệt -->
   <div class="container mx-auto px-4 py-12 bg-gray-200">
-    <h2 class="text-3xl font-bold text-center mb-8">DỊCH VỤ ĐẶC BIỆT</h2>
+    <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">DỊCH VỤ ĐẶC BIỆT</h2>
     <div class="space-y-8">
-      <div class="flex flex-col md:flex-row bg-white shadow-md rounded-md overflow-hidden">
-        <img alt="TUTA Fitness &amp; Pool" class="hinh" height="300" src="lt.jpg" width="600" />
-        <div class="p-4 flex flex-col justify-center">
-          <h3 class="text-2xl font-semibold mb-2">
-            <a href="#">Lưu Trú &amp; Nghỉ Dưỡng</a>
+      <!-- Dịch vụ 1: Lưu Trú & Nghỉ Dưỡng -->
+      <div
+        class="flex flex-col md:flex-row bg-white shadow-lg rounded-xl overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+        <img alt="TUTA Fitness & Pool"
+          class="hinh w-full md:w-1/2 h-64 md:h-auto object-cover transform hover:scale-105 transition-transform duration-500"
+          height="300" src="lt.jpg" width="600" />
+        <div class="p-6 flex flex-col justify-center bg-gray-50 w-full md:w-1/2">
+          <h3 class="text-2xl font-bold mb-3 text-blue-700 flex items-center">
+            🛏️ Lưu Trú & Nghỉ Dưỡng
           </h3>
-          <p class="text-gray-700 mb-4">🛏️ Lưu trú & nghỉ dưỡng
+          <p class="text-gray-600 text-lg leading-relaxed mb-4">
             Tận hưởng không gian yên bình giữa lòng phố cổ với hệ thống phòng nghỉ tiện nghi, thiết kế hài hòa giữa nét
-            cổ điển và
-            hiện đại. Mỗi phòng đều có ban công riêng, hướng vườn hoặc sông, mang đến trải nghiệm thư giãn trọn vẹn cho
-            kỳ nghỉ của
-            bạn.</p>
-          <a class="text-blue-500 hover:underline" href="#">XEM CHI TIẾT</a>
-        </div>
-      </div>
-      <div class="flex flex-col md:flex-row bg-white shadow-md rounded-md overflow-hidden">
-        <img alt="TOPHIT KARAOKE" class="hinh" height="300" src="hb.jpg" width="600" />
-        <div class="p-4 flex flex-col justify-center">
-          <h3 class="text-2xl font-semibold mb-2">
-            <a href="#">Hồ bơi &amp; Spa</a>
-          </h3>
-          <p class="text-gray-700 mb-4">🏊‍♀️ Hồ bơi & Spa
-            Tại Hội An của chúng tôi nhiều khách sở hữu hồ bơi ngoài trời rộng rãi, lý tưởng để bạn thư giãn hoặc tận
-            hưởng những phút giây vui
-            vẻ cùng gia đình và bạn bè. Ngoài ra, dịch vụ spa và massage chuyên nghiệp với các liệu trình thư giãn sẽ
-            giúp bạn xua
-            tan mệt mỏi, mang lại cảm giác sảng khoái và phục hồi năng lượng cho cơ thể.</p>
-          <a class="text-blue-500 hover:underline" href="#">XEM CHI TIẾT</a>
-        </div>
-      </div>
-      <div class="flex flex-col md:flex-row bg-white shadow-md rounded-md overflow-hidden">
-        <img alt="NHÀ HÀNG ẨM THỰC TRUNG HOA" class="hinh" height="300" src="nh.jpg" width="600" />
-        <div class="p-4 flex flex-col justify-center">
-          <h3 class="text-2xl font-semibold mb-2">
-            <a href="#"> Nhà hàng & Quầy bar</a>
-          </h3>
-          <p class="text-gray-700 mb-4">🍽️ Nhà hàng & Quầy bar
-            Khách sạn của chúng tôi cung cấp nhà hàng phục vụ các món ăn đặc sắc từ ẩm thực địa phương đến quốc tế. Quầy
-            bar sang
-            trọng là nơi lý tưởng để thư giãn, thưởng thức những món cocktail tuyệt vời trong không gian ấm cúng và hiện
-            đại.
+            cổ
+            điển và hiện đại. Mỗi phòng đều mang đến trải nghiệm thư giãn trọn vẹn với:
           </p>
-          <a class="text-blue-500 hover:underline" href="#">XEM
-            CHI TIẾT</a>
+          <ul class="list-disc list-inside text-gray-600 text-base mb-4">
+            <li>Ban công riêng hướng vườn hoặc sông.</li>
+            <li>Nội thất sang trọng, tiện nghi hiện đại.</li>
+            <li>Dịch vụ chăm sóc khách hàng chu đáo.</li>
+          </ul>
+          <button onclick="openModal('modal1')"
+            class="text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 px-6 py-3 rounded-full font-semibold shadow-lg transform hover:scale-105 transition-all duration-300">
+            XEM CHI TIẾT
+          </button>
+          <div id="modal1" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+            <div
+              class="bg-white rounded-2xl p-8 max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl relative transform transition-all duration-300 scale-95">
+              <button onclick="closeModal('modal1')"
+                class="absolute top-4 right-4 text-gray-600 hover:text-red-600 text-2xl font-bold">×</button>
+              <h2 class="text-2xl font-bold mb-4 text-blue-700">Lưu Trú & Nghỉ Dưỡng</h2>
+              <p class="text-gray-600 mb-6">
+                🛏️ Lưu Trú & Nghỉ Dưỡng tại Hội An – Nơi dừng chân lý tưởng giữa lòng di sản Hội An không chỉ gây ấn
+                tượng bởi vẻ đẹp cổ kính và những con phố rêu phong mà còn bởi hệ thống lưu trú đa dạng, tinh tế, mang
+                lại
+                trải nghiệm nghỉ dưỡng trọn vẹn cho du khách. Từ những khu nghỉ dưỡng sang trọng ven biển, khách sạn
+                boutique trong lòng phố cổ, đến homestay mộc mạc ven sông, bạn sẽ dễ dàng tìm thấy không gian phù hợp
+                với
+                sở thích và ngân sách.
+              </p>
+              <button onclick="closeModal('modal1')"
+                class="text-white bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full font-medium transition duration-300">Đóng</button>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="flex flex-col md:flex-row bg-white shadow-md rounded-md overflow-hidden">
-        <img alt="NHÀ HÀNG HẢI SẢN GHẸ XANH" class="hinnh" height="300" src="dx.jpg" width="600" />
-        <div class="p-4 flex flex-col justify-center">
-          <h3 class="text-2xl font-semibold mb-2">
-            <a href="#"> Xe đạp miễn phí</a>
+      <!-- Dịch vụ 2: Hồ Bơi & Spa -->
+      <div
+        class="flex flex-col md:flex-row bg-white shadow-lg rounded-xl overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+
+        <img alt="TOPHIT KARAOKE"
+          class="hinh w-full md:w-1/2 h-64 md:h-auto object-cover transform hover:scale-105 transition-transform duration-500"
+          height="300" src="hb.jpg" width="600" />
+        <div class="p-6 flex flex-col justify-center bg-gray-50 w-full md:w-1/2">
+          <h3 class="text-2xl font-bold mb-3 text-blue-700 flex items-center">
+            🏊‍♀️ Hồ Bơi & Spa
           </h3>
-          <p class="text-gray-700 mb-4">🚲 Xe đạp miễn phí
-            Khách sạn cung cấp dịch vụ cho mượn xe đạp miễn phí, giúp bạn dễ dàng khám phá khu vực xung quanh trong
-            những chuyến đi
-            thú vị và tự do. Đây là lựa chọn lý tưởng để trải nghiệm vẻ đẹp của thành phố một cách thoải mái và tiện
-            lợi.
+          <p class="text-gray-600 text-lg leading-relaxed mb-4">
+            Thư giãn tuyệt đối với hồ bơi ngoài trời rộng rãi và các liệu trình spa chuyên nghiệp, mang lại cảm giác
+            sảng
+            khoái. Dịch vụ bao gồm:
           </p>
-          <a class="text-blue-500 hover:underline" href="#">XEM
-            CHI TIẾT</a>
+          <ul class="list-disc list-inside text-gray-600 text-base mb-4">
+            <li>Hồ bơi hiện đại, không gian thoáng đãng.</li>
+            <li>Massage và spa với đội ngũ chuyên gia.</li>
+            <li>Các liệu trình phục hồi năng lượng độc quyền.</li>
+          </ul>
+          <button onclick="openModal('modal2')"
+            class="text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 px-6 py-3 rounded-full font-semibold shadow-lg transform hover:scale-105 transition-all duration-300">
+            XEM CHI TIẾT
+          </button>
+          <div id="modal2" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+            <div
+              class="bg-white rounded-2xl p-8 max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl relative transform transition-all duration-300 scale-95">
+              <button onclick="closeModal('modal2')"
+                class="absolute top-4 right-4 text-gray-600 hover:text-red-600 text-2xl font-bold">×</button>
+              <h2 class="text-2xl font-bold mb-4 text-blue-700">Hồ Bơi & Spa</h2>
+              <p class="text-gray-600 mb-6">
+                💦 Hồ bơi ngoài trời – Hòa mình vào thiên nhiên
+                Các hồ bơi tại Hội An được thiết kế chan hòa với không gian xung quanh, có tầm nhìn hướng sông, hướng
+                biển hoặc bao
+                quanh bởi vườn cây xanh mát. Với làn nước trong xanh, ghế tắm nắng và quầy bar cạnh hồ, bạn có thể thoải
+                mái thư giãn,
+                đọc sách hoặc nhâm nhi ly cocktail mát lạnh.
+
+                Đặc biệt, nhiều hồ bơi sử dụng hệ thống lọc nước bằng muối khoáng, tốt cho da và sức khỏe, mang lại trải
+                nghiệm nhẹ
+                nhàng và tự nhiên hơn so với hồ bơi truyền thống.
+              </p>
+              <button onclick="closeModal('modal2')"
+                class="text-white bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full font-medium transition duration-300">Đóng</button>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="flex flex-col md:flex-row bg-white shadow-md rounded-md overflow-hidden">
-        <img alt="TOPHIT KARAOKE" class="hinh" height="300" src="bay.jpg" width="600" />
-        <div class="p-4 flex flex-col justify-center">
-          <h3 class="text-2xl font-semibold mb-2">
-            <a href="#"> Đưa đón sân bay & Tour du lịch</a>
+      <!-- Dịch vụ 3: Nhà Hàng & Quầy Bar -->
+      <div
+        class="flex flex-col md:flex-row bg-white shadow-lg rounded-xl overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+        <img alt="NHÀ HÀNG ẨM THỰC TRUNG HOA"
+          class="hinh w-full md:w-1/2 h-64 md:h-auto object-cover transform hover:scale-105 transition-transform duration-500"
+          height="300" src="nh.jpg" width="600" />
+        <div class="p-6 flex flex-col justify-center bg-gray-50 w-full md:w-1/2">
+          <h3 class="text-2xl font-bold mb-3 text-blue-700 flex items-center">
+            🍽️ Nhà Hàng & Quầy Bar
           </h3>
-          <p class="text-gray-700 mb-4">
-            ✈️ Đưa đón sân bay & Tour du lịch
-            Chúng tôi cung cấp dịch vụ đưa đón sân bay thuận tiện và nhanh chóng, giúp bạn dễ dàng di chuyển đến khách
-            sạn. Bên cạnh
-            đó, các tour du lịch đa dạng sẽ đưa bạn khám phá vẻ đẹp của Hội An và các điểm đến nổi bật xung quanh, mang
-            đến cho bạn
-            trải nghiệm trọn vẹn trong kỳ nghỉ.</p>
-          <a class="text-blue-500 hover:underline" href="#">XEM CHI TIẾT</a>
+          <p class="text-gray-600 text-lg leading-relaxed mb-4">
+            Thưởng thức ẩm thực đa dạng từ địa phương đến quốc tế tại nhà hàng sang trọng và thư giãn với cocktail tại
+            quầy bar ấm cúng. Điểm nổi bật:
+          </p>
+          <ul class="list-disc list-inside text-gray-600 text-base mb-4">
+            <li>Thực đơn phong phú, nguyên liệu tươi ngon.</li>
+            <li>Quầy bar với cocktail sáng tạo, không gian hiện đại.</li>
+            <li>Dịch vụ phục vụ tận tình, chuyên nghiệp.</li>
+          </ul>
+          <button onclick="openModal('modal3')"
+            class="text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 px-6 py-3 rounded-full font-semibold shadow-lg transform hover:scale-105 transition-all duration-300">
+            XEM CHI TIẾT
+          </button>
+          <div id="modal3" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+            <div
+              class="bg-white rounded-2xl p-8 max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl relative transform transition-all duration-300 scale-95">
+              <button onclick="closeModal('modal3')"
+                class="absolute top-4 right-4 text-gray-600 hover:text-red-600 text-2xl font-bold">×</button>
+              <h2 class="text-2xl font-bold mb-4 text-blue-700">Nhà Hàng & Quầy Bar</h2>
+              <p class="text-gray-600 mb-6">
+                Bạn có thể khám phá những món ngon đặc trưng của vùng đất Quảng Nam như: <br>
+                - Cao lầu Hội AN <br>- Mì Quảng <br>- Cơm gà Phố Hội <br>
+                Bên cạnh đó, các nhà hàng còn phục vụ ẩm thực Á - Âu hiện đại, với thực đơn đa dạng từ steak, pasta đến
+                sushi, các món
+                thuần chay và thực dưỡng. Tất cả đều được chế biến bởi đầu bếp chuyên nghiệp, nguyên liệu tươi ngon được
+                chọn lọc từ các
+                nguồn địa phương chất lượng cao.
+              </p>
+              <button onclick="closeModal('modal3')"
+                class="text-white bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full font-medium transition duration-300">Đóng</button>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="flex flex-col md:flex-row bg-white shadow-md rounded-md overflow-hidden">
-        <img alt="TOPHIT KARAOKE" class="hinh" height="300" src="R.jpg" width="600" />
-        <div class="p-4 flex flex-col justify-center">
-          <h3 class="text-2xl font-semibold mb-2">
-            <a href="#"> Lớp học trải nghiệm văn hóa</a>
+      <!-- Dịch vụ 4: Xe Đạp Miễn Phí -->
+      <div
+        class="flex flex-col md:flex-row bg-white shadow-lg rounded-xl overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+        <img alt="NHÀ HÀNG HẢI SẢN GHẸ XANH"
+          class="hinh w-full md:w-1/2 h-64 md:h-auto object-cover transform hover:scale-105 transition-transform duration-500"
+          height="300" src="dx.jpg" width="600" />
+        <div class="p-6 flex flex-col justify-center bg-gray-50 w-full md:w-1/2">
+          <h3 class="text-2xl font-bold mb-3 text-blue-700 flex items-center">
+            🚲 Xe Đạp Miễn Phí
           </h3>
-          <p class="text-gray-700 mb-4">
-            🍳 Khách sạn tổ chức các lớp học thú vị như nấu ăn món Hội An, làm đèn lồng truyền thống, và học yoga buổi
-            sáng. Đây là cơ
-            hội tuyệt vời để bạn khám phá văn hóa địa phương và thư giãn trong không gian yên bình, mang lại trải nghiệm
-            khó quên
-            trong kỳ nghỉ.</p>
-          <a class="text-blue-500 hover:underline" href="#">XEM CHI TIẾT</a>
+          <p class="text-gray-600 text-lg leading-relaxed mb-4">
+            Khám phá Hội An một cách tự do với dịch vụ xe đạp miễn phí, mang đến trải nghiệm gần gũi với thiên nhiên và
+            văn hóa. Lợi ích:
+          </p>
+          <ul class="list-disc list-inside text-gray-600 text-base mb-4">
+            <li>Xe đạp chất lượng, dễ sử dụng.</li>
+            <li>Tự do khám phá phố cổ và vùng lân cận.</li>
+            <li>Hỗ trợ bản đồ và hướng dẫn địa phương.</li>
+          </ul>
+          <button onclick="openModal('modal4')"
+            class="text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 px-6 py-3 rounded-full font-semibold shadow-lg transform hover:scale-105 transition-all duration-300">
+            XEM CHI TIẾT
+          </button>
+          <div id="modal4" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+            <div
+              class="bg-white rounded-2xl p-8 max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl relative transform transition-all duration-300 scale-95">
+              <button onclick="closeModal('modal4')"
+                class="absolute top-4 right-4 text-gray-600 hover:text-red-600 text-2xl font-bold">×</button>
+              <h2 class="text-2xl font-bold mb-4 text-blue-700">Xe Đạp Miễn Phí</h2>
+              <p class="text-gray-600 mb-6">
+                Tại Hội An, từng góc phố cổ đều mang vẻ đẹp – và xe đạp chính
+                là phương tiện lý tưởng
+                còn mang đến những hành trình khám phá đầy thú vị và gần gũi với thiên nhiên, con người nơi đây. <br>
+                📍 Gợi ý cung đường đạp xe hấp dẫn: <br>
+                - 🏮 Phố cổ Hội An: ngắm kiến trúc cổ kính, tham quan chùa Cầu, bảo tàng và các hội quán. <br>
+                - 🌾 Làng rau Trà Quế: hòa mình vào không gian xanh mát, thử làm nông dân, ngửi hương thơm rau tươi.<br>
+              </p>
+              <button onclick="closeModal('modal4')"
+                class="text-white bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full font-medium transition duration-300">Đóng</button>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="flex flex-col md:flex-row bg-white shadow-md rounded-md overflow-hidden">
-        <img alt="TOPHIT KARAOKE" class="hinh" height="300" src="letan.jpg" width="600" />
-        <div class="p-4 flex flex-col justify-center">
-          <h3 class="text-2xl font-semibold mb-2">
-            <a href="#"> Dịch vụ phòng 24/7</a>
+      <!-- Dịch vụ 5: Đưa Đón Sân Bay & Tour Du Lịch -->
+      <div
+        class="flex flex-col md:flex-row bg-white shadow-lg rounded-xl overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+        <img alt="TOPHIT KARAOKE"
+          class="hinh w-full md:w-1/2 h-64 md:h-auto object-cover transform hover:scale-105 transition-transform duration-500"
+          height="300" src="bay.jpg" width="600" />
+        <div class="p-6 flex flex-col justify-center bg-gray-50 w-full md:w-1/2">
+          <h3 class="text-2xl font-bold mb-3 text-blue-700 flex items-center">
+            ✈️ Đưa Đón Sân Bay & Tour Du Lịch
           </h3>
-          <p class="text-gray-700 mb-4">🛏️ Dịch vụ phòng 24/7
-            Chúng tôi cung cấp dịch vụ phòng 24/7, đảm bảo bạn luôn có sự hỗ trợ mọi lúc, từ việc đặt đồ ăn đến nhu cầu
-            cá nhân. Bạn
-            có thể tận hưởng sự thoải mái và tiện nghi ngay trong phòng của mình bất cứ lúc nào trong suốt kỳ nghỉ.</p>
-          <a class="text-blue-500 hover:underline" href="#">XEM CHI TIẾT</a>
+          <p class="text-gray-600 text-lg leading-relaxed mb-4">
+            Bắt đầu kỳ nghỉ thuận tiện với dịch vụ đưa đón sân bay và khám phá Hội An qua các tour du lịch độc đáo. Dịch
+            vụ bao gồm:
+          </p>
+          <ul class="list-disc list-inside text-gray-600 text-base mb-4">
+            <li>Đưa đón sân bay nhanh chóng, an toàn.</li>
+            <li>Tour khám phá phố cổ, làng gốm, và bãi biển.</li>
+            <li>Hướng dẫn viên chuyên nghiệp, thân thiện.</li>
+          </ul>
+          <button onclick="openModal('modal5')"
+            class="text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 px-6 py-3 rounded-full font-semibold shadow-lg transform hover:scale-105 transition-all duration-300">
+            XEM CHI TIẾT
+          </button>
+          <div id="modal5" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+            <div
+              class="bg-white rounded-2xl p-8 max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl relative transform transition-all duration-300 scale-95">
+              <button onclick="closeModal('modal5')"
+                class="absolute top-4 right-4 text-gray-600 hover:text-red-600 text-2xl font-bold">×</button>
+              <h2 class="text-2xl font-bold mb-4 text-blue-700">Đưa Đón Sân Bay & Tour Du Lịch</h2>
+              <p class="text-gray-600 mb-6">
+                Chúng tôi mang đến dịch vụ đưa đón sân bay và tour du lịch trọn gói tiện lợi, giúp bạn khám phá Hội An
+                và các điểm đến
+                lân cận như Rừng Dừa, Cù Lao Chàm, Mỹ Sơn hay Huế dễ dàng, thoải mái.
+                nhiệt tình, giá ưu đãi.. <br>
+                🚗 Dịch vụ đưa đón sân bay: Nhanh chóng – An toàn – Linh hoạt <br>
+                ✅ Phục vụ 24/7, kể cả ban đêm
+              </p>
+              <button onclick="closeModal('modal5')"
+                class="text-white bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full font-medium transition duration-300">Đóng</button>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="flex flex-col md:flex-row bg-white shadow-md rounded-md overflow-hidden">
-        <img alt="TOPHIT KARAOKE" class="hinh" height="300" src="vuon.jpg" width="600" />
-        <div class="p-4 flex flex-col justify-center">
-          <h3 class="text-2xl font-semibold mb-2">
-            <a href="#"> Khu vườn thư giãn</a>
+      <!-- Dịch vụ 6: Lớp Học Trải Nghiệm Văn Hóa -->
+      <div
+        class="flex flex-col md:flex-row bg-white shadow-lg rounded-xl overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+        <img alt="TOPHIT KARAOKE"
+          class="hinh w-full md:w-1/2 h-64 md:h-auto object-cover transform hover:scale-105 transition-transform duration-500"
+          height="300" src="R.jpg" width="600" />
+        <div class="p-6 flex flex-col justify-center bg-gray-50 w-full md:w-1/2">
+          <h3 class="text-2xl font-bold mb-3 text-blue-700 flex items-center">
+            🍳 Lớp Học Trải Nghiệm Văn Hóa
           </h3>
-          <p class="text-gray-700 mb-4">
-            🌿 Khu vườn thư giãn
-            Khách sạn của chúng tôi tự hào sở hữu một khu vườn xanh mát, là nơi lý tưởng để bạn thư giãn và tìm lại sự
-            bình yên. Với
-            không gian rộng lớn, cây cối xanh tươi và hoa lá khoe sắc, bạn có thể thoải mái đi dạo, tận hưởng không khí
-            trong lành,
-            hoặc ngồi thưởng thức một tách trà nóng trong những chiếc ghế mây xinh xắn. Khu vườn không chỉ là điểm đến
-            lý tưởng cho
-            những ai yêu thiên nhiên, mà còn là nơi bạn có thể tái tạo năng lượng, giúp cho kỳ nghỉ của mình trở nên thư
-            giãn và
-            đáng nhớ hơn..</p>
-          <a class="text-blue-500 hover:underline" href="#">XEM CHI TIẾT</a>
+          <p class="text-gray-600 text-lg leading-relaxed mb-4">
+            Hòa mình vào văn hóa Hội An qua các lớp học độc đáo, mang lại trải nghiệm khó quên. Các hoạt động bao gồm:
+          </p>
+          <ul class="list-disc list-inside text-gray-600 text-base mb-4">
+            <li>Lớp nấu ăn với các món đặc sản địa phương.</li>
+            <li>Học làm đèn lồng truyền thống.</li>
+            <li>Buổi yoga sáng thư giãn giữa thiên nhiên.</li>
+          </ul>
+          <button onclick="openModal('modal6')"
+            class="text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 px-6 py-3 rounded-full font-semibold shadow-lg transform hover:scale-105 transition-all duration-300">
+            XEM CHI TIẾT
+          </button>
+          <div id="modal6" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+            <div
+              class="bg-white rounded-2xl p-8 max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl relative transform transition-all duration-300 scale-95">
+              <button onclick="closeModal('modal6')"
+                class="absolute top-4 right-4 text-gray-600 hover:text-red-600 text-2xl font-bold">×</button>
+              <h2 class="text-2xl font-bold mb-4 text-blue-700">Lớp Học Trải Nghiệm Văn Hóa</h2>
+              <p class="text-gray-600 mb-6">
+                Trải nghiệm văn hóa Hội An qua các hoạt động đặc sắc: <br>
+                - 👨‍🍳 Lớp học nấu ăn món đặc sản miền Trung <br>
+                - 🎏 Làm đèn lồng truyền thống thủ công <br>
+                - 🍵 Thưởng trà & học trà đạo phong cách Việt <br>
+                - 👗 Mặc thử áo dài và chụp ảnh lưu niệm <br>
+                Các lớp học phù hợp cho mọi lứa tuổi, có hướng dẫn viên thân thiện, mang lại trải nghiệm gần gũi, ý
+                nghĩa và đầy thú vị.
+
+              </p>
+              <button onclick="closeModal('modal6')"
+                class="text-white bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full font-medium transition duration-300">Đóng</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Dịch vụ 7: Dịch Vụ Phòng 24/7 -->
+      <div
+        class="flex flex-col md:flex-row bg-white shadow-lg rounded-xl overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+        <img alt="TOPHIT KARAOKE"
+          class="hinh w-full md:w-1/2 h-64 md:h-auto object-cover transform hover:scale-105 transition-transform duration-500"
+          height="300" src="letan.jpg" width="600" />
+        <div class="p-6 flex flex-col justify-center bg-gray-50 w-full md:w-1/2">
+          <h3 class="text-2xl font-bold mb-3 text-blue-700 flex items-center">
+            🛏️ Dịch Vụ Phòng 24/7
+          </h3>
+          <p class="text-gray-600 text-lg leading-relaxed mb-4">
+            Tận hưởng sự thoải mái tuyệt đối với dịch vụ phòng 24/7, đáp ứng mọi nhu cầu của bạn bất cứ lúc nào. Dịch vụ
+            bao gồm:
+          </p>
+          <ul class="list-disc list-inside text-gray-600 text-base mb-4">
+            <li>Phục vụ đồ ăn và thức uống mọi lúc.</li>
+            <li>Hỗ trợ cá nhân nhanh chóng, tận tâm.</li>
+            <li>Đảm bảo sự tiện nghi suốt kỳ nghỉ.</li>
+          </ul>
+          <button onclick="openModal('modal7')"
+            class="text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 px-6 py-3 rounded-full font-semibold shadow-lg transform hover:scale-105 transition-all duration-300">
+            XEM CHI TIẾT
+          </button>
+          <div id="modal7" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+            <div
+              class="bg-white rounded-2xl p-8 max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl relative transform transition-all duration-300 scale-95">
+              <button onclick="closeModal('modal7')"
+                class="absolute top-4 right-4 text-gray-600 hover:text-red-600 text-2xl font-bold">×</button>
+              <h2 class="text-2xl font-bold mb-4 text-blue-700">Dịch Vụ Phòng 24/7</h2>
+              <p class="text-gray-600 mb-6">
+                Chúng tôi cam kết mang đến sự thoải mái tối đa cho bạn suốt thời gian lưu trú: <br>
+                - 🛋️ Dịch vụ phòng luôn sẵn có: Gọi món ăn, đồ uống bất cứ lúc nào <br>
+                - 🧑‍🍳 Dịch vụ bữa sáng tận phòng: Tự chọn menu và được phục vụ tận nơi <br>
+
+                - 📱 Dịch vụ hỗ trợ kỹ thuật: Đội ngũ nhân viên sẵn sàng hỗ trợ bạn mọi lúc <br>
+              </p>
+              <button onclick="closeModal('modal7')"
+                class="text-white bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full font-medium transition duration-300">Đóng</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Dịch vụ 8: Tour tham quan bằng thuyền trên sông Hoài -->
+      <div
+        class="flex flex-col md:flex-row bg-white shadow-lg rounded-xl overflow-hidden transform hover:shadow-xl transition-shadow duration-300">
+        <img alt="Tour thuyền trên sông Hoài"
+          class="hinh w-full md:w-1/2 h-64 md:h-auto object-cover transform hover:scale-105 transition-transform duration-500"
+          height="300" src="song2.jpg" width="600" />
+        <div class="p-6 flex flex-col justify-center bg-gray-50 w-full md:w-1/2">
+          <h3 class="text-2xl font-bold mb-3 text-blue-700 flex items-center">
+            🚤 Tour tham quan bằng thuyền trên sông Hoài
+          </h3>
+          <p class="text-gray-600 text-lg leading-relaxed mb-4">
+            Trải nghiệm tour thuyền trên sông Hoài là một trong những hoạt động đặc trưng và lãng mạn nhất khi đến Hội
+            An.
+            Khi màn đêm buông xuống, dòng sông lung linh ánh đèn lồng, đưa du khách lướt nhẹ trên mặt nước giữa phố cổ
+            yên
+            bình.
+          </p>
+          <ul class="list-disc list-inside text-gray-600 text-base mb-4">
+            <li>Thời gian lý tưởng: 18:00 – 21:00</li>
+            <li>Thời lượng tour: 20 – 30 phút</li>
+            <li>Dịch vụ đi kèm: Thuyền có áo phao, đèn lồng, người chèo thuyền địa phương</li>
+          </ul>
+          <button onclick="openModal('modal8')"
+            class="text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 px-6 py-3 rounded-full font-semibold shadow-lg transform hover:scale-105 transition-all duration-300">
+            XEM CHI TIẾT
+          </button>
+          <div id="modal8" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+            <div
+              class="bg-white rounded-2xl p-8 max-w-lg w-full max-h-[70vh] overflow-y-auto shadow-2xl relative transform transition-all duration-300 scale-95">
+              <button onclick="closeModal('modal8')"
+                class="absolute top-4 right-4 text-gray-600 hover:text-red-600 text-2xl font-bold">×</button>
+              <h2 class="text-2xl font-bold mb-4 text-blue-700">Tour tham quan bằng thuyền trên sông Hoài</h2>
+              <p class="text-gray-600 mb-6">
+                Thưởng thức vẻ đẹp lãng mạn của sông Hoài vào ban đêm, với ánh đèn lồng lung linh và không gian phố cổ
+                yên
+                bình. Đây là trải nghiệm không thể bỏ lỡ khi đến với Hội An, mang đến cảm giác thư thái và hòa mình vào
+                văn hóa địa phương.
+              </p>
+              <p class="text-gray-600 mb-4">
+                Tour thuyền trên sông Hoài không chỉ là một chuyến đi ngắm cảnh, mà còn là cơ hội để bạn khám phá lịch
+                sử
+                và văn hóa của Hội An qua những câu chuyện từ người chèo thuyền địa phương. Dưới ánh sáng huyền ảo của
+                đèn
+                lồng, bạn sẽ cảm nhận được sự yên bình và vẻ đẹp cổ kính của phố cổ.
+              </p>
+              <ul class="list-disc list-inside text-gray-600 text-base mb-4">
+                <li>Thời gian lý tưởng: 18:00 – 21:00, khi trời bắt đầu tối và đèn lồng được thắp sáng.</li>
+                <li>Thời lượng tour: 20 – 30 phút, đủ để bạn tận hưởng không gian mà không cảm thấy quá dài.</li>
+                <li>Dịch vụ đi kèm: Thuyền được trang bị áo phao an toàn, đèn lồng trang trí, và người chèo thuyền địa
+                  phương thân thiện, am hiểu văn hóa Hội An.</li>
+                <li>Điểm xuất phát: Bến thuyền ngay trung tâm phố cổ, gần cầu An Hội.</li>
+                <li>Giá vé tham khảo: 100.000 – 150.000 VNĐ/người (tùy thời điểm).</li>
+                <li>Lưu ý: Nên mang theo máy ảnh để ghi lại khoảnh khắc đẹp, và mặc áo khoác mỏng nếu đi vào buổi tối
+                  trời
+                  se lạnh.</li>
+              </ul>
+              <p class="text-gray-600 mb-6">
+                Ngoài ra, bạn có thể yêu cầu người chèo thuyền dừng lại ở một số điểm để chụp ảnh hoặc thả đèn hoa đăng
+                trên sông – một phong tục truyền thống mang ý nghĩa cầu may mắn và bình an. Hãy đặt tour ngay để không
+                bỏ
+                lỡ trải nghiệm tuyệt vời này!
+              </p>
+              <button onclick="closeModal('modal8')"
+                class="text-white bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full font-medium transition duration-300">Đóng</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -257,7 +509,8 @@
             <li><a class="hover:underline" href="/Dieu-khoan-chung">Điều khoản chung</a></li>
             <li><a class="hover:underline" href="/Quy-dinh-chung">Quy định chung</a></li>
             <li><a class="hover:underline" href="/chinh-sach-quyen-rieng-tu">Chính sách quyền riêng tư</a></li>
-            <li><a class="hover:underline" href="/chinh-sach-giai-quyet-khieu-nai">Chính sách giải quyết khiếu nại</a>
+            <li><a class="hover:underline" href="/chinh-sach-giai-quyet-khieu-nai">Chính sách giải quyết khiếu
+                nại</a>
             </li>
             <li><a class="hover:underline" href="/quy-dinh-ve-thanh-toan">Quy định về thanh toán</a></li>
           </ul>
@@ -274,7 +527,8 @@
         <div>
           <ul>
             <li><strong>Nơi cấp:</strong> Sở Kế Hoạch và Đầu Tư Tỉnh Quảng Nam</li>
-            <li><strong>Lĩnh vực kinh doanh:</strong> Khách sạn, căn hộ kinh doanh dịch vụ lưu trú , khu du lịch sinh
+            <li><strong>Lĩnh vực kinh doanh:</strong> Khách sạn, căn hộ kinh doanh dịch vụ lưu trú , khu du lịch
+              sinh
               thái, khu vui chơi giải trí</li>
           </ul>
         </div>
@@ -294,6 +548,23 @@
 </body>
 
 </html>
+<script>
+  function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.classList.remove('hidden');
+    setTimeout(() => {
+      modal.querySelector('.scale-95').classList.remove('scale-95');
+    }, 10);
+  }
+
+  function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.querySelector('.transform').classList.add('scale-95');
+    setTimeout(() => {
+      modal.classList.add('hidden');
+    }, 300);
+  }
+</script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const menuBtn = document.getElementById('menuBtn');
@@ -445,5 +716,19 @@
     .search-container button {
       padding: 12px 24px;
     }
+  }
+</style>
+<style>
+  .modal-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .modal-scroll::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+
+  .modal-scroll::-webkit-scrollbar-thumb:hover {
+    background: #555;
   }
 </style>

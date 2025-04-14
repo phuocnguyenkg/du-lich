@@ -14,15 +14,18 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap"
     rel="stylesheet">
-    <link rel="stylesheet" href="./header-nav.css">
- <style>
+  <!-- Add EmailJS script -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <link rel="stylesheet" href="./header-nav.css">
+  <style>
     body {
       font-family: 'Roboto', sans-serif;
       font-size: 1rem;
     }
 
     h1,
-    h2 {
+    h2,
+    h3 {
       font-family: 'Playfair Display', serif;
     }
 
@@ -47,28 +50,126 @@
       text-decoration: none;
       font-weight: 500;
     }
-  .text{
-    font-size: 3em;line-height: 1;
-    font-weight:bold ;
-    color:white;
-  }
-    
+
+    .text {
+      font-size: 3em;
+      line-height: 1;
+      font-weight: bold;
+      color: white;
+    }
+
     @media (max-width: 720px) {
-      .text{font-size: 2em;line-height: 1;}
+      .text {
+        font-size: 2em;
+        line-height: 1;
       }
+    }
+
+    /* Animation Styles */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .scale-in {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .scale-in.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .slide-up {
+      opacity: 0;
+      transform: translateY(100px);
+      transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+    }
+
+    .slide-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hover-grow {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .hover-grow:hover {
+      transform: scale(1.08);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .hover-bounce {
+      transition: transform 0.3s ease;
+    }
+
+    .hover-bounce:hover {
+      transform: translateY(-5px);
+    }
+
+    .bg-parallax {
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .chat-widget {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #1e3a8a;
+      color: white;
+      padding: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 100;
+      transition: transform 0.3s ease;
+    }
+
+    .chat-widget:hover {
+      transform: scale(1.15);
+    }
+
+    .video-overlay {
+      background: rgba(0, 0, 0, 0.4);
+    }
   </style>
 </head>
 
 <body class="bg-gray-100 text-gray-800">
-  <!-- Banner -->
-  
-
-  <!-- Header -->
+  <!-- Header (Unchanged) -->
   <header>
     <h1 class="text-2xl">Khám Phá Những Khách Sạn Hàng Đầu</h1>
   </header>
-  <!-- Navbar -->
-  <!-- Cập nhật phần nav -->
+
+  <!-- Navbar (Unchanged) -->
   <nav style="padding-right: 16.4px;" class="flex items-center px-6">
     <div class="flex items-center space-x-3">
       <img src="h.png" alt="Ravatel Logo" class="h-12 w-12" />
@@ -77,16 +178,13 @@
         <p class="text-sm">LUXURY HOTEL</p>
       </div>
     </div>
-    <!-- Thêm nút menu cho mobile -->
     <button id="menuBtn" class="md:hidden text-white">
       <i class="fas fa-bars text-2xl"></i>
     </button>
-    <!-- Thêm class mobile-menu để điều khiển hiển thị -->
     <div id="mobileMenu" class="hidden md:flex md:items-center md:space-x-4">
       <a href="trangchu.html" class="text-white block py-2">Trang chủ</a>
       <div class="dropdown relative">
         <a href="trang1.html" class="text-white block py-2">Khách sạn</a>
-
       </div>
       <a href="thongtin.html" class="text-white block py-2">Giới thiệu</a>
       <a href="lienhe.html" class="text-white block py-2">Liên hệ</a>
@@ -97,149 +195,408 @@
     </div>
   </nav>
 
-  <!-- Update the banner image to a Hoi An specific image -->
-  <div class="w-full relative">
-    <img src="Hoi-An-22.jpeg" alt="Hoi An Ancient Town" class="w-full h-96 object-cover brightness-75" />
-    <div class="absolute inset-0 flex items-center justify-center">
-      <h1 class="text">Liên Hệ & Đặt Phòng</h1>
+  <!-- Hero Banner (Unchanged) -->
+  <div class="relative w-full">
+    <img src="hs6.jpg" alt="">
+    <div class="absolute inset-0 video-overlay flex flex-col items-center justify-center text-center">
+      <h1 class="text scale-in text-5xl md:text-6xl">Liên Hệ Với Sự Sang Trọng</h1>
+      <p class="text-white text-xl mt-6 max-w-2xl scale-in" style="animation-delay: 0.3s;">
+        Kết nối với chúng tôi để trải nghiệm kỳ nghỉ tuyệt vời tại trái tim Hội An, nơi văn hóa và tiện nghi hòa quyện.
+      </p>
+      <a href="mua.html"
+        class="mt-8 bg-blue-600 text-white font-semibold px-10 py-4 rounded-full hover:bg-blue-700 hover-bounce transition-all pulse">
+        Gửi Yêu Cầu Ngay
+      </a>
     </div>
   </div>
-  
-  <!-- Update the grid section -->
-  <section class="py-16 bg-gradient-to-br from-blue-50 to-gray-100">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12">
-      <!-- Info Section -->
-      <div class="space-y-8">
-        <div>
-          <h2 class="text-3xl font-bold mb-6 text-blue-800 relative">
-            Liên hệ với chúng tôi
-            <span class="block w-20 h-1 bg-blue-600 mt-2"></span>
-          </h2>
-          <p class="text-gray-600 mb-6 leading-relaxed">
-            Chào mừng bạn đến với Khách sạn Hội An! Chúng tôi luôn sẵn sàng hỗ trợ bạn 24/7. Hãy liên hệ với chúng tôi 
-            để được tư vấn và đặt phòng với những ưu đãi tốt nhất.
-          </p>
-        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Keep existing contact cards and add new ones -->
-          <!-- ... existing address, phone, email, working hours cards ... -->
-          
-          <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-            <div class="flex items-center space-x-4 mb-4">
-              <div class="bg-pink-100 p-3 rounded-full">
-                <i class="fab fa-facebook text-pink-600 text-xl"></i>
-              </div>
-              <div>
-                <h3 class="font-semibold text-lg">Mạng xã hội</h3>
-                <p class="text-gray-600">Facebook: HoiAnHotel</p>
-                <p class="text-gray-600">Instagram: @hoianhotel</p>
+  <!-- Content Section -->
+  <section class="py-24 bg-gradient-to-b from-white to-blue-50">
+    <div class="max-w-7xl mx-auto px-4 space-y-24">
+      <!-- Welcome Message (Unchanged) -->
+      <div class="text-center fade-in">
+        <h2 class="text-4xl md:text-5xl font-bold text-blue-900 mb-6">Chào Mừng Đến Với Hội An</h2>
+        <p class="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          Khách Sạn Hội An mang đến không gian nghỉ dưỡng đẳng cấp, gần gũi với văn hóa phố cổ. Liên hệ ngay để chúng
+          tôi giúp bạn thiết kế hành trình đáng nhớ, từ nghỉ dưỡng sang trọng đến khám phá lồng đèn rực rỡ!
+        </p>
+      </div>
+
+      <!-- Contact Channels (Unchanged) -->
+      <div class="scale-in">
+        <h3 class="text-3xl font-bold text-blue-900 text-center mb-12">Liên Hệ Dễ Dàng</h3>
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+          <div class="bg-white p-8 rounded-3xl shadow-xl hover-grow fade-in">
+            <div class="flex justify-center mb-4">
+              <div class="bg-blue-100 p-5 rounded-full">
+                <i class="fas fa-map-marker-alt text-blue-600 text-3xl"></i>
               </div>
             </div>
+            <h4 class="text-xl font-semibold text-gray-800 text-center">Địa Chỉ</h4>
+            <p class="text-gray-600 text-center mt-3">123 Đường Cửa Đại, Hội An, Quảng Nam</p>
           </div>
-
-          <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-            <div class="flex items-center space-x-4 mb-4">
-              <div class="bg-yellow-100 p-3 rounded-full">
-                <i class="fas fa-taxi text-yellow-600 text-xl"></i>
-              </div>
-              <div>
-                <h3 class="font-semibold text-lg">Dịch vụ đưa đón</h3>
-                <p class="text-gray-600">Sân bay Đà Nẵng</p>
-                <p class="text-gray-600">Tour du lịch địa phương</p>
+          <div class="bg-white p-8 rounded-3xl shadow-xl hover-grow fade-in" style="transition-delay: 0.1s;">
+            <div class="flex justify-center mb-4">
+              <div class="bg-green-100 p-5 rounded-full">
+                <i class="fas fa-phone-alt text-green-600 text-3xl"></i>
               </div>
             </div>
+            <h4 class="text-xl font-semibold text-gray-800 text-center">Hotline</h4>
+            <p class="text-gray-600 text-center mt-3"><a href="tel:+84329031440" class="hover:underline">0329 031
+                440</a></p>
           </div>
-        </div>
-
-        <!-- Updated Map with Hoi An location -->
-        <div class="rounded-xl overflow-hidden shadow-lg">
-          <iframe class="w-full h-80"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15336.397174612798!2d108.32152682967392!3d15.878058603805726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31420dd4e14b2edb%3A0xbc6e1faf738be4c5!2zUGjhu5EgYyG1rSBI4buZaSBBbiwgSG9pIEFuLCBRdWFuZyBOYW0sIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1709703163899!5m2!1sen!2s"
-            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
-
-        <!-- Add new section for quick links -->
-        <div class="bg-white p-6 rounded-xl shadow-lg">
-          <h3 class="text-xl font-bold text-gray-800 mb-4">Liên kết nhanh</h3>
-          <div class="grid grid-cols-2 gap-4">
-            <a href="#" class="flex items-center space-x-2 text-blue-600 hover:text-blue-800">
-              <i class="fas fa-hotel"></i>
-              <span>Xem phòng</span>
-            </a>
-            <a href="#" class="flex items-center space-x-2 text-blue-600 hover:text-blue-800">
-              <i class="fas fa-utensils"></i>
-              <span>Nhà hàng</span>
-            </a>
-            <a href="#" class="flex items-center space-x-2 text-blue-600 hover:text-blue-800">
-              <i class="fas fa-spa"></i>
-              <span>Spa & Massage</span>
-            </a>
-            <a href="#" class="flex items-center space-x-2 text-blue-600 hover:text-blue-800">
-              <i class="fas fa-car"></i>
-              <span>Thuê xe</span>
-            </a>
+          <div class="bg-white p-8 rounded-3xl shadow-xl hover-grow fade-in" style="transition-delay: 0.2s;">
+            <div class="flex justify-center mb-4">
+              <div class="bg-purple-100 p-5 rounded-full">
+                <i class="fas fa-envelope text-purple-600 text-3xl"></i>
+              </div>
+            </div>
+            <h4 class="text-xl font-semibold text-gray-800 text-center">Email</h4>
+            <p class="text-gray-600 text-center mt-3"><a href="mailto:huyonechampfli@gmail.com"
+                class="hover:underline">huyonechampfli@gmail.com</a></p>
+          </div>
+          <div class="bg-white p-8 rounded-3xl shadow-xl hover-grow fade-in" style="transition-delay: 0.3s;">
+            <div class="flex justify-center mb-4">
+              <div class="bg-yellow-100 p-5 rounded-full">
+                <i class="fab fa-whatsapp text-green-600 text-3xl"></i>
+              </div>
+            </div>
+            <h4 class="text-xl font-semibold text-gray-800 text-center">WhatsApp</h4>
+            <p class="text-gray-600 text-center mt-3"><a href="https://wa.me/+84329031440" class="hover:underline">Chat
+                ngay</a></p>
+          </div>
+          <div class="bg-white p-8 rounded-3xl shadow-xl hover-grow fade-in" style="transition-delay: 0.4s;">
+            <div class="flex justify-center mb-4">
+              <div class="bg-pink-100 p-5 rounded-full">
+                <i class="fab fa-facebook-messenger text-pink-600 text-3xl"></i>
+              </div>
+            </div>
+            <h4 class="text-xl font-semibold text-gray-800 text-center">Messenger</h4>
+            <p class="text-gray-600 text-center mt-3"><a href="https://www.messenger.com/e2ee/t/6742900099112419"
+                target="_blank" class="hover:underline">Nhắn tin</a></p>
           </div>
         </div>
       </div>
 
-      <!-- Update the contact form -->
-      <div>
-        <form class="bg-white shadow-xl rounded-xl p-8 space-y-6">
-          <h3 class="text-2xl font-bold text-gray-800 mb-6">Gửi thông tin liên hệ</h3>
-          
-          <div class="space-y-4">
-            <div>
-              <label class="block font-semibold mb-2 text-gray-700">Họ và tên</label>
-              <input type="text" placeholder="Nhập họ và tên của bạn"
-                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                required>
+      <!-- Contact Form (Modified for EmailJS) -->
+      <div class="bg-parallax py-20 px-4 md:px-12 rounded-3xl slide-up"
+        style="background-image: url('https://images.unsplash.com/photo-1519996529931-28324d5a630e');">
+        <div class="max-w-4xl mx-auto bg-white bg-opacity-90 p-10 rounded-3xl shadow-2xl">
+          <h3 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-8">Gửi Yêu Cầu Của Bạn</h3>
+          <p class="text-gray-600 text-center mb-8 max-w-2xl mx-auto">Hãy để chúng tôi hỗ trợ bạn với các dịch vụ đẳng
+            cấp. Điền thông tin dưới đây để nhận phản hồi trong 12 giờ!</p>
+          <form id="contact-form" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block font-semibold mb-2 text-gray-700">Họ và tên *</label>
+                <input type="text" id="name" placeholder="Nhập họ và tên"
+                  class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all"
+                  required>
+              </div>
+              <div>
+                <label class="block font-semibold mb-2 text-gray-700">Email *</label>
+                <input type="email" id="email" placeholder="example@domain.com"
+                  class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all"
+                  required>
+              </div>
+              <div>
+                <label class="block font-semibold mb-2 text-gray-700">Số điện thoại *</label>
+                <input type="tel" id="phone" placeholder="Nhập số điện thoại"
+                  class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all"
+                  required>
+              </div>
+              <div>
+                <label class="block font-semibold mb-2 text-gray-700">Ngày nhận phòng</label>
+                <input type="date" id="checkin"
+                  class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all">
+              </div>
+              <div>
+                <label class="block font-semibold mb-2 text-gray-700">Ngày trả phòng</label>
+                <input type="date" id="checkout"
+                  class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all">
+              </div>
+              <div>
+                <label class="block font-semibold mb-2 text-gray-700">Số lượng khách *</label>
+                <input type="number" id="guests" min="1" placeholder="1"
+                  class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all"
+                  required>
+              </div>
             </div>
-            
             <div>
-              <label class="block font-semibold mb-2 text-gray-700">Email</label>
-              <input type="email" placeholder="example@domain.com"
-                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              <label class="block font-semibold mb-2 text-gray-700">Loại yêu cầu *</label>
+              <select id="request_type"
+                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all"
                 required>
-            </div>
-
-            <div>
-              <label class="block font-semibold mb-2 text-gray-700">Số điện thoại</label>
-              <input type="tel" placeholder="Nhập số điện thoại của bạn"
-                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                required>
-            </div>
-
-            <div>
-              <label class="block font-semibold mb-2 text-gray-700">Chủ đề</label>
-              <select class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                <option>Đặt phòng</option>
-                <option>Báo giá</option>
-                <option>Khiếu nại</option>
-                <option>Góp ý</option>
-                <option>Khác</option>
+                <option value="Đặt phòng">Đặt phòng</option>
+                <option value="Tour du lịch">Tour du lịch</option>
+                <option value="Spa & Thư giãn">Spa & Thư giãn</option>
+                <option value="Tiệc cưới/Hội nghị">Tiệc cưới/Hội nghị</option>
+                <option value="Ẩm thực">Ẩm thực</option>
+                <option value="Góp ý">Góp ý</option>
+                <option value="Khác">Khác</option>
               </select>
             </div>
-
             <div>
-              <label class="block font-semibold mb-2 text-gray-700">Nội dung</label>
-              <textarea rows="5" placeholder="Nhập nội dung tin nhắn của bạn"
-                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              <label class="block font-semibold mb-2 text-gray-700">Yêu cầu chi tiết *</label>
+              <textarea id="details" rows="8" placeholder="Ví dụ: Phòng view biển, tour làng gốm, tổ chức sinh nhật..."
+                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all"
                 required></textarea>
             </div>
-          </div>
+            <button type="submit"
+              class="w-full bg-blue-600 text-white font-semibold px-6 py-4 rounded-lg hover:bg-blue-700 hover-bounce transition-all pulse">
+              Gửi Yêu Cầu
+            </button>
+          </form>
+          <p id="form-message" class="text-center mt-4 hidden"></p>
+        </div>
+      </div>
 
-          <button type="submit"
-            class="w-full bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-200">
-            Gửi liên hệ
-          </button>
-        </form>
+      <!-- Social Engagement (Unchanged) -->
+      <div class="scale-in">
+        <h3 class="text-3xl font-bold text-blue-900 text-center mb-12">Kết Nối Với Chúng Tôi</h3>
+        <div class="flex flex-wrap justify-center gap-8">
+          <a href="https://www.facebook.com/bookingcom" class="bg-blue-600 text-white p-6 rounded-full hover-grow"><i
+              class="fab fa-facebook-f text-3xl"></i></a>
+          <a href="https://www.instagram.com/bookingcom/" class="bg-pink-600 text-white p-6 rounded-full hover-grow"><i
+              class="fab fa-instagram text-3xl"></i></a>
+          <a href="https://x.com/bookingcom?" class="bg-blue-400 text-white p-6 rounded-full hover-grow"><i
+              class="fab fa-twitter text-3xl"></i></a>
+          <a href="https://www.youtube.com/@bookingcom" class="bg-red-600 text-white p-6 rounded-full hover-grow"><i
+              class="fab fa-youtube text-3xl"></i></a>
+          <a href="https://api.whatsapp.com/send/?phone=%2B84329031440&text&type=phone_number&app_absent=0"
+            class="bg-green-600 text-white p-6 rounded-full hover-grow"><i class="fab fa-whatsapp text-3xl"></i></a>
+          <a href="https://www.tiktok.com/@bookingcom?lang=en"
+            class="bg-purple-600 text-white p-6 rounded-full hover-grow"><i class="fab fa-tiktok text-3xl"></i></a>
+        </div>
+        <p class="text-gray-600 text-center mt-8">Theo dõi để cập nhật ưu đãi và khoảnh khắc đẹp từ Hội An!</p>
+      </div>
+
+      <!-- Interactive Map (Unchanged) -->
+      <div class="slide-up">
+        <h3 class="text-3xl font-bold text-blue-900 text-center mb-12">Tìm Đường Đến Thiên Đường</h3>
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+          <iframe class="w-full h-[700px]"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3833.8120272368395!2d108.3268675751721!3d15.87500308485095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31420dd4e1292177%3A0x7c8d02a77e90fc7!2zUGjhu5EgY8O0IEjhu5lpIEFuLCBI4buZaSBBbiwgUXVhbmcgTmFt!5e0!3m2!1svi!2s!4v1713088780000!5m2!1svi!2s"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          <div class="absolute bottom-6 left-6 bg-blue-600 text-white p-4 rounded-lg shadow-md">
+            <p class="font-semibold text-lg">Chỉ 3 phút đến Chợ Đêm!</p>
+          </div>
+        </div>
+        <div class="text-center mt-8">
+          <p class="text-gray-600 max-w-2xl mx-auto">Ở Hội An, dễ dàng khám phá phố cổ, bãi biển, và làng
+            nghề truyền thống.</p>
+          <a href="https://www.google.com/maps/place/H%E1%BB%99i+An,+Qu%E1%BA%A3ng+Nam,+Vietnam/@15.9182296,108.2522559,44789m/data=!3m2!1e3!4b1!4m6!3m5!1s0x31420dd4e1353a7b:0xae336435edfcca3!8m2!3d15.8799241!4d108.3267487!16zL20vMDZmYnBk?entry=ttu&g_ep=EgoyMDI1MDQwOS4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"
+            class="text-blue-600 hover:underline mt-4 inline-block font-semibold">Tải hướng dẫn đường đi</a>
+        </div>
+      </div>
+
+      <!-- Exclusive Offers (Unchanged) -->
+      <div class="bg-parallax py-24 rounded-3xl scale-in"
+        style="background-image: url('https://images.unsplash.com/photo-1553419632-47cb0435c304');">
+        <div class="max-w-6xl mx-auto px-4">
+          <h3 class="text-3xl font-bold text-white text-center mb-12" style="color: black;">Ưu Đãi Không Thể Bỏ Lỡ</h3>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="bg-white p-8 rounded-3xl shadow-xl hover-grow fade-in">
+              <img src="hs7.jpg" alt="Offer 1" class="w-full h-48 object-cover rounded-lg mb-6">
+              <h4 class="text-xl font-semibold text-gray-800">Gói Trăng Rằm</h4>
+              <p class="text-gray-600 mt-3">Thả đèn hoa đăng, buffet tối, và nghỉ dưỡng 2 đêm.</p>
+              <p class="text-blue-600 font-bold mt-4">1.900.000 VNĐ</p>
+              <a href="mua.html" class="block text-blue-600 hover:underline mt-4">Đặt ngay</a>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-xl hover-grow fade-in" style="transition-delay: 0.2s;">
+              <img src="hs8jpg.jpg" alt="Offer 2" class="w-full h-48 object-cover rounded-lg mb-6">
+              <h4 class="text-xl font-semibold text-gray-800">Combo Biển Xanh</h4>
+              <p class="text-gray-600 mt-3">Phòng view biển, tour Cù Lao Chàm, và spa.</p>
+              <p class="text-blue-600 font-bold mt-4">3.500.000 VNĐ</p>
+              <a href="mua.html" class="block text-blue-600 hover:underline mt-4">Đặt ngay</a>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-xl hover-grow fade-in" style="transition-delay: 0.4s;">
+              <img src="hs9.jpg" alt="Offer 3" class="w-full h-48 object-cover rounded-lg mb-6">
+              <h4 class="text-xl font-semibold text-gray-800">Kỳ Nghỉ Gia Đình</h4>
+              <p class="text-gray-600 mt-3">Phòng rộng, vé tham quan, và đưa đón sân bay.</p>
+              <p class="text-blue-600 font-bold mt-4">4.200.000 VNĐ</p>
+              <a href="mua.html" class="block text-blue-600 hover:underline mt-4">Đặt ngay</a>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-xl hover-grow fade-in" style="transition-delay: 0.6s;">
+              <img src="hs10.jpg" alt="Offer 4" class="w-full h-48 object-cover rounded-lg mb-6">
+              <h4 class="text-xl font-semibold text-gray-800">Tiệc Cưới Lãng Mạn</h4>
+              <p class="text-gray-600 mt-3">Không gian sang trọng và dịch vụ tổ chức trọn gói.</p>
+              <p class="text-blue-600 font-bold mt-4">Liên hệ báo giá</p>
+              <a href="mua.html" class="block text-blue-600 hover:underline mt-4">Tư vấn ngay</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonials (Unchanged) -->
+      <div class="slide-up">
+        <h3 class="text-3xl font-bold text-blue-900 text-center mb-12">Hành Trình Của Khách Hàng</h3>
+        <div class="relative max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-3xl shadow-xl hover-grow fade-in">
+              <div class="flex items-center space-x-4 mb-6">
+                <img
+                  src="https://suckhoedoisong.qltns.mediacdn.vn/324455921873985536/2021/8/12/photo-1628710340853-1628710341289757476309.jpg"
+                  alt="Avatar" class="w-20 h-20 rounded-full">
+                <div>
+                  <h4 class="font-semibold text-gray-800 text-lg">Jack97</h4>
+                  <p class="text-gray-600 text-sm">Nhạc sĩ</p>
+                </div>
+              </div>
+              <p class="text-gray-600">"Phòng đẹp, dịch vụ chu đáo, tour phố cổ rất đáng nhớ. Sẽ quay lại!"</p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-xl hover-grow fade-in" style="transition-delay: 0.2s;">
+              <div class="flex items-center space-x-4 mb-6">
+                <img
+                  src="https://cdn.oneesports.vn/cdn-data/wp-content/uploads/sites/4/2020/08/viruss-streamer-1536x838.jpg"
+                  alt="Avatar" class="w-20 h-20 rounded-full">
+                <div>
+                  <h4 class="font-semibold text-gray-800 text-lg">viruss</h4>
+                  <p class="text-gray-600 text-sm">nhạc sĩ,streamer</p>
+                </div>
+              </div>
+              <p class="text-gray-600">"Spa thư giãn tuyệt vời, nhân viên thân thiện, đồ ăn ngon!"</p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-xl hover-grow fade-in" style="transition-delay: 0.4s;">
+              <div class="flex items-center space-x-4 mb-6">
+                <img
+                  src="https://hips.hearstapps.com/hmg-prod/images/elon-musk-gettyimages-2147789844-web-675b2c17301ea.jpg?crop=0.6666666666666666xw:1xh;center,top&resize=1200:*"
+                  alt="Avatar" class="w-20 h-20 rounded-full">
+                <div>
+                  <h4 class="font-semibold text-gray-800 text-lg">elon musk</h4>
+                  <p class="text-gray-600 text-sm">Tỷ phú</p>
+                </div>
+              </div>
+              <p class="text-gray-600">"Hoi An is magical, and this hotel made it unforgettable!"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="bg-blue-50 py-20 rounded-3xl scale-in">
+        <div class="max-w-5xl mx-auto px-4">
+          <h3 class="text-3xl font-bold text-blue-900 text-center mb-12">Giải Đáp Thắc Mắc</h3>
+          <div class="space-y-6">
+            <div class="faq bg-white rounded-3xl shadow-xl hover-grow">
+              <button class="w-full text-left p-8 flex justify-between items-center focus:outline-none">
+                <span class="font-semibold text-gray-800 text-lg">Làm thế nào để đặt phòng?</span>
+                <i class="fas fa-chevron-down text-blue-600 text-xl"></i>
+              </button>
+              <div class="hidden p-8 pt-0 text-gray-600">
+                Bạn có thể đặt phòng qua biểu mẫu trên trang này, gọi hotline 0329 031 440, hoặc nhắn tin qua
+                WhatsApp/Messenger.
+              </div>
+            </div>
+            <div class="faq bg-white rounded-3xl shadow-xl hover-grow">
+              <button class="w-full text-left p-8 flex justify-between items-center focus:outline-none">
+                <span class="font-semibold text-gray-800 text-lg">Chính sách hủy phòng như thế nào?</span>
+                <i class="fas fa-chevron-down text-blue-600 text-xl"></i>
+              </button>
+              <div class="hidden p-8 pt-0 text-gray-600">
+                Hủy miễn phí trước 72 giờ. Liên hệ để được hỗ trợ chính sách linh hoạt theo gói dịch vụ.
+              </div>
+            </div>
+            <div class="faq bg-white rounded-3xl shadow-xl hover-grow">
+              <button class="w-full text-left p-8 flex justify-between items-center focus:outline-none">
+                <span class="font-semibold text-gray-800 text-lg">Có dịch vụ đưa đón sân bay không?</span>
+                <i class="fas fa-chevron-down text-blue-600 text-xl"></i>
+              </button>
+              <div class="hidden p-8 pt-0 text-gray-600">
+                Có, chúng tôi cung cấp xe đưa đón từ sân bay Đà Nẵng với chi phí hợp lý, đặt trước qua biểu mẫu.
+              </div>
+            </div>
+            <div class="faq bg-white rounded-3xl shadow-xl hover-grow">
+              <button class="w-full text-left p-8 flex justify-between items-center focus:outline-none">
+                <span class="font-semibold text-gray-800 text-lg">Có tổ chức tiệc cưới hoặc sự kiện không?</span>
+                <i class="fas fa-chevron-down text-blue-600 text-xl"></i>
+              </button>
+              <div class="hidden p-8 pt-0 text-gray-600">
+                Có, chúng tôi chuyên tổ chức tiệc cưới, hội nghị, và sự kiện với không gian sang trọng. Liên hệ để được
+                tư
+                vấn!
+              </div>
+            </div>
+            <div class="faq bg-white rounded-3xl shadow-xl hover-grow">
+              <button class="w-full text-left p-8 flex justify-between items-center focus:outline-none">
+                <span class="font-semibold text-gray-800 text-lg">Có ưu đãi cho đoàn lớn không?</span>
+                <i class="fas fa-chevron-down text-blue-600 text-xl"></i>
+              </button>
+              <div class="hidden p-8 pt-0 text-gray-600">
+                Đoàn từ 15 người trở lên được giảm giá đặc biệt và ưu đãi tour. Gửi yêu cầu để nhận báo giá chi tiết.
+              </div>
+            </div>
+            <div class="faq bg-white rounded-3xl shadow-xl hover-grow">
+              <button class="w-full text-left p-8 flex justify-between items-center focus:outline-none">
+                <span class="font-semibold text-gray-800 text-lg">Có hỗ trợ tour địa phương không?</span>
+                <i class="fas fa-chevron-down text-blue-600 text-xl"></i>
+              </button>
+              <div class="hidden p-8 pt-0 text-gray-600">
+                Có, chúng tôi tổ chức tour đến phố cổ, Cù Lao Chàm, làng gốm Thanh Hà, và nhiều điểm đến khác.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Local Highlights (Unchanged) -->
+      <div class="slide-up">
+        <h3 class="text-3xl font-bold text-blue-900 text-center mb-12">Điểm Nhấn Hội An</h3>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="bg-white p-8 rounded-3xl shadow-xl hover-grow fade-in">
+            <img src="hs11.jpg" alt="Old Town" class="w-full h-48 object-cover rounded-lg mb-6">
+            <h4 class="text-xl font-semibold text-gray-800">Phố Cổ Hội An</h4>
+            <p class="text-gray-600 mt-3">Khám phá di sản UNESCO với lồng đèn và kiến trúc cổ.</p>
+
+          </div>
+          <div class="bg-white p-8 rounded-3xl shadow-xl hover-grow fade-in" style="transition-delay: 0.2s;">
+            <img src="hs12.jpg" alt="Beach" class="w-full h-48 object-cover rounded-lg mb-6">
+            <h4 class="text-xl font-semibold text-gray-800">Bãi Biển An Bàng</h4>
+            <p class="text-gray-600 mt-3">Thư giãn trên bãi biển cát trắng tuyệt đẹp.</p>
+
+          </div>
+          <div class="bg-white p-8 rounded-3xl shadow-xl hover-grow fade-in" style="transition-delay: 0.4s;">
+            <img src="hs13.jpg" alt="Village" class="w-full h-48 object-cover rounded-lg mb-6">
+            <h4 class="text-xl font-semibold text-gray-800">Làng Rau Trà Quế</h4>
+            <p class="text-gray-600 mt-3">Trải nghiệm nông thôn và ẩm thực địa phương.</p>
+
+          </div>
+          <div class="bg-white p-8 rounded-3xl shadow-xl hover-grow fade-in" style="transition-delay: 0.6s;">
+            <img src="hs14.jpg" alt="River" class="w-full h-48 object-cover rounded-lg mb-6">
+            <h4 class="text-xl font-semibold text-gray-800">Sông Hoài</h4>
+            <p class="text-gray-600 mt-3">Thả đèn hoa đăng và ngắm cảnh đêm thơ mộng.</p>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Final CTA (Unchanged) -->
+      <div class="bg-blue-600 py-24 rounded-3xl text-center scale-in">
+        <h3 class="text-4xl md:text-5xl font-bold text-white mb-8">Bắt Đầu Hành Trình Của Bạn</h3>
+        <p class="text-white text-lg max-w-3xl mx-auto mb-10">Từ phố cổ lộng lẫy đến dịch vụ sang trọng, chúng tôi sẵn
+          sàng mang đến kỳ nghỉ hoàn hảo. Liên hệ ngay để nhận ưu đãi hôm nay!</p>
+        <div class="flex flex-wrap justify-center gap-6">
+          <a href="mua.html"
+            class="bg-white text-blue-600 font-semibold px-12 py-4 rounded-full hover:bg-gray-100 hover-bounce transition-all pulse">Đặt
+            Phòng Ngay</a>
+          <a href="tel:+84329031440"
+            class="bg-transparent border-2 border-white text-white font-semibold px-12 py-4 rounded-full hover:bg-white hover:text-blue-600 hover-bounce transition-all">Gọi
+            0329 031 440</a>
+          <a href="https://wa.me/+84329031440"
+            class="bg-green-600 text-white font-semibold px-12 py-4 rounded-full hover:bg-green-700 hover-bounce transition-all">Chat
+            WhatsApp</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-  <!-- Footer -->
+
+    <!-- Chat Widget (Unchanged) -->
+    <div class="chat-widget hover-bounce" title="Hỗ trợ trực tuyến">
+      <i class="fas fa-headset text-2xl"></i>
+    </div>
+  </section>
+
+  <!-- Footer (Unchanged) -->
   <footer class="bg-gray-900 text-gray-400 py-12 mt-12">
     <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8">
       <div>
@@ -265,19 +622,30 @@
         </ul>
       </div>
     </div>
-    <div class="text-center text-sm mt-8">&copy; 2025 Khách sạn Hội An. Thiết kế bởi WebHotel.vn</div>
+    <div class="text-center text-sm mt-8">© 2025 Khách sạn Hội An. Thiết kế bởi WebHotel.vn</div>
   </footer>
+
+  <!-- JavaScript (Modified to include EmailJS) -->
   <script>
+    // Initialize EmailJS
+    (function () {
+      emailjs.init("neFeefFy6lcRVzvON"); // Replace with your EmailJS public key
+    })();
+
     document.addEventListener('DOMContentLoaded', function () {
       const menuBtn = document.getElementById('menuBtn');
       const mobileMenu = document.getElementById('mobileMenu');
       const header = document.querySelector('header');
       const dropdowns = document.querySelectorAll('.dropdown');
+      const chatWidget = document.querySelector('.chat-widget');
+      const contactForm = document.getElementById('contact-form');
+      const formMessage = document.getElementById('form-message');
 
+      // Mobile menu toggle
       menuBtn.addEventListener('click', function (e) {
         e.stopPropagation();
         mobileMenu.classList.toggle('show');
-        header.classList.toggle('hide'); // Thêm dòng này
+        header.classList.toggle('hide');
         const icon = this.querySelector('i');
         icon.classList.toggle('fa-bars');
         icon.classList.toggle('fa-times');
@@ -300,6 +668,86 @@
           icon.classList.add('fa-bars');
           icon.classList.remove('fa-times');
         }
+      });
+
+      // Animation on scroll
+      const animatedElements = document.querySelectorAll('.fade-in, .scale-in, .slide-up');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      animatedElements.forEach(element => observer.observe(element));
+
+      // FAQ Accordion
+      const faqButtons = document.querySelectorAll('.faq button');
+      faqButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const content = button.nextElementSibling;
+          const icon = button.querySelector('i');
+          content.classList.toggle('hidden');
+          icon.classList.toggle('fa-chevron-down');
+          icon.classList.toggle('fa-chevron-up');
+        });
+      });
+
+      // Chat Widget (Placeholder)
+      chatWidget.addEventListener('click', () => {
+        alert('Chức năng hỗ trợ trực tuyến đang được phát triển. Vui lòng gọi 0329 031 440 hoặc nhắn WhatsApp!');
+      });
+
+      // Contact Form Submission
+      contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Collect form data
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const checkin = document.getElementById('checkin').value;
+        const checkout = document.getElementById('checkout').value;
+        const guests = document.getElementById('guests').value;
+        const requestType = document.getElementById('request_type').value;
+        const details = document.getElementById('details').value.trim();
+
+        // Validate required fields
+        if (!name || !email || !phone || !guests || !requestType || !details) {
+          formMessage.textContent = 'Vui lòng điền đầy đủ các trường bắt buộc.';
+          formMessage.classList.remove('hidden', 'text-green-600');
+          formMessage.classList.add('text-red-600');
+          return;
+        }
+
+        // Prepare email parameters
+        const emailParams = {
+          name: name,
+          email: email,
+          phone: phone,
+          checkin: checkin || 'Không xác định',
+          checkout: checkout || 'Không xác định',
+          guests: guests,
+          request_type: requestType,
+          details: details,
+          to_email: 'huyonechampfli@gmail.com', // Email to receive submissions
+        };
+
+        // Send email using EmailJS
+        emailjs.send('service_rqc6kqf', 'template_6jk3z13', emailParams) // Replace with your service and template IDs
+          .then(() => {
+            formMessage.textContent = '✅ Yêu cầu của bạn đã được gửi thành công! Chúng tôi sẽ liên hệ sớm.';
+            formMessage.classList.remove('hidden', 'text-red-600');
+            formMessage.classList.add('text-green-600');
+            contactForm.reset(); // Reset form after successful submission
+          })
+          .catch((error) => {
+            formMessage.textContent = `❌ Gửi yêu cầu thất bại. Lỗi: ${error.text}`;
+            formMessage.classList.remove('hidden', 'text-green-600');
+            formMessage.classList.add('text-red-600');
+          });
       });
     });
   </script>

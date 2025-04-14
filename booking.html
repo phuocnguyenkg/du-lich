@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <title>Đặt Phòng Khách Sạn VIP</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="./header-nav.css">
   <style>
-    * { box-sizing: border-box; }
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #fdf2f8, #e0e7ff);
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #f3e7ff, #e6f0ff);
+      color: #333;
     }
 
     /* Header styles */
@@ -21,336 +27,13 @@
       padding: 1rem;
       width: 100%;
       transition: opacity 0.3s ease;
-      font-size: 0.8em;
     }
 
-    /* Navigation styles */
-    nav {
-      background-color: #1e3a8a;
-      padding: 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      color: white;
-    }
-
-    #mobileMenu {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .search-container {
-      display: flex;
-      align-items: center;
-      background: white;
-      border-radius: 4px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      margin-left: 1rem;
-      width: 300px;
-    }
-
-    .search-container input {
-      flex: 1;
-      border: none;
-      outline: none;
-      padding: 10px 15px;
-      font-size: 14px;
-      background: transparent;
-      color: #333;
-    }
-
-    .search-container button {
-      background: #4CAF50;
-      border: none;
-      padding: 10px 20px;
-      color: white;
-      border-radius: 0 4px 4px 0;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .search-container button:hover {
-      background: #ff7600;
-    }
-
-    @media (max-width: 768px) {
-      #mobileMenu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: #1e3a8a;
-        padding: 1rem;
-        flex-direction: column;
-      }
-
-      #mobileMenu.active {
-        display: flex;
-      }
-
-      .search-container {
-        width: 100%;
-        margin: 1rem 0;
-      }
-    }
-
-    
-    h1 {
+    header h1 {
+      font-size: 2rem;
       margin: 0;
-      font-size: 2.8em;
-    }
-    .room-content h3 {
-      margin-top: 0;
-      color: #8b5cf6;
-    }
-    .room-content p {
-      margin: 8px 0;
-    }
-    button {
-      background: linear-gradient(to right, #6366f1, #ec4899);
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    button:hover {
-      opacity: 0.9;
     }
 
-    form {
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      margin-top: 40px;
-    }
-
-    form h2 {
-      margin-top: 0;
-      color: #ec4899;
-    }
-
-    label {
-      display: block;
-      margin: 15px 0 5px;
-      font-weight: 600;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 10px;
-      border: 2px solid #ddd;
-      border-radius: 10px;
-      font-size: 1em;
-    }
-
-    #summary {
-      margin-top: 20px;
-      font-weight: bold;
-      font-size: 1.1em;
-    }
-
-    .popup {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.4);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 99;
-    }
-
-    .popup-content {
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-
-    .popup-content h3 {
-      color: #16a34a;
-      margin-bottom: 10px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #f3f4f6;
-      margin-top: 50px;
-      font-size: 0.9em;
-      color: #666;
-    }
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
-    }
-    .room {
-     display: flex;
-     background: white;
-     border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    margin-bottom: 30px;
-    min-height: 280px;
-    }
-    .room-content {
-      flex: 1;
-      padding: 15px;
-    }
-    .room-content h3 {
-      font-size: 1.2em;
-      margin: 0 0 8px 0;
-    }
-    .price {
-      font-size: 1em;
-      margin: 5px 0;
-    }
-    .room-details {
-      padding: 12px;
-      margin: 10px 0;
-    }
-    .amenities h4 {
-      font-size: 0.9em;
-      margin-bottom: 8px;
-    }
-    .amenities ul {
-      gap: 8px;
-    }
-    .amenities li {
-      font-size: 0.85em;
-    }
-    .description {
-      margin-top: 10px;
-      padding-top: 10px;
-    }
-    .description h4 {
-      font-size: 0.9em;
-      margin-bottom: 5px;
-    }
-    .description p {
-      font-size: 0.85em;
-      margin: 0;
-      line-height: 1.4;
-    }
-    button {
-      margin-top: 10px;
-      padding: 8px 16px;
-      font-size: 0.9em;
-    }
-    .room:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-    }
-    .room-image {
-    flex: 0 0 35%;
-    position: relative;
-    overflow: hidden;
-  }
-  .room-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .room-content {
-    flex: 1;
-    padding: 25px;
-  }
-  .price {
-    color: #4CAF50;
-    font-size: 1.2em;
-    font-weight: bold;
-    margin: 10px 0;
-  }
-  .room-details {
-    background: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 15px 0;
-  }
-  .amenities ul {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    list-style: none;
-    padding: 0;
-  }
-  .amenities li {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .amenities i {
-    color: #1e3a8a;
-  }
-  .description {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid #eee;
-  }
-  
-  @media (max-width: 768px) {
-    .room {flex-direction: column;
-    }
-
-    .room-image {
-      height: 200px;
-    }
-    .amenities ul {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-    
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Khám Phá Những Khách Sạn Hàng Đầu</h1>
-  </header>
-
-  <nav>
-    <div class="nav-brand">
-      <img  src="h.png"  alt="HOI AN Logo" class="h-12 w-12" />
-      <div>
-        <h1>HOI AN</h1>
-        <p>LUXURY HOTEL</p>
-      </div>
-    </div>
-
-    <!-- Menu button for mobile -->
-    <button id="menuBtn" class="menu-button">
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <div id="mobileMenu">
-      <a href="trangchu.html">Trang chủ</a>
-      <a href="trang1.html">Khách sạn</a>
-      <a href="thongtin.html">Giới thiệu</a>
-      <a href="lienhe.html">Liên hệ</a>
-      <div class="search-container">
-        <input type="text" placeholder="Tìm kiếm...">
-        <button type="submit"><i class="fas fa-search"></i></button>
-      </div>
-    </div>
-  </nav>
-
-  <style>
     header {
       background-color: #222;
       color: white;
@@ -389,7 +72,7 @@
     }
 
     .menu-button {
-      display: none; 
+      display: none;
       background: none;
       border: none;
       color: white;
@@ -466,886 +149,627 @@
         width: 100%;
       }
     }
-  </style>
-  <style>
-    .room-layout {
+
+    /* Main content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 0;
+      background: linear-gradient(to right, #7c3aed, #db2777);
+      color: white;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Room grid */
+    .room-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
     }
 
-    .room-details {
-      margin: 1rem 0;
-      padding: 1rem;
-      background: #f8f9fa;
-      border-radius: 8px;
+    .room-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
     }
 
-    .amenities ul {
-      list-style: none;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.5rem;
+    .room-card:hover {
+      transform: translateY(-5px);
     }
 
-    .amenities li {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    .room-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
     }
 
-    .amenities i {
-      color: #4CAF50;
+    .room-info {
+      padding: 1.5rem;
     }
 
-    .description {
-      margin-top: 1rem;
-    }
-
-    .description p {
-      font-size: 0.9rem;
-      line-height: 1.5;
-      color: #666;
-    }
-
-    h4 {
+    .room-info h3 {
       color: #1e3a8a;
+      font-size: 1.4rem;
       margin-bottom: 0.5rem;
     }
-  </style>
 
-  <script>
-    document.getElementById('menuBtn').addEventListener('click', function() {
-      document.getElementById('mobileMenu').classList.toggle('active');
-      // Toggle menu icon
-      const icon = this.querySelector('i');
-      icon.classList.toggle('fa-bars');
-      icon.classList.toggle('fa-times');
-    });
-  </script>
+    .price {
+      color: #16a34a;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
 
-  <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian1.jpg" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
-          <h3>Cozy Savvy Boutique Hotel Hoi An</h3>
-          <p>Giá: VND 1,456,560/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với view biển tuyệt đẹp, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
-          </div>
-          <button onclick="selectRoom('Cozy Savvy Boutique Hotel Hoi An',1456560)">Chọn Phòng</button>
-        </div>
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .feature {
+      background: #f0f4ff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: #1e3a8a;
+    }
+
+    .book-btn {
+      background: linear-gradient(to right, #7c3aed, #db2777);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 999px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+      transition: opacity 0.3s;
+    }
+
+    .book-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* Continue button */
+    .continue-btn-container {
+      text-align: center;
+      padding: 3rem 0;
+    }
+
+    .continue-btn {
+      background: linear-gradient(to right, #7c3aed, #db2777);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: opacity 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .continue-btn:hover {
+      opacity: 0.9;
+    }
+</style
+    
+</head>
+
+<body>
+  <header>
+    <h1>Khám Phá Những Khách Sạn Hàng Đầu</h1>
+  </header>
+
+  <nav>
+    <div class="nav-brand">
+      <img src="h.png" alt="HOI AN Logo" /> <!-- Replace with actual logo path -->
+      <div>
+        <h1>HOI AN</h1>
+        <p>HOTEL & TRAVEL</p>
       </div>
     </div>
-  </div>
+
+    <!-- Menu button for mobile -->
+    <button id="menuBtn" class="menu-button">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="mobileMenu">
+      <a href="trangchu.html">Trang chủ</a>
+      <a href="trang1.html">Khách sạn</a>
+      <a href="thongtin.html">Giới thiệu</a>
+      <a href="lienhe.html">Liên hệ</a>
+      <div class="search-container">
+        <input type="text" placeholder="Tìm kiếm...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </nav>
+
   <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian2.webp" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
+    <div class="hero">
+      <h1>Trải Nghiệm Kỳ Nghỉ Sang Trọng</h1>
+      <p>Khám phá các phòng khách sạn đẳng cấp với view biển tuyệt đẹp tại Hội An.</p>
+    </div>
+
+    <div class="room-grid">
+      <div class="room-card">
+        <img src="hoian1.jpg" alt="Phòng Deluxe">
+        <div class="room-info">
+          <h3>Cozy Savvy Boutique Hotel </h3>
+          <div class="price">VND 1,456,560/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
+          </div>
+          <button class="book-btn" onclick="selectRoom('Cozy Savvy Boutique Hotel Hoi An', 1456560, 'phong1.html')">Kiểm Tra Phòng</button>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="hoian2.webp" alt="Phòng Deluxe">
+        <div class="room-info">
           <h3>MaiChi Villa Hoi An</h3>
-          <p>Giá: VND 837,589/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với tiện nghi cực đỉnh, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
+          <div class="price">VND 837,589/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
           </div>
-          <button onclick="selectRoom('MaiChi Villa Hoi An',837589)">Chọn Phòng</button>
+          <button class="book-btn" onclick="selectRoom('MaiChi Villa Hoi An', 837589, 'phong2.html')">Kiểm Tra Phòng</button>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian5.jpg" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
-          <h3>Golden River Hotel</h3>
-          <p>Giá: VND 1,048,800/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với tiện nghi cực đỉnh, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
-          </div>
-          <button onclick="selectRoom('Golden River Hotel',1048800)">Chọn Phòng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian4.jpg" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
-          <h3>Hoi An Dream City Hotel</h3>
-          <p>Giá: VND 449,280/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với tiện nghi cực đỉnh, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
-          </div>
-          <button onclick="selectRoom('Hoi An Dream City Hotel',449280)">Chọn Phòng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian6.jpg" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
-          <h3>Viet Long Hoian Beach Hotel - STAY 24H</h3>
-          <p>Giá: VND 413,100/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với tiện nghi cực đỉnh, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
-          </div>
-          <button onclick="selectRoom('Viet Long Hoian Beach Hotel - STAY 24H',413100)">Chọn Phòng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian3.jpg" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
-          <h3>Hoianese Heritage Hotel - Truly Hoi An</h3>
-          <p>Giá: VND 690,000/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với tiện nghi cực đỉnh, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
-          </div>
-          <button onclick="selectRoom('Hoianese Heritage Hotel - Truly Hoi An',690000)">Chọn Phòng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian7.jpg" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
-          <h3>December Hoi An Villa</h3>
-          <p>Giá: VND  625,600/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với tiện nghi cực đỉnh, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
-          </div>
-          <button onclick="selectRoom('December Hoi An Villa', 625600)">Chọn Phòng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian8.jpg" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
-          <h3>Calm House Hotel Hoi An 1</h3>
-          <p>Giá: VND  1,169,460/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với tiện nghi cực đỉnh, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
-          </div>
-          <button onclick="selectRoom('Calm House Hotel Hoi An 1', 1169460)">Chọn Phòng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian9.jpg" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
-          <h3>Lantana Riverside Hoi An Boutique Hotel & Spa</h3>
-          <p>Giá: VND  1,450,508/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với tiện nghi cực đỉnh, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
-          </div>
-          <button onclick="selectRoom('Lantana Riverside Hoi An Boutique Hotel & Spa',1450508)">Chọn Phòng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian10jpg.jpg" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
-          <h3>Uptown Hoi An Hotel & Spa</h3>
-          <p>Giá: VND 1,296,000/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với tiện nghi cực đỉnh, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
-          </div>
-          <button onclick="selectRoom('Uptown Hoi An Hotel & Spa', 1296000)">Chọn Phòng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian12.jpg" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
-          <h3>Hoi An Legend Charm Boutique Hoi An Hotel</h3>
-          <p>Giá: VND  625,600/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với tiện nghi cực đỉnh, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
-          </div>
-          <button onclick="selectRoom('Hoi An Legend Charm Boutique Hoi An Hotel',479273)">Chọn Phòng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian14.jpg" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
-          <h3>Nature Resort Hoi An By K D H</h3>
-          <p>Giá: VND  549,045/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với tiện nghi cực đỉnh, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
-          </div>
-          <button onclick="selectRoom('Nature Resort Hoi An By K D H', 549045)">Chọn Phòng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian16.jpg" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
-          <h3>The Nam An Villa Hoi An</h3>
-          <p>Giá: VND  700,000/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với tiện nghi cực đỉnh, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
-          </div>
-          <button onclick="selectRoom('The Nam An Villa Hoi An', 700000)">Chọn Phòng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian17.jpg" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
-          <h3>Crony Villa - STAY 24H</h3>
-          <p>Giá: VND  601.800/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với tiện nghi cực đỉnh, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
-          </div>
-          <button onclick="selectRoom('Crony Villa - STAY 24H', 601800)">Chọn Phòng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian18.jpg" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
-          <h3>RAON Old Town Hotel</h3>
-          <p>Giá: VND  1.000.500/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với tiện nghi cực đỉnh, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
-          </div>
-          <button onclick="selectRoom('RAON Old Town Hotel', 1000500)">Chọn Phòng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian19.jpg" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
-          <h3>Banana Garden Villa</h3>
-          <p>Giá: VND  862.897/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với tiện nghi cực đỉnh, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
-          </div>
-          <button onclick="selectRoom('Banana Garden Villa', 862897)">Chọn Phòng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian15.jpg" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
-          <h3>Serene Nature Hotel & Spa</h3>
-          <p>Giá: VND  945,000/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với tiện nghi cực đỉnh, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
-          </div>
-          <button onclick="selectRoom('Serene Nature Hotel & Spa', 945000)">Chọn Phòng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="room-layout">
-      <div class="room">
-        <img src="hoian7.jpg" width="500px" height="500px"alt="Phòng Deluxe">
-        <div class="room-content">
-          <h3>December Hoi An Villa</h3>
-          <p>Giá: VND  625,600/đêm - Giường đôi, view biển</p>
-          <div class="room-details">
-            <div class="amenities">
-              <h4>Tiện nghi phòng:</h4>
-              <ul>
-                <li><i class="fas fa-wifi"></i> WiFi miễn phí</li>
-                <li><i class="fas fa-swimming-pool"></i> Hồ bơi</li>
-                <li><i class="fas fa-coffee"></i> Bữa sáng</li>
-                <li><i class="fas fa-snowflake"></i> Điều hòa</li>
-                <li><i class="fas fa-bed"></i> Giường đôi</li>
-                <li><i class="fas fa-eye"></i> View biển</li>
-              </ul>
-            </div>
-            <div class="description">
-              <h4>Mô tả:</h4>
-              <p>Phòng sang trọng với tiện nghi cực đỉnh, thiết kế hiện đại kết hợp phong cách truyền thống Hội An.
-                kéo xuống dưới để đặt phòng!!!🛒⬇️ </p>
-            </div>
-          </div>
-          <button onclick="selectRoom('December Hoi An Villa', 625600)">Chọn Phòng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-    <style>
-      header {
-        background-color: #222;
-        color: white;
-        text-align: center;
-        padding: 0.5rem;
-      }
-    
-      nav {
-        background-color: #1e3a8a;
-        padding: 0.5rem 1rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-    
-      .nav-brand {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: white;
-      }
-    
-      .nav-brand img {
-        width: 40px;
-        height: 40px;
-      }
-    
-      .nav-brand h1 {
-        font-size: 1.2rem;
-        margin: 0;
-      }
-    
-      .nav-brand p {
-        font-size: 0.8rem;
-        margin: 0;
-      }
-    
-      .menu-button {
-        display: none; 
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.5rem;
-        cursor: pointer;
-      }
-    
-      #mobileMenu {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-      }
-    
-      #mobileMenu a {
-        color: white;
-        text-decoration: none;
-      }
-    
-      .search-container {
-        display: flex;
-        align-items: center;
-      }
-    
-      .search-container input {
-        padding: 0.5rem;
-        border-radius: 4px;
-        border: none;
-        width: 200px;
-      }
-    
-      .search-container button {
-        padding: 0.5rem 1rem;
-        background-color: #4CAF50;
-        border: none;
-        border-radius: 4px;
-        color: white;
-        margin-left: 0.5rem;
-      }
-    
-    /* Mobile styles */
-    @media (max-width: 768px) {
-      .menu-button {
-        display: block;
-      }
-    
-      #mobileMenu {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #1e3a8a;
-        flex-direction: column;
-        padding: 2rem;
-        z-index: 1000;
-      }
-    
-      #mobileMenu.active {
-        display: flex;
-      }
-    
-      #mobileMenu a {
-        font-size: 1.2rem;
-        padding: 1rem 0;
-      }
-    
-      .search-container {
-        width: 100%;
-        margin-top: 1rem;
-      }
-    
-      .search-container input {
-        width: 100%;
-      }
-    }
-  </style>
 
+      <div class="room-card">
+        <img src="hoian5.jpg" alt="Phòng Deluxe">
+        <div class="room-info">
+          <h3>Golden River Hotel</h3>
+          <div class="price">VND 1,048,800/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
+          </div>
+          <button class="book-btn" onclick="selectRoom('Golden River Hotel', 1048800, 'phong4.html')">Kiểm Tra Phòng</button>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="hoian4.jpg" alt="Phòng Deluxe">
+        <div class="room-info">
+          <h3>Hoi An Dream City Hotel</h3>
+          <div class="price">VND 449,280/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
+          </div>
+          <button class="book-btn" onclick="selectRoom('Hoi An Dream City Hotel', 449280, 'phong3.html')">Kiểm Tra Phòng</button>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="hoian6.jpg" alt="Phòng Deluxe">
+        <div class="room-info">
+          <h3>Viet Long Hoian Beach Hotel</h3>
+          <div class="price">VND 413,100/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
+          </div>
+          <button class="book-btn" onclick="selectRoom('Viet Long Hoian Beach Hotel - STAY 24H', 413100, 'phong5.html')">Kiểm Tra Phòng</button>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="hoian3.jpg" alt="Phòng Deluxe">
+        <div class="room-info">
+          <h3>Hoianese Truly Hoi An</h3>
+          <div class="price">VND 690,000/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
+          </div>
+          <button class="book-btn" onclick="selectRoom('Hoianese Heritage Hotel - Truly Hoi An', 690000, 'phong6.html')">Kiểm Tra Phòng</button>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="hoian7.jpg" alt="Phòng Deluxe">
+        <div class="room-info">
+          <h3>December Hoi An Villa</h3>
+          <div class="price">VND 625,600/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
+          </div>
+          <button class="book-btn" onclick="selectRoom('December Hoi An Villa', 625600, 'phong7.html')">Kiểm Tra Phòng</button>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="hoian8.jpg" alt="Phòng Deluxe">
+        <div class="room-info">
+          <h3>Calm House Hotel Hoi An 1</h3>
+          <div class="price">VND 1,169,460/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
+          </div>
+          <button class="book-btn" onclick="selectRoom('Calm House Hotel Hoi An 1', 1169460, 'phong8.html')">Kiểm Tra Phòng</button>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="hoian9.jpg" alt="Phòng Deluxe">
+        <div class="room-info">
+          <h3>Lantana Riverside</h3>
+          <div class="price">VND 1,450,508/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
+          </div>
+          <button class="book-btn" onclick="selectRoom('Lantana Riverside Hoi An Boutique Hotel & Spa', 1450508, 'phong9.html')">Kiểm Tra Phòng</button>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="hoian10jpg.jpg" alt="Phòng Deluxe">
+        <div class="room-info">
+          <h3>Uptown Hoi An Hotel & Spa</h3>
+          <div class="price">VND 1,296,000/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
+          </div>
+          <button class="book-btn" onclick="selectRoom('Uptown Hoi An Hotel & Spa', 1296000, 'phong10.html')">Kiểm Tra Phòng</button>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="hoian12.jpg" alt="Phòng Deluxe">
+        <div class="room-info">
+          <h3>Premium CGP Hotel Hoi An </h3>
+          <div class="price">VND 625,600/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
+          </div>
+          <button class="book-btn" onclick="selectRoom('Premium CGP Hotel Hoi An', 625600, 'phong11.html')">Kiểm Tra Phòng</button>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="hoian14.jpg" alt="Phòng Deluxe">
+        <div class="room-info">
+          <h3>Nature Resort By K D H</h3>
+          <div class="price">VND 549,045/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
+          </div>
+          <button class="book-btn" onclick="selectRoom('Nature Resort Hoi An By K D H', 549045, 'phong13.html')">Kiểm Tra Phòng</button>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="hoian16.jpg" alt="Phòng Deluxe">
+        <div class="room-info">
+          <h3>The Nam An Villa Hoi An</h3>
+          <div class="price">VND 700,000/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
+          </div>
+          <button class="book-btn" onclick="selectRoom('The Nam An Villa Hoi An', 700000, 'phong15.html')">Kiểm Tra Phòng</button>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="hoian17.jpg" alt="Phòng Deluxe">
+        <div class="room-info">
+          <h3>Crony Villa - STAY 24H</h3>
+          <div class="price">VND 601,800/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
+          </div>
+          <button class="book-btn" onclick="selectRoom('Crony Villa - STAY 24H', 601800, 'phong16.html')">Kiểm Tra Phòng</button>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="hoian18.jpg" alt="Phòng Deluxe">
+        <div class="room-info">
+          <h3>RAON Old Town Hotel</h3>
+          <div class="price">VND 1,000,500/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
+          </div>
+          <button class="book-btn" onclick="selectRoom('RAON Old Town Hotel', 1000500, 'phong17.html')">Kiểm Tra Phòng</button>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="hoian19.jpg" alt="Phòng Deluxe">
+        <div class="room-info">
+          <h3>Banana Garden Villa</h3>
+          <div class="price">VND 862,897/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
+          </div>
+          <button class="book-btn" onclick="selectRoom('Banana Garden Villa', 862897, 'phong18.html')">Kiểm Tra Phòng</button>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="hoian15.jpg" alt="Phòng Deluxe">
+        <div class="room-info">
+          <h3>Serene Nature Hotel & Spa</h3>
+          <div class="price">VND 945,000/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
+          </div>
+          <button class="book-btn" onclick="selectRoom('Serene Nature Hotel & Spa', 945000, 'phong14.html')">Kiểm Tra Phòng</button>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="hoian11.jpg" alt="Phòng Deluxe">
+        <div class="room-info">
+          <h3> Legend Charm Boutique Hotel</h3>
+          <div class="price">VND 625,600/đêm</div>
+          <div class="features">
+            <span class="feature">WiFi miễn phí</span>
+            <span class="feature">Hồ bơi</span>
+            <span class="feature">Bữa sáng</span>
+            <span class="feature">Điều hòa</span>
+            <span class="feature">Giường đôi</span>
+            <span class="feature">View biển</span>
+          </div>
+          <button class="book-btn" onclick="selectRoom('Hoi An Legend Charm Boutique Hoi An Hotel', 625600, 'phong12.html')">Kiểm Tra Phòng</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Continue button -->
+   
+
+    <!-- Footer -->
+    <footer style="background: #1a1e23; color: #8b949e; padding: 2rem 0;">
+      <div class="container">
+        <div class="grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          <div>
+            <h4 style="color: #fff; font-size: 1.2rem; margin-bottom: 1rem;">ĐĂNG KÝ NHẬN THÔNG TIN KHUYẾN MÃI</h4>
+            <div style="background: #2d333b; padding: 1rem; border-radius: 8px;">
+              <input type="email" placeholder="Email nhận bản tin khuyến mãi" style="width: 100%; padding: 0.5rem; background: #22272e; border: 1px solid #444c56; color: #fff; border-radius: 4px; margin-bottom: 0.5rem;">
+              <button style="width: 100%; padding: 0.5rem; background:  rgb(59 130 246 / var(--tw-bg-opacity, 1));; color: #fff; border: none; border-radius: 4px; cursor: pointer;">ĐĂNG KÝ</button>
+            </div>
+          </div>
+
+          <div>
+            <h4 style="color: #fff; font-size: 1.2rem; margin-bottom: 1rem;">THÔNG TIN LIÊN HỆ ĐẶT PHÒNG</h4>
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.5rem;">📞 0329031440</li>
+              <li>✉️ huyonechampfli@gmail.com</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 style="color: #fff; font-size: 1.2rem; margin-bottom: 1rem;">ĐIỀU KHOẢN & QUY ĐỊNH</h4>
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.5rem;"><a href="/Dieu-khoan-chung" style="color: inherit; text-decoration: none;">Điều khoản chung</a></li>
+              <li style="margin-bottom: 0.5rem;"><a href="/Quy-dinh-chung" style="color: inherit; text-decoration: none;">Quy định chung</a></li>
+              <li style="margin-bottom: 0.5rem;"><a href="/chinh-sach-quyen-rieng-tu" style="color: inherit; text-decoration: none;">Chính sách quyền riêng tư</a></li>
+              <li style="margin-bottom: 0.5rem;"><a href="/chinh-sach-giai-quyet-khieu-nai" style="color: inherit; text-decoration: none;">Chính sách giải quyết khiếu nại</a></li>
+              <li><a href="/quy-dinh-ve-thanh-toan" style="color: inherit; text-decoration: none;">Quy định về thanh toán</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #444c56;">
+          <div class="grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+            <div>
+              <p><strong>Số ĐKKD:</strong> 2400835688</p>
+              <p>Đăng ký lần đầu: ngày 09 tháng 04 năm 2018</p>
+              <p>Đăng ký thay đổi lần thứ: 6, ngày 22 tháng 05 năm 2023</p>
+            </div>
+            <div>
+              <p><strong>Nơi cấp:</strong> Sở Kế Hoạch và Đầu Tư Tỉnh Quảng Nam</p>
+              <p><strong>Lĩnh vực kinh doanh:</strong> Khách sạn, căn hộ kinh doanh dịch vụ lưu trú, khu du lịch sinh thái, khu vui chơi giải trí</p>
+            </div>
+            <div>
+              <p><strong>Trụ sở:</strong> QUẢNG NAM HỘI AN</p>
+              <p><strong>Email:</strong> huyonechampfli@gmail.com</p>
+              <p><strong>Hotline:</strong> 0329031440</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+          <p>Quảng Bá Khu Du Lịch Hội An</p>
+        </div>
+      </div>
+    </footer>
+<style>
+  .text-white {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+  
+  .text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  
+  .mb-4 {
+    margin-bottom: 1rem;
+  }
+  
+  blockquote, dd, dl, figure, h1, h2, h3, h4, h5, h6, hr, p, pre {
+    margin: 0;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  
+  *, ::after, ::before {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+  }
+  
+  .flex-col {
+    flex-direction: column;
+  }
+  
+  .text-gray-400 {
+    --tw-text-opacity: 1;
+    color: rgb(156 163 175 / var(--tw-text-opacity));
+  }
+  
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .bg-gray-800 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+  }
+  
+  .rounded-md {
+    border-radius: 0.375rem;
+  }
+  
+  button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+  }
+</style>
   <script>
-    document.getElementById('menuBtn').addEventListener('click', function() {
-      document.getElementById('mobileMenu').classList.toggle('active');
-      // Toggle menu icon
+    document.getElementById('menuBtn').addEventListener('click', function () {
+      const mobileMenu = document.getElementById('mobileMenu');
+      const header = document.querySelector('header');
+      mobileMenu.classList.toggle('active');
+      header.classList.toggle('hide');
       const icon = this.querySelector('i');
       icon.classList.toggle('fa-bars');
       icon.classList.toggle('fa-times');
     });
+
+    function selectRoom(roomName, price, url) {
+      localStorage.setItem('selectedRoom', roomName);
+      localStorage.setItem('selectedPrice', price);
+      window.location.href = url;
+    }
   </script>
-  <style>
-    .room-layout {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .room-details {
-      margin: 1rem 0;
-      padding: 1rem;
-      background: #f8f9fa;
-      border-radius: 8px;
-    }
-
-    .amenities ul {
-      list-style: none;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.5rem;
-    }
-
-    .amenities li {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .amenities i {
-      color: #4CAF50;
-    }
-
-    .description {
-      margin-top: 1rem;
-    }
-
-    .description p {
-      font-size: 0.9rem;
-      line-height: 1.5;
-      color: #666;
-    }
-
-    h4 {
-      color: #1e3a8a;
-      margin-bottom: 0.5rem;
-    }
-  </style>
-    <style>
-      /* Thêm vào phần style chính ở đầu file */
-      .container {
-        max-width: 1200px;
-        margin: auto;
-        padding: 20px;
-      }
-    
-      .room {
-        display: flex;
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        margin-bottom: 30px;
-        max-height: 300px;
-      }
-    
-      .room-image {
-        flex: 0 0 40%;
-        max-width: 400px;
-        position: relative;
-        overflow: hidden;
-      }
-    
-      .room-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    
-      .room-content {
-        flex: 1;
-        padding: 20px;
-        overflow-y: auto;
-      }
-    
-      .room-details {
-        background: #f8f9fa;
-        padding: 20px;
-        border-radius: 8px;
-        margin: 15px 0;
-      }
-    
-      .amenities ul {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-        list-style: none;
-        padding: 0;
-      }
-    
-      .amenities li {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-    
-      .amenities i {
-        color: #1e3a8a;
-      }
-    
-      @media (max-width: 768px) {
-        .room {
-          flex-direction: column;
-          max-height: none;
-        }
-        
-        .room-image {
-          height: 200px;
-          max-width: none;
-        }
-    
-        .amenities ul {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-    </style>
-
-    
-
-    
-<div style="text-align: center; padding: 20px 0 40px 0;">
-  <button onclick="window.location.href='datphong.html'" style="
-    background: linear-gradient(to right, #6366f1, #ec4899);
-    border: none;
-    color: white;
-    padding: 15px 30px;
-    border-radius: 999px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1.2em;
-    transition: 0.3s;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  "><a style="text-decoration: none;" href="dathang.html">
-    Nhấn vào đây để tiếp tục đặt phòng ➜
-  </a></button>
-</div>
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </body>
-  <footer style="background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));">
-    &copy; 2025 Khách Sạn VIP. Bản quyền thuộc về bạn.
-  </footer>
 
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
- 
-
-</body>
 </html>
